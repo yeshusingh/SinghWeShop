@@ -12,7 +12,7 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            Color("BackgroundColor")
+            Color(Constants.Assets.backgroundColor)
                 .ignoresSafeArea()
             
             VStack {
@@ -53,15 +53,16 @@ struct WelcomeView: View {
             }
             .padding(15)
             
+            // Note : Temporary Placeholder view - To be updates as we make progess on the App development.
             ZStack {
-                RoundedRectangle(cornerRadius: 22)
-                    .strokeBorder(lineWidth:3)
+                RoundedRectangle(cornerRadius: Constants.General.cornerRadius)
+                    .strokeBorder(lineWidth:Constants.General.strokeBorderWidth)
                     .foregroundColor(.accentColor)
                     
                 VStack(spacing: 20) {
                     Image(systemName: "figure.fishing")
                         .imageScale(.large)
-                        .foregroundColor(Color("TextColor"))
+                        .foregroundColor(Color(Constants.Assets.textColor))
                         .font(.largeTitle)
                         .fontWeight(.semibold)
                     
