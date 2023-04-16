@@ -23,6 +23,7 @@
 		123966DB29E3312E005EDA4E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		123966E529E34359005EDA4E /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		123966E729E36BE4005EDA4E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		1245FA9E29EC75E000299D2F /* Week02Assignment.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Week02Assignment.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +56,7 @@
 		123966D329E3312E005EDA4E /* SinghWeShop */ = {
 			isa = PBXGroup;
 			children = (
+				1245FA9D29EC75B300299D2F /* PlayGround */,
 				123966E229E34305005EDA4E /* App */,
 				123966E329E3430C005EDA4E /* Models */,
 				123966E429E3431A005EDA4E /* Views */,
@@ -95,6 +97,14 @@
 				123966E729E36BE4005EDA4E /* OnboardingView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		1245FA9D29EC75B300299D2F /* PlayGround */ = {
+			isa = PBXGroup;
+			children = (
+				1245FA9E29EC75E000299D2F /* Week02Assignment.playground */,
+			);
+			path = PlayGround;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
