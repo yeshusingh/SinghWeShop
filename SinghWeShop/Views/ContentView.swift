@@ -9,6 +9,9 @@ import SwiftUI
 
 struct ContentView: View {
     @State private var isOnboardingViewShowing = false
+    @State private var isListViewShowing = false
+    
+    @State private var items = Items()
     
     var body: some View {
         ZStack {
@@ -16,18 +19,24 @@ struct ContentView: View {
                 .ignoresSafeArea()
             
             VStack {
-                WelcomeView(isOnboardingViewShowing: $isOnboardingViewShowing)
+                WelcomeView(isOnboardingViewShowing: $isOnboardingViewShowing, isListViewShowing: $isListViewShowing)
             }
             .padding()
             .sheet(isPresented: $isOnboardingViewShowing) {
                 OnboardingView(isOnboardingViewShowing: $isOnboardingViewShowing)
             }
+            .sheet(isPresented: $isListViewShowing) {
+                ItemListView(isListViewShowing: $isListViewShowing, items: $items)
+            }
+            
         }
     }
 }
 
 struct WelcomeView: View {
     @Binding var isOnboardingViewShowing: Bool
+    @Binding var isListViewShowing: Bool
+    
     
     var body: some View {
         VStack {
@@ -42,7 +51,7 @@ struct WelcomeView: View {
                 Button {
                     isOnboardingViewShowing = true
                 } label: {
-                    Image(systemName: "info.circle")
+                    Image(systemName: Constants.ImageLiteral.infoCircle)
                         .imageScale(.large)
                         .foregroundColor(.accentColor)
                         .font(.title2)
@@ -53,19 +62,37 @@ struct WelcomeView: View {
             }
             .padding(15)
             
-            // Note : Temporary Placeholder view - To be updates as we make progess on the App development.
+            VStack {
+                Button {
+                    isListViewShowing = true
+                } label: {
+                    Text("Show items with URL")
+                        .foregroundColor(.white)
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                        .padding()
+                        .background {
+                            Color.gray
+                        }
+                        .cornerRadius(Constants.General.cornerRadius)
+                        .shadow(radius: 5, x: 5, y: 5)
+                }
+            }
+            .padding()
+            
+            // Note : Temporary Placeholder view - To be updated as we make progess on the App development.
             ZStack {
                 RoundedRectangle(cornerRadius: Constants.General.cornerRadius)
                     .strokeBorder(lineWidth:Constants.General.strokeBorderWidth)
                     .foregroundColor(.accentColor)
-                    
+
                 VStack(spacing: 20) {
-                    Image(systemName: "figure.fishing")
+                    Image(systemName: Constants.ImageLiteral.figureFishing)
                         .imageScale(.large)
                         .foregroundColor(Color(Constants.Assets.textColor))
                         .font(.largeTitle)
                         .fontWeight(.semibold)
-                    
+
                     Text(
                         """
                         Fishing for more ...\n

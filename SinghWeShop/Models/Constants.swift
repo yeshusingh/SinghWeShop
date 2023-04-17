@@ -13,6 +13,8 @@ enum Constants {
         public static let textColor = "TextColor"
         public static let buttonFilledTextColor = "ButtonFilledTextColor"
         public static let buttonFilledBackgroundColor = "ButtonFilledBackgroundColor"
+        public static let listBackgroundColor = "ListBackgroundColor"
+        public static let iconPicture = "IconPicture"
     }
     
     enum General {
@@ -20,6 +22,13 @@ enum Constants {
         public static let strokeBorderWidth = 3.0
         public static let iconPictureSize = 80.0
         public static let roundButtonSize = 56.0
+    }
+    
+    enum ImageLiteral {
+        public static let infoCircle = "info.circle"
+        public static let figureFishing = "figure.fishing"
+        public static let xmark = "xmark"
+        public static let photoArtframe = "photo.artframe"
     }
     
 }

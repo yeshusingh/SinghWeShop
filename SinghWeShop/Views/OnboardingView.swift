@@ -24,7 +24,7 @@ struct OnboardingView: View {
                         Button {
                             isOnboardingViewShowing = false
                         } label: {
-                            Image(systemName: "xmark")
+                            Image(systemName: Constants.ImageLiteral.xmark)
                                 .font(.title)
                                 .foregroundColor(Color(Constants.Assets.buttonFilledTextColor))
                                 .frame(width: Constants.General.roundButtonSize, height: Constants.General.roundButtonSize)
@@ -37,7 +37,7 @@ struct OnboardingView: View {
                     .padding([.horizontal, .vertical])
                     
                     VStack(spacing: 10.0){
-                        Image("IconPicture")
+                        Image(Constants.Assets.iconPicture)
                             .resizable()
                             .frame(width: Constants.General.iconPictureSize, height: Constants.General.iconPictureSize)
                             .clipShape(RoundedRectangle(cornerRadius: Constants.General.cornerRadius))
