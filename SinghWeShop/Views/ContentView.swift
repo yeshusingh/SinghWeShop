@@ -37,7 +37,6 @@ struct WelcomeView: View {
     @Binding var isOnboardingViewShowing: Bool
     @Binding var isListViewShowing: Bool
     
-    
     var body: some View {
         VStack {
             HStack {
@@ -56,9 +55,7 @@ struct WelcomeView: View {
                         .foregroundColor(.accentColor)
                         .font(.title2)
                         .fontWeight(.semibold)
-                        
                 }
-                
             }
             .padding(15)
             
