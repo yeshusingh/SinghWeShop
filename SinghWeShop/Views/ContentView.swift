@@ -33,6 +33,7 @@ struct ContentView: View {
     }
 }
 
+
 struct WelcomeView: View {
     @Binding var isOnboardingViewShowing: Bool
     @Binding var isListViewShowing: Bool
