@@ -30,6 +30,7 @@
 		1245FA9F29EC8E6600299D2F /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		1245FAA129EC8F1300299D2F /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
 		1245FAA329ECC08500299D2F /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
+		1260439E29F1924200E6C57E /* Week03Assignment.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Week03Assignment.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				1245FA9E29EC75E000299D2F /* Week02Assignment.playground */,
+				1260439E29F1924200E6C57E /* Week03Assignment.playground */,
 			);
 			path = PlayGround;
 			sourceTree = "<group>";
