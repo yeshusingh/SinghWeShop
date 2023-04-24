@@ -1,7 +1,5 @@
-import Cocoa
-import Foundation
-import UIKit
 
+import SwiftUI
 
 //------------ Common Hardcoded Sample Data ------------
 
@@ -275,8 +273,33 @@ closureCalculateAmountForDiscountTypeV2(totalAmount, .newYear)
 
 
 
+//Display a date or a string (preferably a long string)  in a nice readable format using NSAttributedString
 
+func appName() -> NSAttributedString {
+    let message = NSMutableAttributedString()
+    
+    let attributes1: [NSAttributedString.Key : Any] = [
+        NSAttributedString.Key.font : UIFont.systemFont(ofSize: 17),
+        NSAttributedString.Key.foregroundColor : UIColor.brown,
+        NSAttributedString.Key.kern : -0.5
+    ]
+    message.append(NSAttributedString(string: "We ", attributes: attributes1))
+    
+    let attributes2: [NSAttributedString.Key : Any] = [
+        NSAttributedString.Key.font : UIFont.systemFont(ofSize: 16),
+        NSAttributedString.Key.foregroundColor : UIColor.systemOrange,
+        NSAttributedString.Key.kern : -0.5,
+        NSAttributedString.Key.baselineOffset : 4.0
+    ]
+    message.append(NSAttributedString(string: "Shop", attributes: attributes2))
 
+    return message
+}
+
+print("\nAssignment 14: Nice to Haves: String in readable format using NSAttributedString")
+print("Enable Result i.e. square icon on the right so the attributed sting can be shown inline after function call in the playgound.")
+
+appName()
 
 
 
