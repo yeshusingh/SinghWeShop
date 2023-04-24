@@ -30,6 +30,20 @@ struct ContentView: View {
             }
             
         }
+        .onAppear(perform: printTempCartDataForAssginment)
+    }
+
+    //Temporary function created to showcase CartItems with individual Discounted prices and the TotalCart amount calculated.
+    func printTempCartDataForAssginment() {
+        print("Current Cart Items")
+        for item in items.cartItems {
+            print("\n-------------------------")
+            print("Item Name: ", item.name)
+            print("Item Price: ", item.price)
+            print("Item DiscountedPrice: ", item.discountedPrice)
+        }
+        print("\n\n-------------------------")
+        print("Total Cart Amount : ", items.totalCartItemsAmount)
     }
 }
 

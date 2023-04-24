@@ -248,7 +248,8 @@ print(allStuff.totalDiscountedAmountRounded)
 
 
 //------------ Assignment 13 ------------
-
+print("\nAssignment 13: Put Your Final code In the App")
+print("Added details on the Google Doc for the logic added to the Capstone App")
 
 
 //------------ Assignment 14 ------------
