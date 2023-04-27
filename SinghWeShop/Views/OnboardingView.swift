@@ -94,16 +94,16 @@ struct OnboardingView: View {
                                     .fontWeight(.regular)
                                     .foregroundColor(Color(Constants.Assets.textColor))
                             }
+                            
                         }
                         .padding(.vertical, verticalSizeClass == .compact ? 0: 40)
                     }
                 }
                 .padding()
-            
         }
     }
+    
 }
-
 
 struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {

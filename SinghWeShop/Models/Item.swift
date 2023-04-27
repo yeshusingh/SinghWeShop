@@ -11,8 +11,18 @@ struct Item: Hashable, Identifiable {
     let id: Int
     var name: String
     var price: Double
+    var discountedPrice: Double
     var description: String
     var imageURL : String?
+    
+    init(id: Int, name: String, price: Double, description: String, imageURL: String? = nil) {
+        self.id = id
+        self.name = name
+        self.price = price
+        self.discountedPrice = price
+        self.description = description
+        self.imageURL = imageURL
+    }
 }
 
 struct ItemSampleData {
