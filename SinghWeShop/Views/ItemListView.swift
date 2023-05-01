@@ -22,11 +22,10 @@ struct ItemListView: View {
             .navigationDestination(for: Item.self) { item in
                 ItemDetailView(item: item)
             }
+            .padding(10)
         }
-        .ignoresSafeArea()
-        .padding()
         .background(Color(Constants.Assets.listBackgroundColor))
-        .navigationTitle("WeShop")
+        .navigationTitle(Constants.General.appTitle)
         .navigationBarTitleDisplayMode(.inline)
     }
 }

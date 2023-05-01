@@ -11,7 +11,7 @@ struct ItemView: View {
     var item: Item
     
     var body: some View {
-        VStack(spacing: 10) {            
+        VStack(spacing: 10) {
             Image("Item-\(item.id)")
                 .resizable()
                 .aspectRatio(1, contentMode: .fit)
@@ -54,7 +54,6 @@ struct ItemView: View {
         )
         .background(Color(Constants.Assets.listBackgroundColor))
         .cornerRadius(Constants.General.cornerRadius)
-        .frame(minWidth: 150)
     }
 }
 

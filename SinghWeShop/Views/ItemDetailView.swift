@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct ItemDetailView: View {
+    @Environment(\.verticalSizeClass) var verticalSizeClass
+    @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    
     var item: Item
     
     var body: some View {
@@ -15,14 +18,24 @@ struct ItemDetailView: View {
             Color(Constants.Assets.listBackgroundColor)
                 .ignoresSafeArea()
             
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 VStack(spacing: 10) {
-                    Image("Item-\(item.id)")
-                        .resizable()
-                        .aspectRatio(contentMode: .fit)
-                        .cornerRadius(Constants.General.cornerRadius)
-                        .shadow(radius: 10)
-                        .padding(.bottom)
+                    if verticalSizeClass == .compact {
+                        Image("Item-\(item.id)")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(height: 200)
+                            .cornerRadius(Constants.General.cornerRadius)
+                            .shadow(radius: Constants.General.shadowRadius)
+                            .padding(.bottom)
+                    } else {
+                        Image("Item-\(item.id)")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .cornerRadius(Constants.General.cornerRadius)
+                            .shadow(radius: Constants.General.shadowRadius)
+                            .padding(.bottom)
+                    }
                     
                     VStack(alignment: .leading, spacing: 10){
                         HStack() {
@@ -62,7 +75,7 @@ struct ItemDetailView: View {
                                 .kerning(0.5)
                                 .multilineTextAlignment(.leading)
                                 .lineSpacing(-10)
-                            .foregroundColor(Color(Constants.Assets.textColor))
+                                .foregroundColor(Color(Constants.Assets.textColor))
                         }
                         .padding(.top, 30)
                     
@@ -83,7 +96,7 @@ struct ItemDetailView: View {
                                 .background(Color(Constants.Assets.buttonFilledTextColor))
                                 .opacity(0.7)
                                 .cornerRadius(Constants.General.cornerRadius)
-                                .shadow(radius: 5)
+                                .shadow(radius: Constants.General.shadowRadius, x: 5, y: 5)
                         }
                     }
                     .padding(.top, 50)
