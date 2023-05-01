@@ -10,11 +10,10 @@ import SwiftUI
 struct OnboardingView: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
-    @Binding var isOnboardingViewShowing: Bool
     
     var body: some View {
         ZStack {
-            Color(Constants.Assets.backgroundColor)
+            Color(Constants.Assets.listBackgroundColor)
                 .ignoresSafeArea()
             
                 VStack {
@@ -40,21 +39,6 @@ struct OnboardingView: View {
                         }
                         .padding(.top, verticalSizeClass == .compact ? 0: 60)
                         
-                        HStack {
-                            Spacer()
-                            Button {
-                                isOnboardingViewShowing = false
-                            } label: {
-                                Image(systemName: Constants.ImageLiteral.xmark)
-                                    .font(.title)
-                                    .foregroundColor(Color(Constants.Assets.buttonFilledTextColor))
-                                    .frame(width: Constants.General.roundButtonSize, height: Constants.General.roundButtonSize)
-                                    .background(
-                                        Circle()
-                                            .fill(Color(Constants.Assets.buttonFilledBackgroundColor))
-                                    )
-                            }
-                        }
                     }
                     
                     ScrollView {
@@ -107,6 +91,6 @@ struct OnboardingView: View {
 
 struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
-        OnboardingView(isOnboardingViewShowing: .constant(false))
+        OnboardingView()
     }
 }

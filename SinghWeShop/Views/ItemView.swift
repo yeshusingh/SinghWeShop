@@ -8,27 +8,28 @@
 import SwiftUI
 
 struct ItemView: View {
-    @Environment(\.verticalSizeClass) var verticalSizeClass
-    @Environment(\.horizontalSizeClass) var horizontalSizeClass
-    @State var item: Item
+    var item: Item
     
     var body: some View {
-        HStack(spacing: 10){
-            Image(systemName: Constants.ImageLiteral.photoArtframe)
-                .imageScale(.large)
-                .foregroundColor(Color(Constants.Assets.textColor))
-                .font(.largeTitle)
-                .fontWeight(.semibold)
-                .frame(width: Constants.General.iconPictureSize, height: Constants.General.iconPictureSize)
+        VStack(spacing: 10) {            
+            Image("Item-\(item.id)")
+                .resizable()
+                .aspectRatio(1, contentMode: .fit)
+                .frame(width: 100)
+                .cornerRadius(Constants.General.cornerRadius)
             
-            VStack(alignment: .leading){
-                Text(item.name)
-                    .font(.headline)
-                    .fontWeight(.semibold)
-                    .kerning(0.5)
-                    .multilineTextAlignment(.leading)
-                    .lineSpacing(-10)
-                    .foregroundColor(.accentColor)
+            VStack(alignment: .leading, spacing: 10){
+                HStack {
+                    Text(item.name)
+                        .font(.headline)
+                        .fontWeight(.semibold)
+                        .kerning(0.5)
+                        .multilineTextAlignment(.leading)
+                        .lineSpacing(-10)
+                        .foregroundColor(.accentColor)
+                    
+                    Spacer()
+                }
                 
                 HStack {
                     Text("Price :")
@@ -42,68 +43,28 @@ struct ItemView: View {
                         .kerning(0.5)
                         .multilineTextAlignment(.leading)
                 }
-                
-                Text("\n\(item.description)")
-                    .font(.body)
-                    .fontWeight(.regular)
-                    .kerning(0.1)
-                    .multilineTextAlignment(.leading)
             }
-            if verticalSizeClass == .compact {
-                Spacer()
-            }
+            
+            Spacer()
         }
         .padding()
-        .background(Color(Constants.Assets.backgroundColor))
+        .overlay(
+            RoundedRectangle(cornerRadius: Constants.General.cornerRadius)
+                .strokeBorder(lineWidth: Constants.General.strokeBorderWidth/3)
+        )
+        .background(Color(Constants.Assets.listBackgroundColor))
         .cornerRadius(Constants.General.cornerRadius)
+        .frame(minWidth: 150)
     }
 }
 
-struct ItemListView: View {
-    @Binding var isListViewShowing: Bool
-    @Binding var items: Items
-    
-    var body: some View {
-        VStack {
-            HStack {
-                Spacer()
-                Text("Item List".uppercased())
-                    .font(.title2)
-                    .fontWeight(.bold)
-                    .kerning(1.0)
-                    .foregroundColor(Color(Constants.Assets.textColor))
-                Spacer()
-                
-                Button {
-                    isListViewShowing = false
-                } label: {
-                    Image(systemName: Constants.ImageLiteral.xmark)
-                        .font(.title)
-                        .foregroundColor(Color(Constants.Assets.buttonFilledTextColor))
-                        .frame(width: Constants.General.roundButtonSize, height: Constants.General.roundButtonSize)
-                        .background(
-                            Circle()
-                                .fill(Color(Constants.Assets.buttonFilledBackgroundColor))
-                        )
-                }
-            }
-            .padding()
-            
-            ScrollView {
-                ForEach(items.showItem()) { item in
-                    ItemView(item: item)
-                }
-            }
-            .padding(5)
-        }
-        .background(Color(Constants.Assets.listBackgroundColor))
-    }
-}
 
 struct ItemView_Previews: PreviewProvider {
-    private static var items = Items()
     static var previews: some View {
-        ItemView(item: ItemSampleData.eraser)
-        ItemListView(isListViewShowing: .constant(false), items: .constant(items))
+        VStack {
+            ItemView(item: ItemSampleData.eraser)
+            ItemView(item: ItemSampleData.pencil)
+        }
     }
 }
+

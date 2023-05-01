@@ -37,5 +37,9 @@ struct ItemSampleData {
     public static let sharpener = Item(id: 5, name: "STAEDTLER pencil sharpener, premium quality sharpener with screw-on lid", price: 5.61, description: "Premium quality sharpener ensures you never have a dull moment in the office, at school, or around the house!. Metal sharpener with secure screw-on lid prevents accidental opening", imageURL: nil)
 
     public static let paper = Item(id: 6, name: "Amazon Basics Multipurpose Copy Printer Paper, 8.5 x 11 Inch", price: 39.99, description: "8 ream case (4,000 sheets) of 8.5 x 11 white copier and printer paper for home or office use. Multipurpose letter size copy paper works with laser/inkjet printers, copiers and fax machines.", imageURL: nil)
+    
+//    public static let paper2 = Item(id: 7, name: "Amazon Basics Multipurpose Copy Printer Paper, 8.5 x 11 Inch", price: 29.99, description: "8 ream case (4,000 sheets) of 8.5 x 11 white copier and printer paper for home or office use. Multipurpose letter size copy paper works with laser/inkjet printers, copiers and fax machines.", imageURL: nil)
+//
+//    public static let paper3 = Item(id: 8, name: "Amazon Basics Multipurpose Copy Printer Paper, 8.5 x 11 Inch", price: 19.99, description: "8 ream case (4,000 sheets) of 8.5 x 11 white copier and printer paper for home or office use. Multipurpose letter size copy paper works with laser/inkjet printers, copiers and fax machines.", imageURL: nil)
 }
 
