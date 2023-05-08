@@ -14,3 +14,9 @@ enum DiscountType: Double, CaseIterable {
     case newYear = 20.0
 }
 
+enum ItemCategories {
+    case stationary
+    case electronics
+    case clothes
+}
+

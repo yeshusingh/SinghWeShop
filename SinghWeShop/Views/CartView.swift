@@ -20,6 +20,20 @@ struct CartView: View {
                 }
                 .padding()
                 
+                VStack {
+                    Text("Work in Progress on Cart Screen ...")
+                    Text("Amount Calcuations pending...")
+                }
+                .fontWeight(.medium)
+                .padding(30)
+                .background(.brown.opacity(0.3))
+                .foregroundColor(Color(Constants.Assets.textColor))
+                .overlay(
+                    RoundedRectangle(cornerRadius: Constants.General.cornerRadius)
+                        .strokeBorder(.orange)
+                )
+                .clipShape(RoundedRectangle(cornerRadius: Constants.General.cornerRadius))
+                
                 Button {
                     //TODO: Call checkout steps
                 } label: {
@@ -33,27 +47,10 @@ struct CartView: View {
                         .cornerRadius(Constants.General.cornerRadius)
                 }
                 .padding(.top, 50)
-                
+
             }
             .navigationTitle("My Cart")
             .navigationBarTitleDisplayMode(.inline)
-            
-            VStack {
-                Text("Work in Progress on Cart Screen ...")
-                Text("Amount Calcuations pending...")
-            }
-            .fontWeight(.medium)
-            .frame(width: .infinity)
-            .padding(30)
-            .background(.brown.opacity(0.3))
-            .foregroundColor(Color(Constants.Assets.textColor))
-            .overlay(
-                RoundedRectangle(cornerRadius: Constants.General.cornerRadius)
-                    .strokeBorder(.orange)
-            )
-            .clipShape(RoundedRectangle(cornerRadius: Constants.General.cornerRadius))
-            
-            Spacer()
         }
     }
 }
