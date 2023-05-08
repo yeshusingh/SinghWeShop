@@ -19,7 +19,6 @@ class CartManager: ObservableObject {
     init() {
         addToCart(ItemSampleData.notepad)
         addToCart(ItemSampleData.pencil)
-        addToCart(ItemSampleData.eraser)
     }
     
     func setDiscountType(type: DiscountType) {
@@ -30,6 +29,14 @@ class CartManager: ObservableObject {
         var tempItem = item
         tempItem.discountedPrice = calculateAmountAfterDiscount(tempItem)
         cartItems.append(tempItem)
+    }
+    
+    func removeFromCart(_ item: Item) {
+        guard !cartItems.isEmpty else { return }
+        
+        if let index = cartItems.firstIndex(of: item) {
+            cartItems.remove(at: index)
+        }
     }
     
     private func calculateAmountAfterDiscount(_ item: Item) -> Double {

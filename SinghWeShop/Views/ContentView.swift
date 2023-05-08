@@ -9,25 +9,35 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var itemStore = ItemsManager()
+    @StateObject private var cartStore = CartManager()
+    @AppStorage("CurrentTabSelection") var selectedTab = 0
     
     var body: some View {
-            NavigationStack {
-                ItemListView(items: itemStore.allItems)
-                .toolbar {
-                    ToolbarItem {
-                        NavigationLink {
-                            OnboardingView()
-                        } label: {
-                            Image(systemName: Constants.ImageLiteral.infoCircle)
-                                .imageScale(.large)
-                                .foregroundColor(.accentColor)
-                                .font(.title2)
-                                .fontWeight(.semibold)
-                        }
-                    }
+        TabView(selection: $selectedTab) {
+            ItemsListView(items: itemStore.allItems)
+                .tabItem {
+                    Image(systemName: "house")
+                    Text("Home")
                 }
-            }
-            .foregroundColor(Color(Constants.Assets.textColor))
+                .tag(0)
+
+            ItemsGridView(items: itemStore.discoverItems)
+                .tabItem {
+                    Image(systemName: "bolt.square")
+                    Text("Discover")
+                }
+                .tag(1)
+
+            CartView()
+                .tabItem {
+                    Image(systemName: "cart")
+                    Text("Cart")
+                }
+                .tag(2)
+                .badge(cartStore.cartItems.count)
+        }
+        .foregroundColor(Color(Constants.Assets.textColor))
+        .environmentObject(cartStore)
     }
 }
 

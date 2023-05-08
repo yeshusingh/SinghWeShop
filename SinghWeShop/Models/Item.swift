@@ -38,8 +38,16 @@ struct ItemSampleData {
 
     public static let paper = Item(id: 6, name: "Amazon Basics Multipurpose Copy Printer Paper, 8.5 x 11 Inch", price: 39.99, description: "8 ream case (4,000 sheets) of 8.5 x 11 white copier and printer paper for home or office use. Multipurpose letter size copy paper works with laser/inkjet printers, copiers and fax machines.", imageURL: nil)
     
-//    public static let paper2 = Item(id: 7, name: "Amazon Basics Multipurpose Copy Printer Paper, 8.5 x 11 Inch", price: 29.99, description: "8 ream case (4,000 sheets) of 8.5 x 11 white copier and printer paper for home or office use. Multipurpose letter size copy paper works with laser/inkjet printers, copiers and fax machines.", imageURL: nil)
-//
-//    public static let paper3 = Item(id: 8, name: "Amazon Basics Multipurpose Copy Printer Paper, 8.5 x 11 Inch", price: 19.99, description: "8 ream case (4,000 sheets) of 8.5 x 11 white copier and printer paper for home or office use. Multipurpose letter size copy paper works with laser/inkjet printers, copiers and fax machines.", imageURL: nil)
+    
+    public static let iPad = Item(id: 7, name: "Ipad Pro", price: 799.99, description: "Pad Pro is the ultimate iPad experience, with the astonishing performance of the M2 chip, superfast wireless connectivity, and next-generation Apple Pencil experience. Plus powerful productivity features in iPadOS.iPadOS makes iPad more productive, intuitive, and versatile. With iPadOS, run multiple apps at once, use Apple Pencil to write in any text field with Scribble, and edit and share photos. Stage Manager makes multitasking easy with resizable, overlapping apps and external display support. iPad Pro comes with essential apps like Safari, Messages, and Keynote, with over a million more apps available on the App Store.")
+    public static let appleWatch = Item(id: 8, name: "Apple Watch", price: 529.99, description: "ll the essentials to help you monitor your fitness, keep connected, track your health, and stay safe. Now up to 20 percent faster, with features like Crash Detection and enhanced workout metrics, it’s a better value than ever.It works seamlessly with your Apple devices and services. Unlock your Mac automatically. Find your devices with a tap. Pay and send money with Apple Pay. Apple Watch requires an iPhone 8 or later with the latest iOS version.")
+    public static let monitor = Item(id: 9, name: "Dell Monitor", price: 499.99, description: "Experience 4x the resolution of Full HD with colors of up to 1.07 billion together with 99% sRGB across wide viewing angles with this 32 Inch 4K monitor..Aspect ratio:16:9.Response time:4.0 milliseconds.")
+    
+    
+    public static let tShirt = Item(id: 10, name: "White Tshirt", price: 29.99, description: "Get a smooth, durable, premium finish that's always flake-proof, peel-proof, and wash-proof. This basic, lightweight T-shirt is perfect for just about any design or occasion you can think of.")
+    public static let jeans = Item(id: 11, name: "Blue Jeans", price: 59.99, description: "These classic 5-pocket Athletic-Fit jeans are crafted with a bit of stretch for additional comfort and to help maintain their shape. Athletic Fit sits at the waist and features a roomier cut through the hip and thigh and a tapered leg")
+    public static let jacket = Item(id: 12, name: "Jacket", price: 199.99, description: "Soft, warm and fuzzy mid-weight polar fleece fabric")
+    
+    
 }
 

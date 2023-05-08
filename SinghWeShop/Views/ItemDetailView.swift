@@ -10,13 +10,14 @@ import SwiftUI
 struct ItemDetailView: View {
     @Environment(\.verticalSizeClass) var verticalSizeClass
     @Environment(\.horizontalSizeClass) var horizontalSizeClass
+    @EnvironmentObject var cartStore: CartManager
     
     var item: Item
     
     var body: some View {
         ZStack {
-            Color(Constants.Assets.listBackgroundColor)
-                .ignoresSafeArea()
+            //Color(Constants.Assets.listBackgroundColor)
+                //.ignoresSafeArea()
             
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 10) {
@@ -85,8 +86,7 @@ struct ItemDetailView: View {
                     
                     HStack {
                         Button {
-                            //TODO : Add to Cart method call
-                            print("TODO : Add to Cart method call")
+                            cartStore.addToCart(item)
                         } label: {
                             Text("Add to Cart")
                                 .font(.title2)
@@ -113,5 +113,6 @@ struct ItemDetailView: View {
 struct ItemDetailView_Previews: PreviewProvider {
     static var previews: some View {
         ItemDetailView(item: ItemSampleData.eraser)
+            .environmentObject(CartManager())
     }
 }

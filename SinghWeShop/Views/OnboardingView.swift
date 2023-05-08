@@ -13,8 +13,8 @@ struct OnboardingView: View {
     
     var body: some View {
         ZStack {
-            Color(Constants.Assets.listBackgroundColor)
-                .ignoresSafeArea()
+            //Color(Constants.Assets.listBackgroundColor)
+                //.ignoresSafeArea()
             
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 5.0){

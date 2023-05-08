@@ -10,6 +10,10 @@ import Foundation
 class ItemsManager: ObservableObject {
     @Published private(set) var allItems: [Item] = []
     
+    var discoverItems:  [Item] {
+        return allItems.filter{_ in Bool.random() }
+    }
+    
     init() {
         allItems.append(ItemSampleData.notepad)
         allItems.append(ItemSampleData.pencil)
@@ -17,8 +21,14 @@ class ItemsManager: ObservableObject {
         allItems.append(ItemSampleData.glueStick)
         allItems.append(ItemSampleData.sharpener)
         allItems.append(ItemSampleData.paper)
+        allItems.append(ItemSampleData.iPad)
+        allItems.append(ItemSampleData.appleWatch)
+        allItems.append(ItemSampleData.monitor)
+        allItems.append(ItemSampleData.tShirt)
+        allItems.append(ItemSampleData.jeans)
+        allItems.append(ItemSampleData.jacket)
     }
  
-    // TODO :  Add networking code here to fetch data from API into allItems Array
+    //TODO:  Add networking code here to fetch data from API into allItems Array
     
 }
