@@ -76,8 +76,7 @@ struct CartRowView: View {
                 }
                 .padding(.top, 5)
             }
-            
-            //Spacer()
+
         }
     }
 }

@@ -52,7 +52,6 @@ struct GridItem: View {
             RoundedRectangle(cornerRadius: Constants.General.cornerRadius)
                 .strokeBorder(lineWidth: Constants.General.strokeBorderWidth/3)
         )
-        //.background(Color(Constants.Assets.listBackgroundColor))
         .cornerRadius(Constants.General.cornerRadius)
     }
 }

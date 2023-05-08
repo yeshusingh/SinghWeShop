@@ -16,9 +16,6 @@ struct ItemDetailView: View {
     
     var body: some View {
         ZStack {
-            //Color(Constants.Assets.listBackgroundColor)
-                //.ignoresSafeArea()
-            
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 10) {
                     if verticalSizeClass == .compact {
@@ -100,14 +97,11 @@ struct ItemDetailView: View {
                         }
                     }
                     .padding(.top, 50)
-                    
                 }
                 .padding()
             }
         }
-        
     }
-    
 }
 
 struct ItemDetailView_Previews: PreviewProvider {

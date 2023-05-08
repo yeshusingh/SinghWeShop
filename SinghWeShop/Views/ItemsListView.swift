@@ -9,12 +9,25 @@ import SwiftUI
 
 struct ItemsListView: View {
     @EnvironmentObject var cartStore: CartManager
+    @State private var searchName = ""
     var items: [Item]
+    
+    var matchedItems: [Item] {
+        if !searchName.isEmpty {
+            return items.filter { $0.name.lowercased().contains(searchName.lowercased())}
+        } else {
+            return items
+        }
+    }
+    
+    var matchingItemNames : [String] {
+        matchedItems.map{ $0.name }
+    }
     
     var body: some View {
         NavigationStack {
             List {
-                ForEach(items) { item in
+                ForEach(matchedItems) { item in
                     NavigationLink(value: item) {
                         ListItem(item: item)
                     }
@@ -32,6 +45,11 @@ struct ItemsListView: View {
             .listStyle(PlainListStyle())
             .navigationDestination(for: Item.self) { item in
                 ItemDetailView(item: item)
+            }
+            .searchable(text: $searchName, placement: .navigationBarDrawer(displayMode: .always)) {
+                ForEach(matchingItemNames, id: \.self) { name in
+                    Text(name).searchCompletion(name)
+                }
             }
             .navigationTitle(Constants.General.appTitle)
             .navigationBarTitleDisplayMode(.inline)

@@ -11,7 +11,9 @@ class ItemsManager: ObservableObject {
     @Published private(set) var allItems: [Item] = []
     
     var discoverItems:  [Item] {
-        return allItems.filter{_ in Bool.random() }
+        return allItems.filter{_ in
+            Bool.random()
+        }
     }
     
     init() {
@@ -28,7 +30,7 @@ class ItemsManager: ObservableObject {
         allItems.append(ItemSampleData.jeans)
         allItems.append(ItemSampleData.jacket)
     }
- 
+    
     //TODO:  Add networking code here to fetch data from API into allItems Array
     
 }

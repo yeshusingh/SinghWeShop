@@ -8,13 +8,26 @@
 import SwiftUI
 
 struct ItemsGridView: View {
+    @State private var searchName = ""
     var items: [Item]
+    
+    var matchedItems: [Item] {
+        if !searchName.isEmpty {
+            return items.filter { $0.name.lowercased().contains(searchName.lowercased())}
+        } else {
+            return items
+        }
+    }
+    
+    var matchingItemNames : [String] {
+        matchedItems.map{ $0.name }
+    }
     
     var body: some View {
         NavigationStack {
             ScrollView(showsIndicators: false) {
                 LazyVGrid(columns: [.init(.adaptive(minimum: 150))]) {
-                    ForEach(items) { item in
+                    ForEach(matchedItems) { item in
                         NavigationLink(value: item) {
                             GridItem(item: item)
                         }
@@ -25,7 +38,11 @@ struct ItemsGridView: View {
                 }
                 .padding(10)
             }
-            //.background(Color(Constants.Assets.listBackgroundColor))
+            .searchable(text: $searchName, placement: .navigationBarDrawer(displayMode: .always)) {
+                ForEach(matchingItemNames, id: \.self) { name in
+                    Text(name).searchCompletion(name)
+                }
+            }
             .navigationTitle(Constants.General.appTitle)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

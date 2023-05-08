@@ -18,6 +18,7 @@
 		123966E629E34359005EDA4E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123966E529E34359005EDA4E /* Constants.swift */; };
 		123966E829E36BE4005EDA4E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123966E729E36BE4005EDA4E /* OnboardingView.swift */; };
 		1245FAA029EC8E6600299D2F /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1245FA9F29EC8E6600299D2F /* Item.swift */; };
+		12E00C662A08A39900A43052 /* SplashScreen128.png in Resources */ = {isa = PBXBuildFile; fileRef = 12E00C652A08A39900A43052 /* SplashScreen128.png */; };
 		12E6564D2A080F4E00B52444 /* ItemsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E6564C2A080F4E00B52444 /* ItemsListView.swift */; };
 		12E6564F2A080FAE00B52444 /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E6564E2A080FAE00B52444 /* ListItem.swift */; };
 		12E656512A080FCE00B52444 /* ItemsGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E656502A080FCE00B52444 /* ItemsGridView.swift */; };
@@ -41,6 +42,8 @@
 		1245FA9E29EC75E000299D2F /* Week02Assignment.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Week02Assignment.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		1245FA9F29EC8E6600299D2F /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		1260439E29F1924200E6C57E /* Week03Assignment.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Week03Assignment.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		12E00C5A2A088E2A00A43052 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		12E00C652A08A39900A43052 /* SplashScreen128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashScreen128.png; sourceTree = "<group>"; };
 		12E6564C2A080F4E00B52444 /* ItemsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsListView.swift; sourceTree = "<group>"; };
 		12E6564E2A080FAE00B52444 /* ListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
 		12E656502A080FCE00B52444 /* ItemsGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsGridView.swift; sourceTree = "<group>"; };
@@ -88,6 +91,7 @@
 		123966D329E3312E005EDA4E /* SinghWeShop */ = {
 			isa = PBXGroup;
 			children = (
+				12E00C5A2A088E2A00A43052 /* Info.plist */,
 				1245FA9D29EC75B300299D2F /* PlayGround */,
 				123966E229E34305005EDA4E /* App */,
 				123966E329E3430C005EDA4E /* Models */,
@@ -111,6 +115,7 @@
 			children = (
 				123966D429E3312E005EDA4E /* SinghWeShopApp.swift */,
 				123966D829E3312E005EDA4E /* Assets.xcassets */,
+				12E00C652A08A39900A43052 /* SplashScreen128.png */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -209,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				123966DC29E3312E005EDA4E /* Preview Assets.xcassets in Resources */,
+				12E00C662A08A39900A43052 /* SplashScreen128.png in Resources */,
 				123966D929E3312E005EDA4E /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,10 +372,10 @@
 				DEVELOPMENT_TEAM = 6BCHZXLU4V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SinghWeShop/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WeShop;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -396,10 +402,10 @@
 				DEVELOPMENT_TEAM = 6BCHZXLU4V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SinghWeShop/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = WeShop;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

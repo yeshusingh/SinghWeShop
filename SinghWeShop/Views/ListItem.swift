@@ -45,16 +45,7 @@ struct ListItem: View {
                 }
                 
             }
-            
-            //Spacer()
         }
-        //.padding()
-//        .overlay(
-//            RoundedRectangle(cornerRadius: Constants.General.cornerRadius)
-//                .strokeBorder(lineWidth: Constants.General.strokeBorderWidth/3)
-//        )
-        //.background(Color(Constants.Assets.listBackgroundColor))
-        //.cornerRadius(Constants.General.cornerRadius)
     }
 }
 
