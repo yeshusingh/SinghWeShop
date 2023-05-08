@@ -134,13 +134,13 @@
 			isa = PBXGroup;
 			children = (
 				123966D629E3312E005EDA4E /* ContentView.swift */,
-				12E6564C2A080F4E00B52444 /* ItemsListView.swift */,
 				12E6564E2A080FAE00B52444 /* ListItem.swift */,
-				12E656502A080FCE00B52444 /* ItemsGridView.swift */,
+				12E6564C2A080F4E00B52444 /* ItemsListView.swift */,
 				12E656522A080FDE00B52444 /* GridItem.swift */,
-				1207470929FF30770041B48F /* ItemDetailView.swift */,
-				12E656542A0850A300B52444 /* CartView.swift */,
+				12E656502A080FCE00B52444 /* ItemsGridView.swift */,
 				12E656562A0850B800B52444 /* CartRowView.swift */,
+				12E656542A0850A300B52444 /* CartView.swift */,
+				1207470929FF30770041B48F /* ItemDetailView.swift */,
 				123966E729E36BE4005EDA4E /* OnboardingView.swift */,
 			);
 			path = Views;
