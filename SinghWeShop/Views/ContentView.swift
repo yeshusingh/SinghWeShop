@@ -10,11 +10,10 @@ import SwiftUI
 struct ContentView: View {
     @StateObject private var itemStore = ItemsManager()
     @StateObject private var cartStore = CartManager()
-    //Homework Week05 : Assignment 1 Tab View - This part remembers last user selected Tab.
+    
     @AppStorage("CurrentTabSelection") var selectedTab = 0
     
     var body: some View {
-        //Homework Week05 : Assignment 1 Tab View - Created TabView with Text-SFSymbol & added item badge for cart Tab.
         TabView(selection: $selectedTab) {
             ItemsListView(items: itemStore.allItems)
                 .tabItem {
