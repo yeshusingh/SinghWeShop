@@ -1,0 +1,170 @@
+//
+//  SinghWeShopUITests.swift
+//  SinghWeShopUITests
+//
+//  Created by Yeshu Singh on 5/14/23.
+//
+
+import XCTest
+@testable import SinghWeShop
+
+final class SinghWeShopUITests: XCTestCase {
+    var app: XCUIApplication!
+    
+    override func setUpWithError() throws {
+        try super.setUpWithError()
+        continueAfterFailure = false
+        app = XCUIApplication()
+        app.launch()
+    }
+    
+    func test_allTabsExist() {
+        let tabBar = app.tabBars["Tab Bar"]
+        
+        XCTAssert(tabBar.buttons["Home"].exists)
+        XCTAssert(tabBar.buttons["Discover"].exists)
+        XCTAssert(tabBar.buttons["Cart"].exists)
+        XCTAssertFalse(tabBar.buttons["Info"].exists)
+    }
+    
+    func test_homeTabUIElements() {
+        let tabBar = app.tabBars["Tab Bar"]
+        XCTAssert(tabBar.buttons["Home"].exists)
+        tabBar.buttons["Home"].tap()
+        
+        XCTAssert(app.navigationBars["WeShop"].exists)
+        
+        let weshopNavigationBar = app.navigationBars["WeShop"]
+        XCTAssert(weshopNavigationBar.staticTexts["WeShop"].exists)
+        XCTAssert(weshopNavigationBar.buttons["Info"].exists)
+        XCTAssert(weshopNavigationBar.searchFields["Search"].exists)
+        
+        XCTAssertGreaterThanOrEqual(app.collectionViews.cells.count, 5)
+        
+        //XCUIApplication().tabBars["Tab Bar"].buttons["Home"].tap()
+        //let app = XCUIApplication()
+        //let weshopNavigationBar = app.navigationBars["WeShop"]
+        //weshopNavigationBar.staticTexts["WeShop"].tap()
+        //weshopNavigationBar.buttons["Info"].tap()
+        //app.navigationBars["_TtGC7SwiftUI32NavigationStackHosting"].buttons["WeShop"].tap()
+        //weshopNavigationBar.searchFields["Search"].tap()
+        //weshopNavigationBar.buttons["Cancel"].tap()
+        //app.collectionViews/*@START_MENU_TOKEN@*/.cells.buttons["Amazon Basics Block White Eraser, Price :, $6.90"]/*[[".cells.buttons[\"Amazon Basics Block White Eraser, Price :, $6.90\"]",".buttons[\"Amazon Basics Block White Eraser, Price :, $6.90\"]"],[[[-1,1],[-1,0]]],[1]]@END_MENU_TOKEN@*/.swipeUp()
+    }
+    
+    func test_discoverTabUIElements() {
+        let tabBar = app.tabBars["Tab Bar"]
+        XCTAssert(tabBar.buttons["Discover"].exists)
+        tabBar.buttons["Discover"].tap()
+        
+        XCTAssert(app.navigationBars["WeShop"].exists)
+        
+        let weshopNavigationBar = app.navigationBars["WeShop"]
+        XCTAssert(weshopNavigationBar.staticTexts["WeShop"].exists)
+        XCTAssert(weshopNavigationBar.buttons["Info"].exists)
+        XCTAssert(weshopNavigationBar.searchFields["Search"].exists)
+        
+        //XCTAssertGreaterThanOrEqual(app.collectionViews.cells.count, 5)
+        // ???
+    }
+    
+    func test_cartTabUIElements() {
+        let tabBar = app.tabBars["Tab Bar"]
+        XCTAssert(tabBar.buttons["Cart"].exists)
+        tabBar.buttons["Cart"].tap()
+        
+        XCTAssert(app.navigationBars["My Cart"].exists)
+        
+        let weshopNavigationBar = app.navigationBars["My Cart"]
+        XCTAssert(weshopNavigationBar.staticTexts["My Cart"].exists)
+        
+        XCTAssert(app.scrollViews.otherElements.buttons["Order Now"].exists)
+    }
+    
+    func test_itemDetailUIElements() throws {
+        let tabBar = app.tabBars["Tab Bar"]
+        XCTAssert(tabBar.buttons["Home"].exists)
+        tabBar.buttons["Home"].tap()
+        
+        try XCTSkipUnless(app.collectionViews.cells.count > 0, "Minimum 1 item required to test Item Detail View")
+        
+        app.collectionViews.cells.firstMatch.tap()
+        
+        XCTAssert(app.scrollViews.element.exists)
+        let image = app.scrollViews.images.firstMatch
+        image.swipeUp()
+        
+        XCTAssertEqual(app.scrollViews.staticTexts.count, 5)
+        
+        XCTAssert(app.scrollViews.buttons["Add to Cart"].exists)
+        app.scrollViews.buttons["Add to Cart"].tap()
+
+        app.navigationBars.firstMatch.buttons["WeShop"].tap()
+    }
+    
+    func test_OnboardingView() {
+        let tabBar = app.tabBars["Tab Bar"]
+        XCTAssert(tabBar.buttons["Home"].exists)
+        tabBar.buttons["Home"].tap()
+        
+        XCTAssert(app.navigationBars["WeShop"].exists)
+        
+        let weshopNavigationBar = app.navigationBars["WeShop"]
+        XCTAssert(weshopNavigationBar.buttons["Info"].exists)
+        weshopNavigationBar.buttons["Info"].tap()
+        
+        let elementsQuery = app.scrollViews.otherElements
+        XCTAssert(elementsQuery.images["IconPicture"].exists)
+        //XCTAssert(elementsQuery.staticTexts[Constants.General.appTitle].exists)
+        XCTAssert(elementsQuery.staticTexts["This is where you come to do all your shopping."].exists)
+        
+        XCTAssert(elementsQuery.staticTexts["Browse the items - You can view items on the homepage and click them to get more details."].exists)
+        XCTAssert(elementsQuery.staticTexts["Add items to the cart as you continue shopping. And the cart will hold all added items in place for checkout."].exists)
+        XCTAssert(elementsQuery.staticTexts["You can apply discount coupons in the cart at the time of checkout."].exists)
+        
+        app.navigationBars.firstMatch.buttons["WeShop"].tap()
+    }
+    
+    func test_ItemInCart() throws {
+        let tabBar = app.tabBars["Tab Bar"]
+        XCTAssert(tabBar.buttons["Home"].exists)
+        tabBar.buttons["Home"].tap()
+        
+        try XCTSkipUnless(app.collectionViews.cells.count > 0, "Minimum 1 item required to test Item Detail View")
+        
+        app.collectionViews.cells.firstMatch.tap()
+        
+        XCTAssert(app.scrollViews.buttons["Add to Cart"].exists)
+        app.scrollViews.buttons["Add to Cart"].tap()
+
+        app.navigationBars.firstMatch.buttons["WeShop"].tap()
+        XCTAssert(tabBar.buttons["Cart"].exists)
+        tabBar.buttons["Cart"].tap()
+    }
+    
+    func test_checkout() {
+        let tabBar = app.tabBars["Tab Bar"]
+        XCTAssert(tabBar.buttons["Cart"].exists)
+        
+        let cartButton = tabBar.buttons["Cart"]
+        cartButton.tap()
+        
+        XCTAssert(app.scrollViews.otherElements.buttons["Order Now"].exists)
+        app.scrollViews.otherElements.buttons["Order Now"].tap()
+    }
+    
+    
+    
+    
+    
+
+    
+    //    func testLaunchPerformance() throws {
+    //        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
+    //            // This measures how long it takes to launch your application.
+    //            measure(metrics: [XCTApplicationLaunchMetric()]) {
+    //                XCUIApplication().launch()
+    //            }
+    //        }
+    //    }
+}

@@ -36,6 +36,7 @@ struct CartView: View {
                 
                 Button {
                     //TODO: Call checkout steps
+                    print("Checkout Step.")
                 } label: {
                     Text("Order Now")
                         .font(.title2)

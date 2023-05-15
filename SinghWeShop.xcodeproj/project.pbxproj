@@ -18,6 +18,9 @@
 		123966E629E34359005EDA4E /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123966E529E34359005EDA4E /* Constants.swift */; };
 		123966E829E36BE4005EDA4E /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123966E729E36BE4005EDA4E /* OnboardingView.swift */; };
 		1245FAA029EC8E6600299D2F /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1245FA9F29EC8E6600299D2F /* Item.swift */; };
+		12601D452A112B6C00401C76 /* CartManagerUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12601D442A112B6C00401C76 /* CartManagerUnitTests.swift */; };
+		12601D522A112B8600401C76 /* SinghWeShopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12601D512A112B8600401C76 /* SinghWeShopUITests.swift */; };
+		12601D542A112B8600401C76 /* SinghWeShopUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12601D532A112B8600401C76 /* SinghWeShopUITestsLaunchTests.swift */; };
 		12E00C662A08A39900A43052 /* SplashScreen128.png in Resources */ = {isa = PBXBuildFile; fileRef = 12E00C652A08A39900A43052 /* SplashScreen128.png */; };
 		12E6564D2A080F4E00B52444 /* ItemsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E6564C2A080F4E00B52444 /* ItemsListView.swift */; };
 		12E6564F2A080FAE00B52444 /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E6564E2A080FAE00B52444 /* ListItem.swift */; };
@@ -26,6 +29,23 @@
 		12E656552A0850A300B52444 /* CartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E656542A0850A300B52444 /* CartView.swift */; };
 		12E656572A0850B800B52444 /* CartRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E656562A0850B800B52444 /* CartRowView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		12601D462A112B6C00401C76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 123966C929E3312E005EDA4E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 123966D029E3312E005EDA4E;
+			remoteInfo = SinghWeShop;
+		};
+		12601D552A112B8600401C76 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 123966C929E3312E005EDA4E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 123966D029E3312E005EDA4E;
+			remoteInfo = SinghWeShop;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		1207470129FEF5A60041B48F /* CartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
@@ -41,6 +61,12 @@
 		123966E729E36BE4005EDA4E /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		1245FA9E29EC75E000299D2F /* Week02Assignment.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Week02Assignment.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		1245FA9F29EC8E6600299D2F /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		12601D422A112B6C00401C76 /* SinghWeShopUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SinghWeShopUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		12601D442A112B6C00401C76 /* CartManagerUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManagerUnitTests.swift; sourceTree = "<group>"; };
+		12601D4F2A112B8600401C76 /* SinghWeShopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SinghWeShopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		12601D512A112B8600401C76 /* SinghWeShopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinghWeShopUITests.swift; sourceTree = "<group>"; };
+		12601D532A112B8600401C76 /* SinghWeShopUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinghWeShopUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		12601D5A2A112CF900401C76 /* SinghWeShop.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = SinghWeShop.xctestplan; sourceTree = "<group>"; };
 		1260439E29F1924200E6C57E /* Week03Assignment.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Week03Assignment.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		12E00C5A2A088E2A00A43052 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		12E00C652A08A39900A43052 /* SplashScreen128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashScreen128.png; sourceTree = "<group>"; };
@@ -54,6 +80,20 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		123966CE29E3312E005EDA4E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12601D3F2A112B6C00401C76 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12601D4C2A112B8600401C76 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -75,7 +115,10 @@
 		123966C829E3312E005EDA4E = {
 			isa = PBXGroup;
 			children = (
+				12601D5A2A112CF900401C76 /* SinghWeShop.xctestplan */,
 				123966D329E3312E005EDA4E /* SinghWeShop */,
+				12601D432A112B6C00401C76 /* SinghWeShopUnitTests */,
+				12601D502A112B8600401C76 /* SinghWeShopUITests */,
 				123966D229E3312E005EDA4E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -84,6 +127,8 @@
 			isa = PBXGroup;
 			children = (
 				123966D129E3312E005EDA4E /* SinghWeShop.app */,
+				12601D422A112B6C00401C76 /* SinghWeShopUnitTests.xctest */,
+				12601D4F2A112B8600401C76 /* SinghWeShopUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -155,6 +200,23 @@
 			path = PlayGround;
 			sourceTree = "<group>";
 		};
+		12601D432A112B6C00401C76 /* SinghWeShopUnitTests */ = {
+			isa = PBXGroup;
+			children = (
+				12601D442A112B6C00401C76 /* CartManagerUnitTests.swift */,
+			);
+			path = SinghWeShopUnitTests;
+			sourceTree = "<group>";
+		};
+		12601D502A112B8600401C76 /* SinghWeShopUITests */ = {
+			isa = PBXGroup;
+			children = (
+				12601D512A112B8600401C76 /* SinghWeShopUITests.swift */,
+				12601D532A112B8600401C76 /* SinghWeShopUITestsLaunchTests.swift */,
+			);
+			path = SinghWeShopUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -175,6 +237,42 @@
 			productReference = 123966D129E3312E005EDA4E /* SinghWeShop.app */;
 			productType = "com.apple.product-type.application";
 		};
+		12601D412A112B6C00401C76 /* SinghWeShopUnitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 12601D4A2A112B6C00401C76 /* Build configuration list for PBXNativeTarget "SinghWeShopUnitTests" */;
+			buildPhases = (
+				12601D3E2A112B6C00401C76 /* Sources */,
+				12601D3F2A112B6C00401C76 /* Frameworks */,
+				12601D402A112B6C00401C76 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				12601D472A112B6C00401C76 /* PBXTargetDependency */,
+			);
+			name = SinghWeShopUnitTests;
+			productName = SinghWeShopUnitTests;
+			productReference = 12601D422A112B6C00401C76 /* SinghWeShopUnitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		12601D4E2A112B8600401C76 /* SinghWeShopUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 12601D572A112B8600401C76 /* Build configuration list for PBXNativeTarget "SinghWeShopUITests" */;
+			buildPhases = (
+				12601D4B2A112B8600401C76 /* Sources */,
+				12601D4C2A112B8600401C76 /* Frameworks */,
+				12601D4D2A112B8600401C76 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				12601D562A112B8600401C76 /* PBXTargetDependency */,
+			);
+			name = SinghWeShopUITests;
+			productName = SinghWeShopUITests;
+			productReference = 12601D4F2A112B8600401C76 /* SinghWeShopUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -187,6 +285,14 @@
 				TargetAttributes = {
 					123966D029E3312E005EDA4E = {
 						CreatedOnToolsVersion = 14.3;
+					};
+					12601D412A112B6C00401C76 = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = 123966D029E3312E005EDA4E;
+					};
+					12601D4E2A112B8600401C76 = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = 123966D029E3312E005EDA4E;
 					};
 				};
 			};
@@ -204,6 +310,8 @@
 			projectRoot = "";
 			targets = (
 				123966D029E3312E005EDA4E /* SinghWeShop */,
+				12601D412A112B6C00401C76 /* SinghWeShopUnitTests */,
+				12601D4E2A112B8600401C76 /* SinghWeShopUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -216,6 +324,20 @@
 				123966DC29E3312E005EDA4E /* Preview Assets.xcassets in Resources */,
 				12E00C662A08A39900A43052 /* SplashScreen128.png in Resources */,
 				123966D929E3312E005EDA4E /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12601D402A112B6C00401C76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12601D4D2A112B8600401C76 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,7 +366,37 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		12601D3E2A112B6C00401C76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12601D452A112B6C00401C76 /* CartManagerUnitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		12601D4B2A112B8600401C76 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12601D542A112B8600401C76 /* SinghWeShopUITestsLaunchTests.swift in Sources */,
+				12601D522A112B8600401C76 /* SinghWeShopUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		12601D472A112B6C00401C76 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 123966D029E3312E005EDA4E /* SinghWeShop */;
+			targetProxy = 12601D462A112B6C00401C76 /* PBXContainerItemProxy */;
+		};
+		12601D562A112B8600401C76 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 123966D029E3312E005EDA4E /* SinghWeShop */;
+			targetProxy = 12601D552A112B8600401C76 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		123966DD29E3312E005EDA4E /* Debug */ = {
@@ -421,6 +573,84 @@
 			};
 			name = Release;
 		};
+		12601D482A112B6C00401C76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6BCHZXLU4V;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yeshusingh.SinghWeShopUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SinghWeShop.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SinghWeShop";
+			};
+			name = Debug;
+		};
+		12601D492A112B6C00401C76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6BCHZXLU4V;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yeshusingh.SinghWeShopUnitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SinghWeShop.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SinghWeShop";
+			};
+			name = Release;
+		};
+		12601D582A112B8600401C76 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6BCHZXLU4V;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yeshusingh.SinghWeShopUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SinghWeShop;
+			};
+			name = Debug;
+		};
+		12601D592A112B8600401C76 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6BCHZXLU4V;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yeshusingh.SinghWeShopUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SinghWeShop;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -438,6 +668,24 @@
 			buildConfigurations = (
 				123966E029E3312E005EDA4E /* Debug */,
 				123966E129E3312E005EDA4E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		12601D4A2A112B6C00401C76 /* Build configuration list for PBXNativeTarget "SinghWeShopUnitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12601D482A112B6C00401C76 /* Debug */,
+				12601D492A112B6C00401C76 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		12601D572A112B8600401C76 /* Build configuration list for PBXNativeTarget "SinghWeShopUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12601D582A112B8600401C76 /* Debug */,
+				12601D592A112B8600401C76 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

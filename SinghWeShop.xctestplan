@@ -1,0 +1,37 @@
+{
+  "configurations" : [
+    {
+      "id" : "063360F3-04A4-47B6-93EC-81DD9A03EA8C",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:SinghWeShop.xcodeproj",
+      "identifier" : "123966D029E3312E005EDA4E",
+      "name" : "SinghWeShop"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:SinghWeShop.xcodeproj",
+        "identifier" : "12601D412A112B6C00401C76",
+        "name" : "SinghWeShopUnitTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:SinghWeShop.xcodeproj",
+        "identifier" : "12601D4E2A112B8600401C76",
+        "name" : "SinghWeShopUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
