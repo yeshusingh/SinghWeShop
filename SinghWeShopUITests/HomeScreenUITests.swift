@@ -93,5 +93,22 @@ final class HomeScreenUITests: XCTestCase {
         XCTAssert(tabBar.buttons["Home"].isSelected)
     }
     
+    func test_detailViewFromHomeTab() {
+        let tabBar = app.tabBars["Tab Bar"]
+        XCTAssert(tabBar.buttons["Home"].exists)
+        tabBar.buttons["Home"].tap()
+        
+        XCTAssert(app.collectionViews.cells.firstMatch.exists)
+        app.collectionViews.cells.firstMatch.tap()
+        
+        XCTAssert(app.scrollViews.element.exists)
+        let image = app.scrollViews.images.firstMatch
+        image.swipeUp()
+        
+        XCTAssertEqual(app.scrollViews.staticTexts.count, 5)
+        XCTAssert(app.scrollViews.buttons["Add to Cart"].exists)
 
+        app.navigationBars.firstMatch.buttons["WeShop"].tap()
+    }
+    
 }

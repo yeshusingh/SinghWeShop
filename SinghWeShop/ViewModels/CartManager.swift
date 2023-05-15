@@ -16,11 +16,6 @@ class CartManager: ObservableObject {
         cartItems.reduce(0) { $0 + $1.discountedPrice }
     }
     
-//    init() {
-//        addToCart(ItemSampleData.notepad)
-//        addToCart(ItemSampleData.pencil)
-//    }
-    
     func setDiscountType(type: DiscountType) {
         self.currentDiscountType = type
     }

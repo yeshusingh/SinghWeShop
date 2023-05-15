@@ -30,7 +30,7 @@ final class CartManagerUnitTests: XCTestCase {
     }
     
     func test_RemoveFromCart() {
-        // Removing item with 0 item in Cart
+        // Removing item with 0 item in Cart, code should handle the scenario
         cartStore.removeFromCart(ItemSampleData.appleWatch)
         XCTAssertEqual(cartStore.cartItems.count, 0)
         
