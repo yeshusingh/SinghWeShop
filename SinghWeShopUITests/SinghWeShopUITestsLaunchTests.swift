@@ -17,7 +17,7 @@ final class SinghWeShopUITestsLaunchTests: XCTestCase {
         continueAfterFailure = false
     }
 
-    /*
+    
     func testLaunch() throws {
         let app = XCUIApplication()
         app.launch()
@@ -30,5 +30,5 @@ final class SinghWeShopUITestsLaunchTests: XCTestCase {
         attachment.lifetime = .keepAlways
         add(attachment)
     }
-     */
+     
 }
