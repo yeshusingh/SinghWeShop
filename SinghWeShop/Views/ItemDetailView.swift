@@ -104,9 +104,11 @@ struct ItemDetailView: View {
     }
 }
 
+#if DEBUG
 struct ItemDetailView_Previews: PreviewProvider {
     static var previews: some View {
         ItemDetailView(item: ItemSampleData.eraser)
             .environmentObject(CartManager())
     }
 }
+#endif

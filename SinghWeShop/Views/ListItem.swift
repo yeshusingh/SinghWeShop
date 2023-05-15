@@ -49,6 +49,7 @@ struct ListItem: View {
     }
 }
 
+#if DEBUG
 struct ListItem_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
@@ -57,3 +58,4 @@ struct ListItem_Previews: PreviewProvider {
         }
     }
 }
+#endif

@@ -129,17 +129,31 @@ final class SinghWeShopUITests: XCTestCase {
         let tabBar = app.tabBars["Tab Bar"]
         XCTAssert(tabBar.buttons["Home"].exists)
         tabBar.buttons["Home"].tap()
-        
+
         try XCTSkipUnless(app.collectionViews.cells.count > 0, "Minimum 1 item required to test Item Detail View")
-        
+
         app.collectionViews.cells.firstMatch.tap()
-        
+        let identifierForImage  = app.scrollViews.otherElements.children(matching: .image).element.label
+
         XCTAssert(app.scrollViews.buttons["Add to Cart"].exists)
         app.scrollViews.buttons["Add to Cart"].tap()
-
+        
         app.navigationBars.firstMatch.buttons["WeShop"].tap()
         XCTAssert(tabBar.buttons["Cart"].exists)
         tabBar.buttons["Cart"].tap()
+
+        let itemRemove = app/*@START_MENU_TOKEN@*/.scrollViews/*[[".otherElements[\"2\"].scrollViews",".scrollViews"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.otherElements.containing(.image, identifier: identifierForImage)
+        itemRemove.children(matching: .button).matching(identifier: "Remove").element(boundBy: 0).tap()
+    }
+    
+    func test_swipeActionToAddToCart() {
+        let tabBar = app.tabBars["Tab Bar"]
+        XCTAssert(tabBar.buttons["Home"].exists)
+        tabBar.buttons["Home"].tap()
+        
+        let itemToSwipe = app.collectionViews.cells.firstMatch
+        itemToSwipe.swipeRight()
+        app.collectionViews.buttons["AddToCart"].tap()
     }
     
     func test_checkout() {
@@ -152,19 +166,92 @@ final class SinghWeShopUITests: XCTestCase {
         XCTAssert(app.scrollViews.otherElements.buttons["Order Now"].exists)
         app.scrollViews.otherElements.buttons["Order Now"].tap()
     }
-    
-    
-    
-    
-    
 
+    func test_seachInHomeTab() {
+        let tabBar = app.tabBars["Tab Bar"]
+        XCTAssert(tabBar.buttons["Home"].exists)
+        tabBar.buttons["Home"].tap()
+        
+        let weshopNavigationBar = app.navigationBars["WeShop"]
+        let searchSearchField = weshopNavigationBar.searchFields["Search"]
+        searchSearchField.tap()
+        
+        let pKey = app/*@START_MENU_TOKEN@*/.keys["P"]/*[[".keyboards.keys[\"P\"]",".keys[\"P\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        pKey.tap()
+        
+        searchSearchField.buttons["Clear text"].tap()
+        weshopNavigationBar.buttons["Cancel"].tap()
+    }
     
-    //    func testLaunchPerformance() throws {
-    //        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-    //            // This measures how long it takes to launch your application.
-    //            measure(metrics: [XCTApplicationLaunchMetric()]) {
-    //                XCUIApplication().launch()
-    //            }
-    //        }
-    //    }
+    
+    func test_seachInDiscoverTab() {
+        let tabBar = app.tabBars["Tab Bar"]
+        XCTAssert(tabBar.buttons["Discover"].exists)
+        tabBar.buttons["Discover"].tap()
+        
+        let weshopNavigationBar = app.navigationBars["WeShop"]
+        let searchSearchField = weshopNavigationBar.searchFields["Search"]
+        searchSearchField.tap()
+        
+        let pKey = app/*@START_MENU_TOKEN@*/.keys["P"]/*[[".keyboards.keys[\"P\"]",".keys[\"P\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        pKey.tap()
+        
+        searchSearchField.buttons["Clear text"].tap()
+        weshopNavigationBar.buttons["Cancel"].tap()
+    }
+    
+    func test_detailViewFromDiscoverTab() {
+        let tabBar = app.tabBars["Tab Bar"]
+        XCTAssert(tabBar.buttons["Discover"].exists)
+        tabBar.buttons["Discover"].tap()
+        
+        app.scrollViews.otherElements.buttons.firstMatch.tap()
+        
+    }
+    
+    func test_detailViewDiffOrientation() throws {
+        let tabBar = app.tabBars["Tab Bar"]
+        XCTAssert(tabBar.buttons["Home"].exists)
+        tabBar.buttons["Home"].tap()
+        
+        try XCTSkipUnless(app.collectionViews.cells.count > 0, "Minimum 1 item required to test Item Detail View")
+
+        XCUIDevice.shared.orientation = .landscapeLeft
+        
+        app.collectionViews.cells.firstMatch.tap()
+        XCTAssert(app.scrollViews.buttons["Add to Cart"].exists)
+        
+        app.navigationBars.firstMatch.buttons["WeShop"].tap()
+        XCUIDevice.shared.orientation = .portrait
+    }
+    
+    func test_onboardingViewDiffOrientation() throws {
+        
+        let tabBar = app.tabBars["Tab Bar"]
+        XCTAssert(tabBar.buttons["Home"].exists)
+        tabBar.buttons["Home"].tap()
+        
+        XCTAssert(app.navigationBars["WeShop"].exists)
+        
+        try XCTSkipUnless(app.collectionViews.cells.count > 0, "Minimum 1 item required to test Item Detail View")
+        XCUIDevice.shared.orientation = .landscapeLeft
+        
+        let weshopNavigationBar = app.navigationBars["WeShop"]
+        XCTAssert(weshopNavigationBar.buttons["Info"].exists)
+        weshopNavigationBar.buttons["Info"].tap()
+        
+        let elementsQuery = app.scrollViews.otherElements
+        XCTAssert(elementsQuery.images["IconPicture"].exists)
+        //XCTAssert(elementsQuery.staticTexts[Constants.General.appTitle].exists)
+        XCTAssert(elementsQuery.staticTexts["This is where you come to do all your shopping."].exists)
+        
+        XCTAssert(elementsQuery.staticTexts["Browse the items - You can view items on the homepage and click them to get more details."].exists)
+        XCTAssert(elementsQuery.staticTexts["Add items to the cart as you continue shopping. And the cart will hold all added items in place for checkout."].exists)
+        XCTAssert(elementsQuery.staticTexts["You can apply discount coupons in the cart at the time of checkout."].exists)
+        
+        app.navigationBars.firstMatch.buttons["WeShop"].tap()
+        
+        XCUIDevice.shared.orientation = .portrait
+    }
+    
 }

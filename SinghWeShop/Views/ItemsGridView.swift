@@ -62,8 +62,10 @@ struct ItemsGridView: View {
     }
 }
 
+#if DEBUG
 struct ItemsGridView_Previews: PreviewProvider {
     static var previews: some View {
         ItemsGridView(items: ItemsManager().allItems)
     }
 }
+#endif

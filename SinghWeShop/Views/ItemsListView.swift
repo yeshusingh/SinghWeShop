@@ -70,9 +70,11 @@ struct ItemsListView: View {
     }
 }
 
+#if DEBUG
 struct ItemsListView_Previews: PreviewProvider {
     static var previews: some View {
         ItemsListView(items: ItemsManager().allItems)
             .environmentObject(CartManager())
     }
 }
+#endif

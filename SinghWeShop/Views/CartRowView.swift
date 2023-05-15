@@ -81,9 +81,11 @@ struct CartRowView: View {
     }
 }
 
+#if DEBUG
 struct CartRowView_Previews: PreviewProvider {
     static var previews: some View {
         CartRowView(item: ItemSampleData.jeans)
             .environmentObject(CartManager())
     }
 }
+#endif
