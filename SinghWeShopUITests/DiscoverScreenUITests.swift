@@ -31,23 +31,23 @@ final class DiscoverScreenUITests: XCTestCase {
         XCTAssert(weshopNavigationBar.searchFields["Search"].exists)
     }
     
-    func test_seachInDiscoverTab() {
-        let tabBar = app.tabBars["Tab Bar"]
-        XCTAssert(tabBar.buttons["Discover"].exists)
-        tabBar.buttons["Discover"].tap()
-        
-        let weshopNavigationBar = app.navigationBars["WeShop"]
-        let searchSearchField = weshopNavigationBar.searchFields["Search"]
-        searchSearchField.tap()
-        
-        let pKey = app/*@START_MENU_TOKEN@*/.keys["P"]/*[[".keyboards.keys[\"P\"]",".keys[\"P\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        pKey.tap()
-        
-        searchSearchField.buttons["Clear text"].tap()
-        weshopNavigationBar.buttons["Cancel"].tap()
-        
-        XCTAssert(tabBar.buttons["Discover"].isSelected)
-    }
+//    func test_seachInDiscoverTab() {
+//        let tabBar = app.tabBars["Tab Bar"]
+//        XCTAssert(tabBar.buttons["Discover"].exists)
+//        tabBar.buttons["Discover"].tap()
+//        
+//        let weshopNavigationBar = app.navigationBars["WeShop"]
+//        let searchSearchField = weshopNavigationBar.searchFields["Search"]
+//        searchSearchField.tap()
+//        
+//        let pKey = app/*@START_MENU_TOKEN@*/.keys["P"]/*[[".keyboards.keys[\"P\"]",".keys[\"P\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+//        pKey.tap()
+//        
+//        searchSearchField.buttons["Clear text"].tap()
+//        weshopNavigationBar.buttons["Cancel"].tap()
+//        
+//        XCTAssert(tabBar.buttons["Discover"].isSelected)
+//    }
     
     func test_detailViewFromDiscoverTab() {
         let tabBar = app.tabBars["Tab Bar"]

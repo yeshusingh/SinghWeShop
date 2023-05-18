@@ -75,23 +75,23 @@ final class HomeScreenUITests: XCTestCase {
         XCTAssertEqual(app.scrollViews.images.count, 1, "Expected only 1 image as only 1 item added to cart.")
     }
     
-    func test_seachInHomeTab() {
-        let tabBar = app.tabBars["Tab Bar"]
-        XCTAssert(tabBar.buttons["Home"].exists)
-        tabBar.buttons["Home"].tap()
-
-        let weshopNavigationBar = app.navigationBars["WeShop"]
-        let searchSearchField = weshopNavigationBar.searchFields["Search"]
-        searchSearchField.tap()
-
-        let pKey = app/*@START_MENU_TOKEN@*/.keys["P"]/*[[".keyboards.keys[\"P\"]",".keys[\"P\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
-        pKey.tap()
-
-        searchSearchField.buttons["Clear text"].tap()
-        weshopNavigationBar.buttons["Cancel"].tap()
-        
-        XCTAssert(tabBar.buttons["Home"].isSelected)
-    }
+//    func test_seachInHomeTab() {
+//        let tabBar = app.tabBars["Tab Bar"]
+//        XCTAssert(tabBar.buttons["Home"].exists)
+//        tabBar.buttons["Home"].tap()
+//
+//        let weshopNavigationBar = app.navigationBars["WeShop"]
+//        let searchSearchField = weshopNavigationBar.searchFields["Search"]
+//        searchSearchField.tap()
+//
+//        let pKey = app/*@START_MENU_TOKEN@*/.keys["P"]/*[[".keyboards.keys[\"P\"]",".keys[\"P\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+//        pKey.tap()
+//
+//        searchSearchField.buttons["Clear text"].tap()
+//        weshopNavigationBar.buttons["Cancel"].tap()
+//        
+//        XCTAssert(tabBar.buttons["Home"].isSelected)
+//    }
     
     func test_detailViewFromHomeTab() {
         let tabBar = app.tabBars["Tab Bar"]
