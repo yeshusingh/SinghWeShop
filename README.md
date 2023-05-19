@@ -29,7 +29,6 @@ WeShop App build as part of Kodeco Bootcamp 2023
 
 5. **The proposed API -** To be added later.
 
-
 Image Attribution :
 
 Notepad
