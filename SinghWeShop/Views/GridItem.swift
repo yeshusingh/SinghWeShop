@@ -56,6 +56,7 @@ struct GridItem: View {
     }
 }
 
+#if DEBUG
 struct GridItem_Previews: PreviewProvider {
     static var previews: some View {
         VStack {
@@ -64,3 +65,4 @@ struct GridItem_Previews: PreviewProvider {
         }
     }
 }
+#endif

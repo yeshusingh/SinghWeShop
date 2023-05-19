@@ -36,6 +36,7 @@ struct CartView: View {
                 
                 Button {
                     //TODO: Call checkout steps
+                    print("Checkout Step.")
                 } label: {
                     Text("Order Now")
                         .font(.title2)
@@ -55,9 +56,11 @@ struct CartView: View {
     }
 }
 
+#if DEBUG
 struct CartView_Previews: PreviewProvider {
     static var previews: some View {
         CartView()
             .environmentObject(CartManager())
     }
 }
+#endif

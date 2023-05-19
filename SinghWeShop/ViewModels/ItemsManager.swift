@@ -23,12 +23,12 @@ class ItemsManager: ObservableObject {
         allItems.append(ItemSampleData.glueStick)
         allItems.append(ItemSampleData.sharpener)
         allItems.append(ItemSampleData.paper)
-        allItems.append(ItemSampleData.iPad)
+//        allItems.append(ItemSampleData.iPad)
         allItems.append(ItemSampleData.appleWatch)
-        allItems.append(ItemSampleData.monitor)
-        allItems.append(ItemSampleData.tShirt)
-        allItems.append(ItemSampleData.jeans)
-        allItems.append(ItemSampleData.jacket)
+//        allItems.append(ItemSampleData.monitor)
+//        allItems.append(ItemSampleData.tShirt)
+//        allItems.append(ItemSampleData.jeans)
+//        allItems.append(ItemSampleData.jacket)
     }
     
     //TODO:  Add networking code here to fetch data from API into allItems Array

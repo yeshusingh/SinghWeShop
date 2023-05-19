@@ -10,15 +10,10 @@ import Foundation
 class CartManager: ObservableObject {
     @Published private(set) var cartItems: [Item] = []
     
-    private var currentDiscountType = DiscountType.defaultDiscount
+    private(set) var currentDiscountType = DiscountType.defaultDiscount
     
     var totalCartItemsAmount: Double {
         cartItems.reduce(0) { $0 + $1.discountedPrice }
-    }
-    
-    init() {
-        addToCart(ItemSampleData.notepad)
-        addToCart(ItemSampleData.pencil)
     }
     
     func setDiscountType(type: DiscountType) {

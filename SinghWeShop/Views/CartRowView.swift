@@ -61,8 +61,6 @@ struct CartRowView: View {
                 
                 HStack(alignment: .center) {
                     Button {
-                        //Homework Week05 : Assignment 4 Animation - Added animation for smooth removal of items from the cart. + Also, added Splash screen in Info.plist under "Launch Screen" key. Adding comment here as cant add comments in Info.plist.
-                            
                         withAnimation(.easeIn(duration: 0.35)) {
                             cartStore.removeFromCart(item)
                         }
@@ -83,9 +81,11 @@ struct CartRowView: View {
     }
 }
 
+#if DEBUG
 struct CartRowView_Previews: PreviewProvider {
     static var previews: some View {
         CartRowView(item: ItemSampleData.jeans)
             .environmentObject(CartManager())
     }
 }
+#endif
