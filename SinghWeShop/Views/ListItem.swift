@@ -12,11 +12,27 @@ struct ListItem: View {
     
     var body: some View {
         HStack(alignment: .top, spacing: 10) {
-            Image("Item-\(item.id)")
-                .resizable()
-                .aspectRatio(1, contentMode: .fit)
-                .frame(width: 100)
-                .cornerRadius(Constants.General.cornerRadius)
+            AsyncImage(url: URL(string: item.imageURL)) { image in
+                image
+                    .resizable()
+                    .aspectRatio(1, contentMode: .fit)
+                    .frame(width: 100)
+                    .cornerRadius(Constants.General.cornerRadius)
+            } placeholder: {
+                Color.gray.opacity(0.4)
+                    .aspectRatio(1, contentMode: .fit)
+                    .frame(width: 100)
+                    .cornerRadius(Constants.General.cornerRadius)
+                    .overlay {
+                        ProgressView()
+                    }
+            }
+
+//            Image("Item-\(item.id)")
+//                .resizable()
+//                .aspectRatio(1, contentMode: .fit)
+//                .frame(width: 100)
+//                .cornerRadius(Constants.General.cornerRadius)
             
             VStack(alignment: .leading, spacing: 10){
                 HStack {

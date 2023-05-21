@@ -22,6 +22,9 @@ struct ContentView: View {
                     Text("Home")
                 }
                 .tag(0)
+                .overlay {
+                    if itemStore.allItems.isEmpty { ProgressView() }
+                }
 
             ItemsGridView(items: itemStore.discoverItems)
                 .tabItem {
@@ -29,6 +32,9 @@ struct ContentView: View {
                     Text("Discover")
                 }
                 .tag(1)
+                .overlay {
+                    if itemStore.allItems.isEmpty { ProgressView() }
+                }
 
             CartView()
                 .tabItem {
@@ -37,9 +43,29 @@ struct ContentView: View {
                 }
                 .tag(2)
                 .badge(cartStore.cartItems.count)
+            
+            ItemsListView(items: itemStore.loadItemsFromPlistFile())
+                .tabItem {
+                    Image(systemName: "house")
+                    Text("Home Plist")
+                }
+                .tag(3)
+            
+            ItemsListView(items: itemStore.loadItemsFromFile())
+                .tabItem {
+                    Image(systemName: "house")
+                    Text("Home Binary")
+                }
+                .tag(4)
         }
         .foregroundColor(Color(Constants.Assets.textColor))
         .environmentObject(cartStore)
+        .task {
+            do {
+                try await itemStore.loadItems()
+            } catch { }
+        }
+        
     }
 }
 
