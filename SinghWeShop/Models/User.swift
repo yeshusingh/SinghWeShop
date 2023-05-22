@@ -36,17 +36,7 @@ struct Geolocation: Codable {
 }
 
 struct SampleUserInfo {
-    public static var user: User? {
-        let localURL = Bundle.main.url(forResource: "user", withExtension: "json")!
-        
-        do {
-            let userData = try Data(contentsOf: localURL)
-            let user = try JSONDecoder().decode(User.self, from: userData)
-            return user
-        } catch let error {
-            print(error)
-        }
-        
-        return nil
-    }
+    public static let user = User(id: 1, email: "john@gmail.com", username: "johnd", password: "m38rmF$", name: Name(firstname: "john", lastname: "doe"), address: Address(city: "kilcoole", street: "new road", number: 7682, zipcode: "12926-3874", geolocation: Geolocation(lat: "-37.3159", long: "81.1496")), phone: "1-570-236-7033")
 }
+
+

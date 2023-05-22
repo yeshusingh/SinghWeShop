@@ -34,7 +34,7 @@ struct AccountView: View {
                 .listStyle(.insetGrouped)
                 .navigationTitle("Hello, \(user.name.firstname)")
             } else {
-                VStack {
+                List {
                     Text("Account Info not available.")
                 }
                 .navigationTitle("Hello, there !")
@@ -43,9 +43,11 @@ struct AccountView: View {
     }
 }
 
+#if DEBUG
 struct AccountView_Previews: PreviewProvider {
     static var previews: some View {
-        AccountView(user: SampleUserInfo.user!)
+        AccountView(user: SampleUserInfo.user)
         AccountView(user: nil)
     }
 }
+#endif
