@@ -231,6 +231,7 @@
 			children = (
 				1201A6532A1AD35A005F98F6 /* NetworkManagerUnitTests.swift */,
 				12601D442A112B6C00401C76 /* CartManagerUnitTests.swift */,
+				1201A6512A1AD158005F98F6 /* ItemsManagerUnitTests.swift */,
 			);
 			path = SinghWeShopUnitTests;
 			sourceTree = "<group>";
@@ -238,7 +239,6 @@
 		12601D502A112B8600401C76 /* SinghWeShopUITests */ = {
 			isa = PBXGroup;
 			children = (
-				1201A6512A1AD158005F98F6 /* ItemsManagerUnitTests.swift */,
 				1268D52B2A12A4B600C515DE /* OnboardingViewScreenUITests.swift */,
 				1268D5292A12A44700C515DE /* ItemDetailScreenUITests.swift */,
 				1268D5272A12A3E000C515DE /* CartScreenUITests.swift */,
