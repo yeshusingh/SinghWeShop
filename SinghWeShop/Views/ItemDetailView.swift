@@ -36,14 +36,6 @@ struct ItemDetailView: View {
                                     ProgressView()
                                 }
                         }
-                        
-//                        Image("Item-\(item.id)")
-//                            .resizable()
-//                            .aspectRatio(contentMode: .fit)
-//                            .frame(height: 200)
-//                            .cornerRadius(Constants.General.cornerRadius)
-//                            .shadow(radius: Constants.General.shadowRadius)
-//                            .padding(.bottom)
                     } else {
                         AsyncImage(url: URL(string: item.imageURL)) { image in
                             image
@@ -61,13 +53,6 @@ struct ItemDetailView: View {
                                     ProgressView()
                                 }
                         }
-                        
-//                        Image("Item-\(item.id)")
-//                            .resizable()
-//                            .aspectRatio(contentMode: .fit)
-//                            .cornerRadius(Constants.General.cornerRadius)
-//                            .shadow(radius: Constants.General.shadowRadius)
-//                            .padding(.bottom)
                     }
                     
                     VStack(alignment: .leading, spacing: 10){

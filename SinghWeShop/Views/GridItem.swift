@@ -28,12 +28,6 @@ struct GridItem: View {
                     }
             }
             
-//            Image("Item-\(item.id)")
-//                .resizable()
-//                .aspectRatio(1, contentMode: .fit)
-//                .frame(width: 100)
-//                .cornerRadius(Constants.General.cornerRadius)
-            
             VStack(alignment: .leading, spacing: 10){
                 HStack {
                     Text(item.name)

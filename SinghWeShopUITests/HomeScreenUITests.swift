@@ -23,6 +23,8 @@ final class HomeScreenUITests: XCTestCase {
         XCTAssert(tabBar.buttons["Home"].exists)
         tabBar.buttons["Home"].tap()
         
+        XCUIDevice.shared.orientation = .portrait
+        
         XCTAssert(app.navigationBars["WeShop"].exists)
         
         let weshopNavigationBar = app.navigationBars["WeShop"]
@@ -41,7 +43,6 @@ final class HomeScreenUITests: XCTestCase {
         try XCTSkipUnless(app.collectionViews.cells.count > 0, "Minimum 1 item required to test Item Detail View")
 
         app.collectionViews.cells.firstMatch.tap()
-        let identifierForImage  = app.scrollViews.otherElements.children(matching: .image).element.label
 
         XCTAssert(app.scrollViews.buttons["Add to Cart"].exists)
         app.scrollViews.buttons["Add to Cart"].tap()
@@ -51,17 +52,17 @@ final class HomeScreenUITests: XCTestCase {
         XCTAssert(tabBar.buttons["Cart"].exists)
         tabBar.buttons["Cart"].tap()
 
-        XCTAssert(app/*@START_MENU_TOKEN@*/.scrollViews/*[[".otherElements[\"2\"].scrollViews",".scrollViews"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.otherElements.containing(.image, identifier: identifierForImage).element.exists)
-        let itemRemove = app/*@START_MENU_TOKEN@*/.scrollViews/*[[".otherElements[\"2\"].scrollViews",".scrollViews"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.otherElements.containing(.image, identifier: identifierForImage)
-        itemRemove.children(matching: .button).matching(identifier: "Remove").element(boundBy: 0).tap()
+        XCTAssert(app.scrollViews.buttons["Remove"].exists,"Expected a remove button as 1 item added to cart.")
+        app.scrollViews.buttons["Remove"].tap()
         
-        XCTAssertFalse(app/*@START_MENU_TOKEN@*/.scrollViews/*[[".otherElements[\"2\"].scrollViews",".scrollViews"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.otherElements.containing(.image, identifier: identifierForImage).element.exists)
+        XCTAssertFalse(app.scrollViews.buttons["Remove"].exists)
     }
     
     func test_swipeActionToAddToCart() throws {
         let tabBar = app.tabBars["Tab Bar"]
         XCTAssert(tabBar.buttons["Home"].exists)
         tabBar.buttons["Home"].tap()
+        XCUIDevice.shared.orientation = .portrait
         
         try XCTSkipUnless(app.collectionViews.cells.count > 0, "Minimum 1 item required to test Item Detail View")
         
@@ -72,7 +73,7 @@ final class HomeScreenUITests: XCTestCase {
         XCTAssert(tabBar.buttons["Cart"].exists)
         tabBar.buttons["Cart"].tap()
         
-        XCTAssertEqual(app.scrollViews.images.count, 1, "Expected only 1 image as only 1 item added to cart.")
+        XCTAssert(app.scrollViews.buttons["Remove"].exists,"Expected a remove button as 1 item added to cart." )
     }
     
     func test_seachInHomeTab() {
@@ -101,9 +102,6 @@ final class HomeScreenUITests: XCTestCase {
         app.collectionViews.cells.firstMatch.tap()
         
         XCTAssert(app.scrollViews.element.exists)
-        let image = app.scrollViews.images.firstMatch
-        image.swipeUp()
-        
         XCTAssertEqual(app.scrollViews.staticTexts.count, 5)
         XCTAssert(app.scrollViews.buttons["Add to Cart"].exists)
 

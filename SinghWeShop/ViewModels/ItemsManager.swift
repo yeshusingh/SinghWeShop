@@ -16,6 +16,12 @@ class ItemsManager: ObservableObject {
         }
     }
     
+    @Published private(set) var user: User? {
+        didSet {
+            saveUserToJSONFile()
+        }
+    }
+    
     let service = NetworkManager()
     let maxLimit: Int
     
@@ -26,9 +32,56 @@ class ItemsManager: ObservableObject {
     }
     
     let itemsJSONURL = URL(filePath: "items", relativeTo: .documentsDirectory).appendingPathExtension("json")
+    let userJSONURL = URL(filePath: "user", relativeTo: .documentsDirectory).appendingPathExtension("json")
     
     init(_ maxLimit: Int = 20) {
         self.maxLimit = maxLimit
+    }
+    
+    func loadUser() async throws {
+        if let userInfo = try? await service.fetchUserInfo(for: 1) {
+            await MainActor.run {
+                user = userInfo
+            }
+        } else {
+            await MainActor.run {
+                loadUserFromJSONFile()
+            }
+        }
+    }
+    
+    func saveUserToJSONFile() {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        
+        do {
+            let userData = try encoder.encode(user)
+            try userData.write(to: userJSONURL, options: .atomic)
+        } catch let error {
+            print(error)
+        }
+    }
+    
+    func loadUserFromJSONFile() {
+        let decoder = JSONDecoder()
+        
+        if FileManager.default.fileExists(atPath: userJSONURL.absoluteURL.path()) {
+            do {
+                let userData = try Data(contentsOf: userJSONURL)
+                user = try decoder.decode(User.self, from: userData)
+            } catch let error {
+                print(error)
+            }
+        } else {
+            if let localURL = Bundle.main.url(forResource: "user", withExtension: "json") {
+                do {
+                    let userData = try Data(contentsOf: localURL)
+                    user = try decoder.decode(User.self, from: userData)
+                } catch let error {
+                    print(error)
+                }
+            }
+        }
     }
     
     func loadItems() async throws {
@@ -42,24 +95,8 @@ class ItemsManager: ObservableObject {
             }
         }
     }
-    
-//    private func loadDefaultItems() {
-//        allItems.append(ItemSampleData.notepad)
-//        allItems.append(ItemSampleData.pencil)
-//        allItems.append(ItemSampleData.eraser)
-//        allItems.append(ItemSampleData.glueStick)
-//        allItems.append(ItemSampleData.sharpener)
-//        allItems.append(ItemSampleData.paper)
-//        allItems.append(ItemSampleData.iPad)
-//        allItems.append(ItemSampleData.appleWatch)
-//        allItems.append(ItemSampleData.monitor)
-//        allItems.append(ItemSampleData.tShirt)
-//        allItems.append(ItemSampleData.jeans)
-//        allItems.append(ItemSampleData.jacket)
-//    }
-    
+     
     func saveItemsToJSONFile() {
-        //print(#function)
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
         
@@ -74,7 +111,6 @@ class ItemsManager: ObservableObject {
     }
     
     func loadItemsFromJSONFile() {
-        //print(#function)
         let decoder = JSONDecoder()
         
         guard FileManager.default.fileExists(atPath: itemsJSONURL.absoluteURL.path()) else { return }
@@ -88,7 +124,6 @@ class ItemsManager: ObservableObject {
     }
     
     func saveItemsToPlistFile() {
-        //print(#function)
         let itemsPlistURL = URL(filePath: "items", relativeTo: .documentsDirectory).appendingPathExtension("plist")
         let encoder = PropertyListEncoder()
         encoder.outputFormat = .xml
@@ -102,7 +137,6 @@ class ItemsManager: ObservableObject {
     }
     
     func loadItemsFromPlistFile() -> [Item] {
-        //print(#function)
         let itemsPlistURL = URL(filePath: "items", relativeTo: .documentsDirectory).appendingPathExtension("plist")
         let decoder = PropertyListDecoder()
         var itemsFromPlistFile: [Item] = []
@@ -120,7 +154,6 @@ class ItemsManager: ObservableObject {
     }
 
     func saveItemsToFile() {
-        //print(#function)
         let itemsFileURL = URL(filePath: "items", relativeTo: .documentsDirectory)
         let encoder = PropertyListEncoder()
         encoder.outputFormat = .binary
@@ -134,7 +167,6 @@ class ItemsManager: ObservableObject {
     }
     
     func loadItemsFromFile() -> [Item] {
-        //print(#function)
         let itemsFileURL = URL(filePath: "items", relativeTo: .documentsDirectory)
         let decoder = PropertyListDecoder()
         var itemsFromFile: [Item] = []

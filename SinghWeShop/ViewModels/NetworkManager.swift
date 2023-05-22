@@ -33,27 +33,45 @@ struct NetworkManager {
             return nil
         }
         
-        //print("Fetch product data", data)
         do {
             products = try decoder.decode([Item].self, from: data)
         } catch {
             print(error)
             return nil
         }
-        //print("All Products List:  \(products ?? [])")
         
         return products
     }
     
-    func fetchProductImages(for urlString: String) async throws {
-        //fetch image for any product
+    func fetchUserInfo(for id: Int) async throws -> User? {
+        var user: User?
+        let userURLString = baseURLString + "/users/\(id)"
         
-    }
-    
-    
-    
-    
-    
+        guard let userURLComponents = URLComponents(string: userURLString) else {
+            return nil
+        }
+        
+        guard let queryURL = userURLComponents.url else {
+            return nil
+        }
+        
+        let request = URLRequest(url: queryURL)
+        
+        let (data, response) = try await session.data(for: request)
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            print("Error in fetch user")
+            return nil
+        }
+        
+        do {
+            user = try decoder.decode(User.self, from: data)
+        } catch {
+            print(error)
+            return nil
+        }
+        
+        return user
+    } 
 }
 
 
