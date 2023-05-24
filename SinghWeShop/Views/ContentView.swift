@@ -50,15 +50,13 @@ struct ContentView: View {
                     Text("Account")
                 }
                 .tag(3)
-            
-            //Week 7: Assignment 2
+
             ItemsListView(items: itemStore.loadItemsFromPlistFile())
                 .tabItem {
                     Image(systemName: "house")
                     Text("Home Plist")
                 }
                 .tag(4)
-            //Week 7: Assignment 2
             ItemsListView(items: itemStore.loadItemsFromFile())
                 .tabItem {
                     Image(systemName: "house")

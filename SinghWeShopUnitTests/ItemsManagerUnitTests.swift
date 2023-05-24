@@ -21,7 +21,6 @@ final class ItemsManagerUnitTests: XCTestCase {
         try super.tearDownWithError()
     }
 
-    //Week 7: Assignment 3
     func test_loadProductData() async throws {
         XCTAssertEqual(itemStore.allItems.count , 0, "Products should have been Zero at intialization.")
         
@@ -47,7 +46,6 @@ final class ItemsManagerUnitTests: XCTestCase {
         XCTAssertTrue(FileManager.default.fileExists(atPath: itemStore.itemsJSONURL.absoluteURL.path()), "Products data not saved in json file, Save function did not succeed.")
     }
     
-    //Week 7: Assignment 3
     func test_loadUserData() async throws {
         XCTAssertNil(itemStore.user, "User should have been Nil at intialization.")
         
@@ -77,7 +75,6 @@ final class ItemsManagerUnitTests: XCTestCase {
         XCTAssertTrue(FileManager.default.fileExists(atPath: itemStore.userJSONURL.absoluteURL.path()), "User not saved in json file, Save function did not succeed.")
     }
     
-    //Week 7: Assignment 3
     func test_readProductsFromJSONFile() {
         if FileManager.default.fileExists(atPath: itemStore.itemsJSONURL.absoluteURL.path()) {
             itemStore.loadItemsFromJSONFile()
@@ -87,7 +84,6 @@ final class ItemsManagerUnitTests: XCTestCase {
         }
     }
     
-    //Week 7: Assignment 3
     func test_writeProductsToJSONFile() throws {
         if FileManager.default.fileExists(atPath: itemStore.itemsJSONURL.absoluteURL.path()) {
             try FileManager.default.removeItem(at: itemStore.itemsJSONURL)
@@ -100,7 +96,6 @@ final class ItemsManagerUnitTests: XCTestCase {
         XCTAssertTrue(FileManager.default.fileExists(atPath: itemStore.itemsJSONURL.absoluteURL.path()), "Products data not saved in json file, Save function did not succeed.")
     }
     
-    //Week 7: Assignment 3
     func test_readUserFromJSONFile() {
         XCTAssertNil(itemStore.user, "User should have been Nil at intialization.")
         
@@ -112,8 +107,7 @@ final class ItemsManagerUnitTests: XCTestCase {
             XCTAssertNotNil(itemStore.user, "User should have been loaded from JSON file in App Bundle.")
         }
     }
-    
-    //Week 7: Assignment 3
+
     func test_writeUserToJSONFile() throws {
         if FileManager.default.fileExists(atPath: itemStore.userJSONURL.absoluteURL.path()) {
             try FileManager.default.removeItem(at: itemStore.userJSONURL)

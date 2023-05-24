@@ -91,13 +91,11 @@ class ItemsManager: ObservableObject {
             }
         } else {
             await MainActor.run {
-                //Week 7: Assignment 2 (load as a backup if data present in json file)
                 loadItemsFromJSONFile()
             }
         }
     }
      
-    //Week 7: Assignment 1
     func saveItemsToJSONFile() {
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
@@ -112,7 +110,7 @@ class ItemsManager: ObservableObject {
         print("Documents Directory: ", itemsJSONURL.absoluteURL.path())
     }
     
-    //Week 7: Assignment 2
+
     func loadItemsFromJSONFile() {
         let decoder = JSONDecoder()
         
@@ -126,7 +124,6 @@ class ItemsManager: ObservableObject {
         }
     }
     
-    //Week 7: Assignment 1
     func saveItemsToPlistFile() {
         let itemsPlistURL = URL(filePath: "items", relativeTo: .documentsDirectory).appendingPathExtension("plist")
         let encoder = PropertyListEncoder()
@@ -140,7 +137,6 @@ class ItemsManager: ObservableObject {
         }
     }
     
-    //Week 7: Assignment 2
     func loadItemsFromPlistFile() -> [Item] {
         let itemsPlistURL = URL(filePath: "items", relativeTo: .documentsDirectory).appendingPathExtension("plist")
         let decoder = PropertyListDecoder()
@@ -158,7 +154,6 @@ class ItemsManager: ObservableObject {
         return itemsFromPlistFile
     }
     
-    //Week 7: Assignment 1
     func saveItemsToFile() {
         let itemsFileURL = URL(filePath: "items", relativeTo: .documentsDirectory)
         let encoder = PropertyListEncoder()
@@ -171,8 +166,7 @@ class ItemsManager: ObservableObject {
             print(error)
         }
     }
-    
-    //Week 7: Assignment 2
+
     func loadItemsFromFile() -> [Item] {
         let itemsFileURL = URL(filePath: "items", relativeTo: .documentsDirectory)
         let decoder = PropertyListDecoder()
