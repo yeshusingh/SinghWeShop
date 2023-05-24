@@ -7,10 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1201A64C2A19F6FB005F98F6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201A64B2A19F6FB005F98F6 /* User.swift */; };
+		1201A64E2A1A72F2005F98F6 /* user.json in Resources */ = {isa = PBXBuildFile; fileRef = 1201A64D2A1A72F2005F98F6 /* user.json */; };
+		1201A6502A1A7CA1005F98F6 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201A64F2A1A7CA1005F98F6 /* AccountView.swift */; };
+		1201A6522A1AD158005F98F6 /* ItemsManagerUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201A6512A1AD158005F98F6 /* ItemsManagerUnitTests.swift */; };
+		1201A6542A1AD35A005F98F6 /* NetworkManagerUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1201A6532A1AD35A005F98F6 /* NetworkManagerUnitTests.swift */; };
 		1207470229FEF5A60041B48F /* CartManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1207470129FEF5A60041B48F /* CartManager.swift */; };
 		1207470429FEF5C80041B48F /* ItemsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1207470329FEF5C80041B48F /* ItemsManager.swift */; };
 		1207470629FEF6030041B48F /* DiscountType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1207470529FEF6030041B48F /* DiscountType.swift */; };
 		1207470A29FF30770041B48F /* ItemDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1207470929FF30770041B48F /* ItemDetailView.swift */; };
+		1211A1712A1BFBB70067CCE2 /* AccountViewScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1211A1702A1BFBB70067CCE2 /* AccountViewScreenUITests.swift */; };
 		123966D529E3312E005EDA4E /* SinghWeShopApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123966D429E3312E005EDA4E /* SinghWeShopApp.swift */; };
 		123966D729E3312E005EDA4E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123966D629E3312E005EDA4E /* ContentView.swift */; };
 		123966D929E3312E005EDA4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 123966D829E3312E005EDA4E /* Assets.xcassets */; };
@@ -26,6 +32,7 @@
 		1268D5282A12A3E000C515DE /* CartScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1268D5272A12A3E000C515DE /* CartScreenUITests.swift */; };
 		1268D52A2A12A44700C515DE /* ItemDetailScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1268D5292A12A44700C515DE /* ItemDetailScreenUITests.swift */; };
 		1268D52C2A12A4B600C515DE /* OnboardingViewScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1268D52B2A12A4B600C515DE /* OnboardingViewScreenUITests.swift */; };
+		1296BEEF2A1889B500D30344 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1296BEEE2A1889B500D30344 /* NetworkManager.swift */; };
 		12E00C662A08A39900A43052 /* SplashScreen128.png in Resources */ = {isa = PBXBuildFile; fileRef = 12E00C652A08A39900A43052 /* SplashScreen128.png */; };
 		12E6564D2A080F4E00B52444 /* ItemsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E6564C2A080F4E00B52444 /* ItemsListView.swift */; };
 		12E6564F2A080FAE00B52444 /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E6564E2A080FAE00B52444 /* ListItem.swift */; };
@@ -53,10 +60,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1201A64B2A19F6FB005F98F6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1201A64D2A1A72F2005F98F6 /* user.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = user.json; sourceTree = "<group>"; };
+		1201A64F2A1A7CA1005F98F6 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		1201A6512A1AD158005F98F6 /* ItemsManagerUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ItemsManagerUnitTests.swift; path = SinghWeShopUnitTests/ItemsManagerUnitTests.swift; sourceTree = SOURCE_ROOT; };
+		1201A6532A1AD35A005F98F6 /* NetworkManagerUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerUnitTests.swift; sourceTree = "<group>"; };
 		1207470129FEF5A60041B48F /* CartManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManager.swift; sourceTree = "<group>"; };
 		1207470329FEF5C80041B48F /* ItemsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsManager.swift; sourceTree = "<group>"; };
 		1207470529FEF6030041B48F /* DiscountType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountType.swift; sourceTree = "<group>"; };
 		1207470929FF30770041B48F /* ItemDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailView.swift; sourceTree = "<group>"; };
+		1211A1702A1BFBB70067CCE2 /* AccountViewScreenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewScreenUITests.swift; sourceTree = "<group>"; };
 		123966D129E3312E005EDA4E /* SinghWeShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SinghWeShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		123966D429E3312E005EDA4E /* SinghWeShopApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinghWeShopApp.swift; sourceTree = "<group>"; };
 		123966D629E3312E005EDA4E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -78,6 +91,7 @@
 		1268D5272A12A3E000C515DE /* CartScreenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartScreenUITests.swift; sourceTree = "<group>"; };
 		1268D5292A12A44700C515DE /* ItemDetailScreenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailScreenUITests.swift; sourceTree = "<group>"; };
 		1268D52B2A12A4B600C515DE /* OnboardingViewScreenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewScreenUITests.swift; sourceTree = "<group>"; };
+		1296BEEE2A1889B500D30344 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		12E00C5A2A088E2A00A43052 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		12E00C652A08A39900A43052 /* SplashScreen128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashScreen128.png; sourceTree = "<group>"; };
 		12E6564C2A080F4E00B52444 /* ItemsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsListView.swift; sourceTree = "<group>"; };
@@ -118,6 +132,7 @@
 			children = (
 				1207470329FEF5C80041B48F /* ItemsManager.swift */,
 				1207470129FEF5A60041B48F /* CartManager.swift */,
+				1296BEEE2A1889B500D30344 /* NetworkManager.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -171,6 +186,7 @@
 				123966D429E3312E005EDA4E /* SinghWeShopApp.swift */,
 				123966D829E3312E005EDA4E /* Assets.xcassets */,
 				12E00C652A08A39900A43052 /* SplashScreen128.png */,
+				1201A64D2A1A72F2005F98F6 /* user.json */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -181,6 +197,7 @@
 				123966E529E34359005EDA4E /* Constants.swift */,
 				1207470529FEF6030041B48F /* DiscountType.swift */,
 				1245FA9F29EC8E6600299D2F /* Item.swift */,
+				1201A64B2A19F6FB005F98F6 /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -197,6 +214,7 @@
 				12E656542A0850A300B52444 /* CartView.swift */,
 				1207470929FF30770041B48F /* ItemDetailView.swift */,
 				123966E729E36BE4005EDA4E /* OnboardingView.swift */,
+				1201A64F2A1A7CA1005F98F6 /* AccountView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -213,7 +231,9 @@
 		12601D432A112B6C00401C76 /* SinghWeShopUnitTests */ = {
 			isa = PBXGroup;
 			children = (
+				1201A6532A1AD35A005F98F6 /* NetworkManagerUnitTests.swift */,
 				12601D442A112B6C00401C76 /* CartManagerUnitTests.swift */,
+				1201A6512A1AD158005F98F6 /* ItemsManagerUnitTests.swift */,
 			);
 			path = SinghWeShopUnitTests;
 			sourceTree = "<group>";
@@ -221,6 +241,7 @@
 		12601D502A112B8600401C76 /* SinghWeShopUITests */ = {
 			isa = PBXGroup;
 			children = (
+				1211A1702A1BFBB70067CCE2 /* AccountViewScreenUITests.swift */,
 				1268D52B2A12A4B600C515DE /* OnboardingViewScreenUITests.swift */,
 				1268D5292A12A44700C515DE /* ItemDetailScreenUITests.swift */,
 				1268D5272A12A3E000C515DE /* CartScreenUITests.swift */,
@@ -336,6 +357,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1201A64E2A1A72F2005F98F6 /* user.json in Resources */,
 				123966DC29E3312E005EDA4E /* Preview Assets.xcassets in Resources */,
 				12E00C662A08A39900A43052 /* SplashScreen128.png in Resources */,
 				123966D929E3312E005EDA4E /* Assets.xcassets in Resources */,
@@ -367,8 +389,11 @@
 				1207470429FEF5C80041B48F /* ItemsManager.swift in Sources */,
 				1245FAA029EC8E6600299D2F /* Item.swift in Sources */,
 				1207470629FEF6030041B48F /* DiscountType.swift in Sources */,
+				1296BEEF2A1889B500D30344 /* NetworkManager.swift in Sources */,
 				1207470229FEF5A60041B48F /* CartManager.swift in Sources */,
+				1201A6502A1A7CA1005F98F6 /* AccountView.swift in Sources */,
 				12E656512A080FCE00B52444 /* ItemsGridView.swift in Sources */,
+				1201A64C2A19F6FB005F98F6 /* User.swift in Sources */,
 				123966D729E3312E005EDA4E /* ContentView.swift in Sources */,
 				123966E829E36BE4005EDA4E /* OnboardingView.swift in Sources */,
 				12E656572A0850B800B52444 /* CartRowView.swift in Sources */,
@@ -385,6 +410,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1201A6542A1AD35A005F98F6 /* NetworkManagerUnitTests.swift in Sources */,
+				1201A6522A1AD158005F98F6 /* ItemsManagerUnitTests.swift in Sources */,
 				12601D452A112B6C00401C76 /* CartManagerUnitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -395,6 +422,7 @@
 			files = (
 				12601D542A112B8600401C76 /* SinghWeShopUITestsLaunchTests.swift in Sources */,
 				1268D52C2A12A4B600C515DE /* OnboardingViewScreenUITests.swift in Sources */,
+				1211A1712A1BFBB70067CCE2 /* AccountViewScreenUITests.swift in Sources */,
 				12601D522A112B8600401C76 /* SinghWeShopUITests.swift in Sources */,
 				1268D5282A12A3E000C515DE /* CartScreenUITests.swift in Sources */,
 				1268D52A2A12A44700C515DE /* ItemDetailScreenUITests.swift in Sources */,

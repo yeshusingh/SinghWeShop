@@ -57,8 +57,6 @@ final class DiscoverScreenUITests: XCTestCase {
         app.scrollViews.otherElements.buttons.firstMatch.tap()
         
         XCTAssert(app.scrollViews.element.exists)
-        let image = app.scrollViews.images.firstMatch
-        image.swipeUp()
         
         XCTAssertEqual(app.scrollViews.staticTexts.count, 5)
         XCTAssert(app.scrollViews.buttons["Add to Cart"].exists)

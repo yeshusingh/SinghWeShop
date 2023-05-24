@@ -24,6 +24,7 @@ final class SinghWeShopUITests: XCTestCase {
         XCTAssert(tabBar.buttons["Home"].exists)
         XCTAssert(tabBar.buttons["Discover"].exists)
         XCTAssert(tabBar.buttons["Cart"].exists)
+        XCTAssert(tabBar.buttons["Account"].exists)
         XCTAssertFalse(tabBar.buttons["Info"].exists)
     }
     

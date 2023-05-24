@@ -28,15 +28,13 @@ final class ItemDetailScreenUITests: XCTestCase {
         app.collectionViews.cells.firstMatch.tap()
         
         XCTAssert(app.scrollViews.element.exists)
-        let image = app.scrollViews.images.firstMatch
-        image.swipeUp()
-        
         XCTAssertEqual(app.scrollViews.staticTexts.count, 5)
         
         XCTAssert(app.scrollViews.buttons["Add to Cart"].exists)
         app.scrollViews.buttons["Add to Cart"].tap()
 
         app.navigationBars.firstMatch.buttons["WeShop"].tap()
+           
     }
     
     func test_detailViewDiffOrientation() throws {
@@ -51,9 +49,6 @@ final class ItemDetailScreenUITests: XCTestCase {
         app.collectionViews.cells.firstMatch.tap()
         
         XCTAssert(app.scrollViews.element.exists)
-        let image = app.scrollViews.images.firstMatch
-        image.swipeUp()
-        
         XCTAssertEqual(app.scrollViews.staticTexts.count, 5)
         
         XCTAssert(app.scrollViews.buttons["Add to Cart"].exists)

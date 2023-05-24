@@ -4,6 +4,7 @@
 //
 //  Created by Yeshu Singh on 4/9/23.
 //
+// Week 07 work
 
 import SwiftUI
 
@@ -21,6 +22,9 @@ struct ContentView: View {
                     Text("Home")
                 }
                 .tag(0)
+                .overlay {
+                    if itemStore.allItems.isEmpty { ProgressView() }
+                }
 
             ItemsGridView(items: itemStore.discoverItems)
                 .tabItem {
@@ -28,6 +32,9 @@ struct ContentView: View {
                     Text("Discover")
                 }
                 .tag(1)
+                .overlay {
+                    if itemStore.allItems.isEmpty { ProgressView() }
+                }
 
             CartView()
                 .tabItem {
@@ -36,9 +43,42 @@ struct ContentView: View {
                 }
                 .tag(2)
                 .badge(cartStore.cartItems.count)
+            
+            AccountView(user: itemStore.user)
+                .tabItem {
+                    Image(systemName: "person")
+                    Text("Account")
+                }
+                .tag(3)
+            
+            //Week 7: Assignment 2
+            ItemsListView(items: itemStore.loadItemsFromPlistFile())
+                .tabItem {
+                    Image(systemName: "house")
+                    Text("Home Plist")
+                }
+                .tag(4)
+            //Week 7: Assignment 2
+            ItemsListView(items: itemStore.loadItemsFromFile())
+                .tabItem {
+                    Image(systemName: "house")
+                    Text("Home Binary")
+                }
+                .tag(5)
         }
         .foregroundColor(Color(Constants.Assets.textColor))
         .environmentObject(cartStore)
+        .task {
+            do {
+                try await itemStore.loadItems()
+            } catch { }
+        }
+        .task {
+            do {
+                try await itemStore.loadUser()
+            } catch { }
+        }
+        
     }
 }
 

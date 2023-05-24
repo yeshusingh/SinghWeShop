@@ -19,20 +19,40 @@ struct ItemDetailView: View {
             ScrollView(showsIndicators: false) {
                 VStack(spacing: 10) {
                     if verticalSizeClass == .compact {
-                        Image("Item-\(item.id)")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(height: 200)
-                            .cornerRadius(Constants.General.cornerRadius)
-                            .shadow(radius: Constants.General.shadowRadius)
-                            .padding(.bottom)
+                        AsyncImage(url: URL(string: item.imageURL)) { image in
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(height: 200)
+                                .cornerRadius(Constants.General.cornerRadius)
+                                .shadow(radius: Constants.General.shadowRadius)
+                                .padding(.bottom)
+                        } placeholder: {
+                            Color.gray.opacity(0.4)
+                                .aspectRatio(1, contentMode: .fit)
+                                .frame(width: 100)
+                                .cornerRadius(Constants.General.cornerRadius)
+                                .overlay {
+                                    ProgressView()
+                                }
+                        }
                     } else {
-                        Image("Item-\(item.id)")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .cornerRadius(Constants.General.cornerRadius)
-                            .shadow(radius: Constants.General.shadowRadius)
-                            .padding(.bottom)
+                        AsyncImage(url: URL(string: item.imageURL)) { image in
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .cornerRadius(Constants.General.cornerRadius)
+                                .shadow(radius: Constants.General.shadowRadius)
+                                .padding(.bottom)
+                        } placeholder: {
+                            Color.gray.opacity(0.4)
+                                .aspectRatio(1, contentMode: .fit)
+                                .frame(width: 100)
+                                .cornerRadius(Constants.General.cornerRadius)
+                                .overlay {
+                                    ProgressView()
+                                }
+                        }
                     }
                     
                     VStack(alignment: .leading, spacing: 10){
