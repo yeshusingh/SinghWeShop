@@ -51,19 +51,6 @@ struct ContentView: View {
           Text("Account")
         }
         .tag(3)
-
-      ItemsListView(items: itemStore.loadItemsFromPlistFile())
-        .tabItem {
-          Image(systemName: "house")
-          Text("Home Plist")
-        }
-        .tag(4)
-      ItemsListView(items: itemStore.loadItemsFromFile())
-        .tabItem {
-          Image(systemName: "house")
-          Text("Home Binary")
-        }
-        .tag(5)
     }
     .foregroundColor(Color(Constants.Assets.textColor))
     .environmentObject(cartStore)
