@@ -24,8 +24,7 @@ final class ItemDetailScreenUITests: XCTestCase {
     XCTAssert(tabBar.buttons["Home"].exists)
     tabBar.buttons["Home"].tap()
 
-    // try XCTSkipUnless(app.collectionViews.cells.count > 0, "Minimum 1 item required to test Item Detail View")
-    try XCTSkipUnless(app.collectionViews.cells.firstMatch.exists, "Minimum 1 item required to test Item Detail View")
+    XCTAssert(app.collectionViews.cells.firstMatch.waitForExistence(timeout: 10))
 
     app.collectionViews.cells.firstMatch.tap()
 
@@ -43,8 +42,7 @@ final class ItemDetailScreenUITests: XCTestCase {
     XCTAssert(tabBar.buttons["Home"].exists)
     tabBar.buttons["Home"].tap()
 
-    // try XCTSkipUnless(app.collectionViews.cells.count > 0, "Minimum 1 item required to test Item Detail View")
-    try XCTSkipUnless(app.collectionViews.cells.firstMatch.exists, "Minimum 1 item required to test Item Detail View")
+    XCTAssert(app.collectionViews.cells.firstMatch.waitForExistence(timeout: 10))
 
     XCUIDevice.shared.orientation = .landscapeLeft
 

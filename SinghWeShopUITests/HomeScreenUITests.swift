@@ -24,7 +24,7 @@ final class HomeScreenUITests: XCTestCase {
     XCTAssert(tabBar.buttons["Home"].exists)
     tabBar.buttons["Home"].tap()
 
-    XCUIDevice.shared.orientation = .portrait
+    // XCUIDevice.shared.orientation = .portrait
 
     XCTAssert(app.navigationBars["WeShop"].exists)
 
@@ -39,8 +39,7 @@ final class HomeScreenUITests: XCTestCase {
     XCTAssert(tabBar.buttons["Home"].exists)
     tabBar.buttons["Home"].tap()
 
-    // try XCTSkipUnless(app.collectionViews.cells.count > 0, "Minimum 1 item required to test Item Detail View")
-    try XCTSkipUnless(app.collectionViews.cells.firstMatch.exists, "Minimum 1 item required to test Item Detail View")
+    XCTAssert(app.collectionViews.cells.firstMatch.waitForExistence(timeout: 10))
 
     app.collectionViews.cells.firstMatch.tap()
 
@@ -64,8 +63,7 @@ final class HomeScreenUITests: XCTestCase {
     tabBar.buttons["Home"].tap()
     XCUIDevice.shared.orientation = .portrait
 
-    // try XCTSkipUnless(app.collectionViews.cells.count > 0, "Minimum 1 item required to test Item Detail View")
-    try XCTSkipUnless(app.collectionViews.cells.firstMatch.exists, "Minimum 1 item required to test Item Detail View")
+    XCTAssert(app.collectionViews.cells.firstMatch.waitForExistence(timeout: 10))
 
     let itemToSwipe = app.collectionViews.cells.firstMatch
     itemToSwipe.swipeRight()
@@ -99,7 +97,7 @@ final class HomeScreenUITests: XCTestCase {
     XCTAssert(tabBar.buttons["Home"].exists)
     tabBar.buttons["Home"].tap()
 
-    try XCTSkipUnless(app.collectionViews.cells.firstMatch.exists, "Minimum 1 item required to test Item Detail View")
+    XCTAssert(app.collectionViews.cells.firstMatch.waitForExistence(timeout: 10))
 
     XCTAssert(app.collectionViews.cells.firstMatch.exists)
     app.collectionViews.cells.firstMatch.tap()

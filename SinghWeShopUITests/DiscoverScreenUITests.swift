@@ -54,6 +54,8 @@ final class DiscoverScreenUITests: XCTestCase {
     XCTAssert(tabBar.buttons["Discover"].exists)
     tabBar.buttons["Discover"].tap()
 
+    XCTAssert(app.scrollViews.otherElements.buttons.firstMatch.waitForExistence(timeout: 10))
+
     try XCTSkipUnless(
       app.scrollViews.otherElements.buttons.firstMatch.exists,
       "Minimum 1 item required to test Item Detail View")
