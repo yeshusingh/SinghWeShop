@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ItemsListView: View {
   @EnvironmentObject var cartStore: CartManager
+  @EnvironmentObject var networkMonitor: NetworkMonitor
   @State private var searchName = ""
   var items: [Item]
 
@@ -26,45 +27,64 @@ struct ItemsListView: View {
 
   var body: some View {
     NavigationStack {
-      List {
-        ForEach(matchedItems) { item in
-          NavigationLink(value: item) {
-            ListItem(item: item)
-          }
-          .swipeActions(edge: .leading) {
-            Button {
-              cartStore.addToCart(item)
-            } label: {
-              Image(systemName: "highlighter")
-              Text("AddToCart")
+      if networkMonitor.isConnected {
+        List {
+          ForEach(matchedItems) { item in
+            NavigationLink(value: item) {
+              ListItem(item: item)
             }
-            .tint(.yellow)
+            .swipeActions(edge: .leading) {
+              Button {
+                cartStore.addToCart(item)
+              } label: {
+                Image(systemName: "highlighter")
+                Text("AddToCart")
+              }
+              .tint(.yellow)
+            }
           }
         }
-      }
-      .listStyle(PlainListStyle())
-      .navigationDestination(for: Item.self) { item in
-        ItemDetailView(item: item)
-      }
-      .searchable(text: $searchName, placement: .navigationBarDrawer(displayMode: .always)) {
-        ForEach(matchingItemNames, id: \.self) { name in
-          Text(name).searchCompletion(name)
+        .listStyle(PlainListStyle())
+        .navigationDestination(for: Item.self) { item in
+          ItemDetailView(item: item)
         }
-      }
-      .navigationTitle(Constants.General.appTitle)
-      .navigationBarTitleDisplayMode(.inline)
-      .toolbar {
-        ToolbarItem {
-          NavigationLink {
-            OnboardingView()
-          } label: {
-            Image(systemName: Constants.ImageLiteral.infoCircle)
-              .imageScale(.large)
-              .foregroundColor(.accentColor)
-              .font(.title2)
-              .fontWeight(.semibold)
+        .searchable(text: $searchName, placement: .navigationBarDrawer(displayMode: .always)) {
+          ForEach(matchingItemNames, id: \.self) { name in
+            Text(name).searchCompletion(name)
           }
         }
+        .navigationTitle(Constants.General.appTitle)
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+          ToolbarItem {
+            NavigationLink {
+              OnboardingView()
+            } label: {
+              Image(systemName: Constants.ImageLiteral.infoCircle)
+                .imageScale(.large)
+                .foregroundColor(.accentColor)
+                .font(.title2)
+                .fontWeight(.semibold)
+            }
+          }
+        }
+      } else {
+        NetworkStatusView()
+          .navigationTitle(Constants.General.appTitle)
+          .navigationBarTitleDisplayMode(.inline)
+          .toolbar {
+            ToolbarItem {
+              NavigationLink {
+                OnboardingView()
+              } label: {
+                Image(systemName: Constants.ImageLiteral.infoCircle)
+                  .imageScale(.large)
+                  .foregroundColor(.accentColor)
+                  .font(.title2)
+                  .fontWeight(.semibold)
+              }
+            }
+          }
       }
     }
   }
@@ -75,6 +95,7 @@ struct ItemsListView_Previews: PreviewProvider {
   static var previews: some View {
     ItemsListView(items: ItemsManager().allItems)
       .environmentObject(CartManager())
+      .environmentObject(NetworkMonitor())
   }
 }
 #endif

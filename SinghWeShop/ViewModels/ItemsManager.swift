@@ -67,19 +67,21 @@ class ItemsManager: ObservableObject {
       do {
         let userData = try Data(contentsOf: userJSONURL)
         user = try decoder.decode(User.self, from: userData)
+        // TODO: Add check to match the user ID ???
       } catch let error {
         print(error)
       }
-    } else {
-      if let localURL = Bundle.main.url(forResource: "user", withExtension: "json") {
-        do {
-          let userData = try Data(contentsOf: localURL)
-          user = try decoder.decode(User.self, from: userData)
-        } catch let error {
-          print(error)
-        }
-      }
     }
+//    else {
+//      if let localURL = Bundle.main.url(forResource: "user", withExtension: "json") {
+//        do {
+//          let userData = try Data(contentsOf: localURL)
+//          user = try decoder.decode(User.self, from: userData)
+//        } catch let error {
+//          print(error)
+//        }
+//      }
+//    }
   }
 
   func loadItems() async throws {
@@ -107,7 +109,6 @@ class ItemsManager: ObservableObject {
 
     print("Documents Directory: ", itemsJSONURL.absoluteURL.path())
   }
-
 
   func loadItemsFromJSONFile() {
     let decoder = JSONDecoder()
