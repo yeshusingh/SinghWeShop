@@ -7,7 +7,12 @@
 
 import Foundation
 
-struct NetworkManager {
+protocol NetworkSession {
+  func fetchProductsData(upto limit: Int) async throws -> [Item]?
+  func fetchUserInfo(for id: Int) async throws -> User?
+}
+
+struct NetworkManager: NetworkSession {
   let baseURLString = "https://fakestoreapi.com"
   let session = URLSession.shared
   let decoder = JSONDecoder()
@@ -71,5 +76,50 @@ struct NetworkManager {
     }
 
     return user
+  }
+}
+
+
+struct MockNetworkManager: NetworkSession {
+  let decoder = JSONDecoder()
+
+  func fetchProductsData(upto limit: Int) async throws -> [Item]? {
+    var products: [Item]?
+
+    if let localURL = Bundle.main.url(forResource: "items", withExtension: "json") {
+      do {
+        let productsData = try Data(contentsOf: localURL)
+        products = try decoder.decode([Item].self, from: productsData)
+      } catch let error {
+        print(error)
+      }
+    }
+
+    if let products = products {
+      let range = min(products.count, limit)
+      let result = Array(products[..<range])
+      return result
+    }
+
+    return products
+  }
+
+  func fetchUserInfo(for id: Int) async throws -> User? {
+    var user: User?
+
+    if let localURL = Bundle.main.url(forResource: "user", withExtension: "json") {
+      do {
+        let userData = try Data(contentsOf: localURL)
+        user = try decoder.decode(User.self, from: userData)
+      } catch let error {
+        print(error)
+      }
+    }
+
+    if user?.id == id {
+      return user
+    } else {
+      return nil
+    }
   }
 }

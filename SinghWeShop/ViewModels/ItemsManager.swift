@@ -20,7 +20,7 @@ class ItemsManager: ObservableObject {
     }
   }
 
-  let service = NetworkManager()
+  var service: NetworkSession = NetworkManager()
   let maxLimit: Int
 
   var discoverItems: [Item] {
