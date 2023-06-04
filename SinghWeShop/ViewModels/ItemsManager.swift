@@ -55,8 +55,11 @@ class ItemsManager: ObservableObject {
     do {
       let userData = try encoder.encode(user)
       try userData.write(to: userJSONURL, options: .atomic)
-    } catch let error {
-      print(error)
+    } catch let EncodingError.invalidValue(value, context) {
+      print("Invalid Value '\(value)':", context.debugDescription)
+      print("codingPath:", context.codingPath)
+    } catch {
+      print("error: ", error)
     }
   }
 
@@ -68,20 +71,21 @@ class ItemsManager: ObservableObject {
         let userData = try Data(contentsOf: userJSONURL)
         user = try decoder.decode(User.self, from: userData)
         // TODO: Add check to match the user ID ???
-      } catch let error {
-        print(error)
+      } catch let DecodingError.dataCorrupted(context) {
+        print(context)
+      } catch let DecodingError.keyNotFound(key, context) {
+        print("Key '\(key)' not found:", context.debugDescription)
+        print("codingPath:", context.codingPath)
+      } catch let DecodingError.valueNotFound(value, context) {
+        print("Value '\(value)' not found:", context.debugDescription)
+        print("codingPath:", context.codingPath)
+      } catch let DecodingError.typeMismatch(type, context) {
+        print("Type '\(type)' mismatch:", context.debugDescription)
+        print("codingPath:", context.codingPath)
+      } catch {
+        print("error: ", error)
       }
     }
-//    else {
-//      if let localURL = Bundle.main.url(forResource: "user", withExtension: "json") {
-//        do {
-//          let userData = try Data(contentsOf: localURL)
-//          user = try decoder.decode(User.self, from: userData)
-//        } catch let error {
-//          print(error)
-//        }
-//      }
-//    }
   }
 
   func loadItems() async throws {
@@ -103,8 +107,11 @@ class ItemsManager: ObservableObject {
     do {
       let itemsData = try encoder.encode(allItems)
       try itemsData.write(to: itemsJSONURL, options: .atomic)
-    } catch let error {
-      print(error)
+    } catch let EncodingError.invalidValue(value, context) {
+      print("Invalid Value '\(value)':", context.debugDescription)
+      print("codingPath:", context.codingPath)
+    } catch {
+      print("error: ", error)
     }
 
     print("Documents Directory: ", itemsJSONURL.absoluteURL.path())
@@ -118,8 +125,19 @@ class ItemsManager: ObservableObject {
     do {
       let itemsData = try Data(contentsOf: itemsJSONURL)
       allItems = try decoder.decode([Item].self, from: itemsData)
-    } catch let error {
-      print(error)
+    } catch let DecodingError.dataCorrupted(context) {
+      print(context)
+    } catch let DecodingError.keyNotFound(key, context) {
+      print("Key '\(key)' not found:", context.debugDescription)
+      print("codingPath:", context.codingPath)
+    } catch let DecodingError.valueNotFound(value, context) {
+      print("Value '\(value)' not found:", context.debugDescription)
+      print("codingPath:", context.codingPath)
+    } catch let DecodingError.typeMismatch(type, context) {
+      print("Type '\(type)' mismatch:", context.debugDescription)
+      print("codingPath:", context.codingPath)
+    } catch {
+      print("error: ", error)
     }
   }
 }

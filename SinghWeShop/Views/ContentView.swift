@@ -25,7 +25,7 @@ struct ContentView: View {
         }
         .tag(0)
         .overlay {
-          if itemStore.allItems.isEmpty { ProgressView() }
+          if itemStore.allItems.isEmpty && networkMonitor.isConnected { ProgressView() }
         }
 
       ItemsGridView(items: itemStore.discoverItems)
@@ -35,7 +35,7 @@ struct ContentView: View {
         }
         .tag(1)
         .overlay {
-          if itemStore.allItems.isEmpty { ProgressView() }
+          if itemStore.allItems.isEmpty && networkMonitor.isConnected { ProgressView() }
         }
 
       CartView()
@@ -59,12 +59,12 @@ struct ContentView: View {
     .task {
       do {
         try await itemStore.loadItems()
-      } catch { }
+      } catch { print("error: ", error) }
     }
     .task {
       do {
         try await itemStore.loadUser()
-      } catch { }
+      } catch { print("error: ", error) }
     }
   }
 }

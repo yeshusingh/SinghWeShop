@@ -16,7 +16,6 @@ struct NetworkManager: NetworkSession {
   let baseURLString = "https://fakestoreapi.com"
   let session = URLSession.shared
   let decoder = JSONDecoder()
-  let encoder = JSONEncoder()
 
   func fetchProductsData(upto limit: Int) async throws -> [Item]? {
     var products: [Item]?
@@ -33,15 +32,30 @@ struct NetworkManager: NetworkSession {
     let request = URLRequest(url: queryURL)
 
     let (data, response) = try await session.data(for: request)
-    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-      print("Error in fetch products")
+    guard let httpResponse = response as? HTTPURLResponse, (200..<300).contains(httpResponse.statusCode) else {
+      handleHTTPError(response)
       return nil
     }
 
     do {
       products = try decoder.decode([Item].self, from: data)
+    } catch let DecodingError.dataCorrupted(context) {
+      print(context)
+      return nil
+    } catch let DecodingError.keyNotFound(key, context) {
+      print("Key '\(key)' not found:", context.debugDescription)
+      print("codingPath:", context.codingPath)
+      return nil
+    } catch let DecodingError.valueNotFound(value, context) {
+      print("Value '\(value)' not found:", context.debugDescription)
+      print("codingPath:", context.codingPath)
+      return nil
+    } catch let DecodingError.typeMismatch(type, context) {
+      print("Type '\(type)' mismatch:", context.debugDescription)
+      print("codingPath:", context.codingPath)
+      return nil
     } catch {
-      print(error)
+      print("error: ", error)
       return nil
     }
 
@@ -63,19 +77,53 @@ struct NetworkManager: NetworkSession {
     let request = URLRequest(url: queryURL)
 
     let (data, response) = try await session.data(for: request)
-    guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-      print("Error in fetch user")
+    guard let httpResponse = response as? HTTPURLResponse, (200..<300).contains(httpResponse.statusCode) else {
+      handleHTTPError(response)
       return nil
     }
 
     do {
       user = try decoder.decode(User.self, from: data)
+    } catch let DecodingError.dataCorrupted(context) {
+      print(context)
+      return nil
+    } catch let DecodingError.keyNotFound(key, context) {
+      print("Key '\(key)' not found:", context.debugDescription)
+      print("codingPath:", context.codingPath)
+      return nil
+    } catch let DecodingError.valueNotFound(value, context) {
+      print("Value '\(value)' not found:", context.debugDescription)
+      print("codingPath:", context.codingPath)
+      return nil
+    } catch let DecodingError.typeMismatch(type, context) {
+      print("Type '\(type)' mismatch:", context.debugDescription)
+      print("codingPath:", context.codingPath)
+      return nil
     } catch {
-      print(error)
+      print("error: ", error)
       return nil
     }
 
     return user
+  }
+
+  func handleHTTPError(_ response: URLResponse) {
+    if let httpResponse = response as? HTTPURLResponse {
+      switch httpResponse.statusCode {
+      case 100..<200:
+        print("Informational Response: \(httpResponse.statusCode)")
+      case 300..<400:
+        print("Redirection Response: \(httpResponse.statusCode)")
+      case 400..<500:
+        print("Client Error Response: \(httpResponse.statusCode)")
+      case 500..<600:
+        print("Server Error Response: \(httpResponse.statusCode)")
+      default:
+        print("Error Response: \(httpResponse.statusCode)")
+      }
+    } else {
+      print("Bad Server response : Could not parse as HTTPURLResponse")
+    }
   }
 }
 
@@ -90,8 +138,19 @@ struct MockNetworkManager: NetworkSession {
       do {
         let productsData = try Data(contentsOf: localURL)
         products = try decoder.decode([Item].self, from: productsData)
-      } catch let error {
-        print(error)
+      } catch let DecodingError.dataCorrupted(context) {
+        print(context)
+      } catch let DecodingError.keyNotFound(key, context) {
+        print("Key '\(key)' not found:", context.debugDescription)
+        print("codingPath:", context.codingPath)
+      } catch let DecodingError.valueNotFound(value, context) {
+        print("Value '\(value)' not found:", context.debugDescription)
+        print("codingPath:", context.codingPath)
+      } catch let DecodingError.typeMismatch(type, context) {
+        print("Type '\(type)' mismatch:", context.debugDescription)
+        print("codingPath:", context.codingPath)
+      } catch {
+        print("error: ", error)
       }
     }
 
@@ -111,8 +170,19 @@ struct MockNetworkManager: NetworkSession {
       do {
         let userData = try Data(contentsOf: localURL)
         user = try decoder.decode(User.self, from: userData)
-      } catch let error {
-        print(error)
+      } catch let DecodingError.dataCorrupted(context) {
+        print(context)
+      } catch let DecodingError.keyNotFound(key, context) {
+        print("Key '\(key)' not found:", context.debugDescription)
+        print("codingPath:", context.codingPath)
+      } catch let DecodingError.valueNotFound(value, context) {
+        print("Value '\(value)' not found:", context.debugDescription)
+        print("codingPath:", context.codingPath)
+      } catch let DecodingError.typeMismatch(type, context) {
+        print("Type '\(type)' mismatch:", context.debugDescription)
+        print("codingPath:", context.codingPath)
+      } catch {
+        print("error: ", error)
       }
     }
 
