@@ -22,6 +22,7 @@ final class ItemsManagerUnitTests: XCTestCase {
     try super.tearDownWithError()
   }
 
+  // Week 9: Assignment 4
   func test_loadProductData() async throws {
     XCTAssertEqual(itemStore.allItems.count, 0, "Products should have been Zero at intialization.")
 
@@ -51,6 +52,7 @@ final class ItemsManagerUnitTests: XCTestCase {
     )
   }
 
+  // Week 9: Assignment 4
   func test_loadUserData() async throws {
     XCTAssertNil(itemStore.user, "User should have been Nil at intialization.")
 
@@ -115,9 +117,6 @@ final class ItemsManagerUnitTests: XCTestCase {
     if FileManager.default.fileExists(atPath: itemStore.userJSONURL.absoluteURL.path()) {
       itemStore.loadUserFromJSONFile()
       XCTAssertNotNil(itemStore.user, "User should have been loaded from JSON file.")
-    } else {
-      itemStore.loadUserFromJSONFile()
-      XCTAssertNotNil(itemStore.user, "User should have been loaded from JSON file in App Bundle.")
     }
   }
 

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// Week 9: Assignment 3
 struct NetworkStatusView: View {
   var body: some View {
     VStack {

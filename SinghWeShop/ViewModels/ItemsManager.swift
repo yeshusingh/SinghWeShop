@@ -10,16 +10,19 @@ import Foundation
 class ItemsManager: ObservableObject {
   @Published private(set) var allItems: [Item] = [] {
     didSet {
+      // Week 9: Assignment 1
       saveItemsToJSONFile()
     }
   }
 
   @Published private(set) var user: User? {
     didSet {
+      // Week 9: Assignment 1
       saveUserToJSONFile()
     }
   }
 
+  // Week 9: Assignment 4
   var service: NetworkSession = NetworkManager()
   let maxLimit: Int
 
@@ -36,6 +39,7 @@ class ItemsManager: ObservableObject {
     self.maxLimit = maxLimit
   }
 
+  // Week 9: Assignment 1
   func loadUser() async throws {
     if let userInfo = try? await service.fetchUserInfo(for: 1) {
       await MainActor.run {
@@ -63,6 +67,7 @@ class ItemsManager: ObservableObject {
     }
   }
 
+  // Week 9: Assignment 2
   func loadUserFromJSONFile() {
     let decoder = JSONDecoder()
 
@@ -88,6 +93,7 @@ class ItemsManager: ObservableObject {
     }
   }
 
+  // Week 9: Assignment 1
   func loadItems() async throws {
     if let products = try? await service.fetchProductsData(upto: maxLimit) {
       await MainActor.run {
@@ -117,6 +123,7 @@ class ItemsManager: ObservableObject {
     print("Documents Directory: ", itemsJSONURL.absoluteURL.path())
   }
 
+  // Week 9: Assignment 2
   func loadItemsFromJSONFile() {
     let decoder = JSONDecoder()
 
