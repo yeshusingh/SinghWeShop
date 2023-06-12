@@ -22,6 +22,7 @@ final class NetworkManagerUnitTests: XCTestCase {
     try super.tearDownWithError()
   }
 
+  // Week 9: Assignment 4
   func test_fetchProductsData() async {
     var products: [Item]?
     let promise = expectation(description: "Fetch upto 10 products")
@@ -42,6 +43,7 @@ final class NetworkManagerUnitTests: XCTestCase {
     }
   }
 
+  // Week 9: Assignment 4
   func test_fetchUserData() async {
     var user: User?
     let promise = expectation(description: "Fetch User Info")

@@ -10,17 +10,20 @@ import Foundation
 class ItemsManager: ObservableObject {
   @Published private(set) var allItems: [Item] = [] {
     didSet {
+      // Week 9: Assignment 1
       saveItemsToJSONFile()
     }
   }
 
   @Published private(set) var user: User? {
     didSet {
+      // Week 9: Assignment 1
       saveUserToJSONFile()
     }
   }
 
-  let service = NetworkManager()
+  // Week 9: Assignment 4
+  var service: NetworkSession = NetworkManager()
   let maxLimit: Int
 
   var discoverItems: [Item] {
@@ -36,6 +39,7 @@ class ItemsManager: ObservableObject {
     self.maxLimit = maxLimit
   }
 
+  // Week 9: Assignment 1
   func loadUser() async throws {
     if let userInfo = try? await service.fetchUserInfo(for: 1) {
       await MainActor.run {
@@ -55,11 +59,15 @@ class ItemsManager: ObservableObject {
     do {
       let userData = try encoder.encode(user)
       try userData.write(to: userJSONURL, options: .atomic)
-    } catch let error {
-      print(error)
+    } catch let EncodingError.invalidValue(value, context) {
+      print("Invalid Value '\(value)':", context.debugDescription)
+      print("codingPath:", context.codingPath)
+    } catch {
+      print("error: ", error)
     }
   }
 
+  // Week 9: Assignment 2
   func loadUserFromJSONFile() {
     let decoder = JSONDecoder()
 
@@ -67,21 +75,25 @@ class ItemsManager: ObservableObject {
       do {
         let userData = try Data(contentsOf: userJSONURL)
         user = try decoder.decode(User.self, from: userData)
-      } catch let error {
-        print(error)
-      }
-    } else {
-      if let localURL = Bundle.main.url(forResource: "user", withExtension: "json") {
-        do {
-          let userData = try Data(contentsOf: localURL)
-          user = try decoder.decode(User.self, from: userData)
-        } catch let error {
-          print(error)
-        }
+        // TODO: Add check to match the user ID ???
+      } catch let DecodingError.dataCorrupted(context) {
+        print(context)
+      } catch let DecodingError.keyNotFound(key, context) {
+        print("Key '\(key)' not found:", context.debugDescription)
+        print("codingPath:", context.codingPath)
+      } catch let DecodingError.valueNotFound(value, context) {
+        print("Value '\(value)' not found:", context.debugDescription)
+        print("codingPath:", context.codingPath)
+      } catch let DecodingError.typeMismatch(type, context) {
+        print("Type '\(type)' mismatch:", context.debugDescription)
+        print("codingPath:", context.codingPath)
+      } catch {
+        print("error: ", error)
       }
     }
   }
 
+  // Week 9: Assignment 1
   func loadItems() async throws {
     if let products = try? await service.fetchProductsData(upto: maxLimit) {
       await MainActor.run {
@@ -101,14 +113,17 @@ class ItemsManager: ObservableObject {
     do {
       let itemsData = try encoder.encode(allItems)
       try itemsData.write(to: itemsJSONURL, options: .atomic)
-    } catch let error {
-      print(error)
+    } catch let EncodingError.invalidValue(value, context) {
+      print("Invalid Value '\(value)':", context.debugDescription)
+      print("codingPath:", context.codingPath)
+    } catch {
+      print("error: ", error)
     }
 
     print("Documents Directory: ", itemsJSONURL.absoluteURL.path())
   }
 
-
+  // Week 9: Assignment 2
   func loadItemsFromJSONFile() {
     let decoder = JSONDecoder()
 
@@ -117,8 +132,19 @@ class ItemsManager: ObservableObject {
     do {
       let itemsData = try Data(contentsOf: itemsJSONURL)
       allItems = try decoder.decode([Item].self, from: itemsData)
-    } catch let error {
-      print(error)
+    } catch let DecodingError.dataCorrupted(context) {
+      print(context)
+    } catch let DecodingError.keyNotFound(key, context) {
+      print("Key '\(key)' not found:", context.debugDescription)
+      print("codingPath:", context.codingPath)
+    } catch let DecodingError.valueNotFound(value, context) {
+      print("Value '\(value)' not found:", context.debugDescription)
+      print("codingPath:", context.codingPath)
+    } catch let DecodingError.typeMismatch(type, context) {
+      print("Type '\(type)' mismatch:", context.debugDescription)
+      print("codingPath:", context.codingPath)
+    } catch {
+      print("error: ", error)
     }
   }
 }

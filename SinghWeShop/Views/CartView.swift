@@ -20,19 +20,38 @@ struct CartView: View {
         }
         .padding()
 
-        VStack {
-          Text("Work in Progress on Cart Screen ...")
-          Text("Amount Calcuations pending...")
+        if cartStore.cartItems.isEmpty {
+          VStack {
+            Text("Your cart is empty.")
+          }
+          .fontWeight(.medium)
+          .padding(30)
+          .background(.brown.opacity(0.3))
+          .foregroundColor(Color(Constants.Assets.textColor))
+          .overlay(
+            RoundedRectangle(cornerRadius: Constants.General.cornerRadius)
+              .strokeBorder(.orange)
+          )
+          .clipShape(RoundedRectangle(cornerRadius: Constants.General.cornerRadius))
+          .padding([.bottom], 20)
         }
-        .fontWeight(.medium)
-        .padding(30)
-        .background(.brown.opacity(0.3))
+
+        VStack {
+          Divider()
+          Section("Order Total") {
+            LabeledContent("Total", value: "$\(round(cartStore.totalCartItemsAmount * 100) / 100)")
+              .font(.title3)
+              .fontWeight(.light)
+              .kerning(0.5)
+          }
+          .padding(5)
+          Divider()
+        }
+        .padding([.horizontal], 30)
+        .font(.title)
+        .fontWeight(.semibold)
+        .kerning(4.0)
         .foregroundColor(Color(Constants.Assets.textColor))
-        .overlay(
-          RoundedRectangle(cornerRadius: Constants.General.cornerRadius)
-            .strokeBorder(.orange)
-        )
-        .clipShape(RoundedRectangle(cornerRadius: Constants.General.cornerRadius))
 
         Button {
           // TODO: Call checkout steps
@@ -47,7 +66,7 @@ struct CartView: View {
             .background(Color(Constants.Assets.buttonFilledTextColor))
             .cornerRadius(Constants.General.cornerRadius)
         }
-        .padding(.top, 50)
+        .padding(.top, 30)
       }
       .navigationTitle("My Cart")
       .navigationBarTitleDisplayMode(.inline)
