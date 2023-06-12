@@ -8,7 +8,6 @@
 import Foundation
 import Network
 
-// Week 9: Assignment 3
 class NetworkMonitor: ObservableObject {
   private let networkMonitor = NWPathMonitor()
   private let workerQueue = DispatchQueue(label: "MonitorNetwork")

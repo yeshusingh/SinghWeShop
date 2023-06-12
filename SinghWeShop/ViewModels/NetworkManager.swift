@@ -7,7 +7,6 @@
 
 import Foundation
 
-// Week 9: Assignment 4
 protocol NetworkSession {
   func fetchProductsData(upto limit: Int) async throws -> [Item]?
   func fetchUserInfo(for id: Int) async throws -> User?
@@ -18,7 +17,6 @@ struct NetworkManager: NetworkSession {
   let session = URLSession.shared
   let decoder = JSONDecoder()
 
-  // Week 9: Assignment 1
   func fetchProductsData(upto limit: Int) async throws -> [Item]? {
     var products: [Item]?
     let productURLString = baseURLString + "/products"
@@ -33,14 +31,12 @@ struct NetworkManager: NetworkSession {
     }
     let request = URLRequest(url: queryURL)
 
-    // Week 9: Assignment 2
     let (data, response) = try await session.data(for: request)
     guard let httpResponse = response as? HTTPURLResponse, (200..<300).contains(httpResponse.statusCode) else {
       handleHTTPError(response)
       return nil
     }
 
-    // Week 9: Assignment 2
     do {
       products = try decoder.decode([Item].self, from: data)
     } catch let DecodingError.dataCorrupted(context) {
@@ -66,7 +62,6 @@ struct NetworkManager: NetworkSession {
     return products
   }
 
-  // Week 9: Assignment 1
   func fetchUserInfo(for id: Int) async throws -> User? {
     var user: User?
     let userURLString = baseURLString + "/users/\(id)"
@@ -81,14 +76,12 @@ struct NetworkManager: NetworkSession {
 
     let request = URLRequest(url: queryURL)
 
-    // Week 9: Assignment 2
     let (data, response) = try await session.data(for: request)
     guard let httpResponse = response as? HTTPURLResponse, (200..<300).contains(httpResponse.statusCode) else {
       handleHTTPError(response)
       return nil
     }
 
-    // Week 9: Assignment 2
     do {
       user = try decoder.decode(User.self, from: data)
     } catch let DecodingError.dataCorrupted(context) {
@@ -114,7 +107,6 @@ struct NetworkManager: NetworkSession {
     return user
   }
 
-  // Week 9: Assignment 2
   func handleHTTPError(_ response: URLResponse) {
     if let httpResponse = response as? HTTPURLResponse {
       switch httpResponse.statusCode {
@@ -135,14 +127,12 @@ struct NetworkManager: NetworkSession {
   }
 }
 
-// Week 9: Assignment 4
 struct MockNetworkManager: NetworkSession {
   let decoder = JSONDecoder()
 
   func fetchProductsData(upto limit: Int) async throws -> [Item]? {
     var products: [Item]?
 
-    // Week 9: Assignment 2
     if let localURL = Bundle.main.url(forResource: "items", withExtension: "json") {
       do {
         let productsData = try Data(contentsOf: localURL)
@@ -175,7 +165,6 @@ struct MockNetworkManager: NetworkSession {
   func fetchUserInfo(for id: Int) async throws -> User? {
     var user: User?
 
-    // Week 9: Assignment 2
     if let localURL = Bundle.main.url(forResource: "user", withExtension: "json") {
       do {
         let userData = try Data(contentsOf: localURL)

@@ -9,7 +9,6 @@ import SwiftUI
 
 struct ItemsListView: View {
   @EnvironmentObject var cartStore: CartManager
-  // Week 9: Assignment 3
   @EnvironmentObject var networkMonitor: NetworkMonitor
   @State private var searchName = ""
   var items: [Item]
@@ -28,7 +27,6 @@ struct ItemsListView: View {
 
   var body: some View {
     NavigationStack {
-      // Week 9: Assignment 3
       if networkMonitor.isConnected {
         List {
           ForEach(matchedItems) { item in
@@ -71,7 +69,6 @@ struct ItemsListView: View {
           }
         }
       } else {
-        // Week 9: Assignment 3
         NetworkStatusView()
           .navigationTitle(Constants.General.appTitle)
           .navigationBarTitleDisplayMode(.inline)

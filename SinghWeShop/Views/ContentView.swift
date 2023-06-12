@@ -4,12 +4,11 @@
 //
 //  Created by Yeshu Singh on 4/9/23.
 //
-// Current Week 09
+// Current Week 11
 
 import SwiftUI
 
 struct ContentView: View {
-  // Week 9: Assignment 3
   @StateObject private var networkMonitor = NetworkMonitor()
   @StateObject private var itemStore = ItemsManager()
   @StateObject private var cartStore = CartManager()
@@ -56,7 +55,6 @@ struct ContentView: View {
     }
     .foregroundColor(Color(Constants.Assets.textColor))
     .environmentObject(cartStore)
-    // Week 9: Assignment 3
     .environmentObject(networkMonitor)
     .task {
       do {
