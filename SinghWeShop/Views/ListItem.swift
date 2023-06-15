@@ -9,16 +9,17 @@ import SwiftUI
 
 struct ListItem: View {
   var item: Item
+  @State var itemImage: UIImage?
 
   var body: some View {
     HStack(alignment: .top, spacing: 10) {
-      AsyncImage(url: URL(string: item.imageURL)) { image in
-        image
+      if let itemImage = itemImage {
+        Image(uiImage: itemImage)
           .resizable()
           .aspectRatio(1, contentMode: .fit)
           .frame(width: 100)
           .cornerRadius(Constants.General.cornerRadius)
-      } placeholder: {
+      } else {
         Color.gray.opacity(0.4)
           .aspectRatio(1, contentMode: .fit)
           .frame(width: 100)
@@ -55,6 +56,11 @@ struct ListItem: View {
         }
       }
     }
+    .task {
+      do {
+        itemImage = try await ImageStorage.shared.image(item.imageURL)
+      } catch { print("error: ", error) }
+    }
   }
 }
 
@@ -62,8 +68,8 @@ struct ListItem: View {
 struct ListItem_Previews: PreviewProvider {
   static var previews: some View {
     VStack {
-      ListItem(item: ItemSampleData.notepad)
-      ListItem(item: ItemSampleData.jeans)
+      ListItem(item: ItemSampleData.womenTshirt)
+      ListItem(item: ItemSampleData.rainJacket)
     }
   }
 }

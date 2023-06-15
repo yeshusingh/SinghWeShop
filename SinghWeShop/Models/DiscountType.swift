@@ -13,3 +13,9 @@ enum DiscountType: Double, CaseIterable {
   case blackFriday = 15.0
   case newYear = 20.0
 }
+
+extension String: LocalizedError {
+  public var errorDescription: String? {
+    return self
+  }
+}

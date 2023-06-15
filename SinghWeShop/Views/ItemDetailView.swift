@@ -17,21 +17,22 @@ struct ItemDetailView: View {
   @EnvironmentObject var cartStore: CartManager
 
   var item: Item
+  @State var itemImage: UIImage?
 
   var body: some View {
     ZStack {
       ScrollView(showsIndicators: false) {
         VStack(spacing: 10) {
           if verticalSizeClass == .compact {
-            AsyncImage(url: URL(string: item.imageURL)) { image in
-              image
+            if let itemImage = itemImage {
+              Image(uiImage: itemImage)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(height: 200)
                 .cornerRadius(Constants.General.cornerRadius)
                 .shadow(radius: Constants.General.shadowRadius)
                 .padding(.bottom)
-            } placeholder: {
+            } else {
               Color.gray.opacity(0.4)
                 .aspectRatio(1, contentMode: .fit)
                 .frame(width: 100)
@@ -41,14 +42,14 @@ struct ItemDetailView: View {
                 }
             }
           } else {
-            AsyncImage(url: URL(string: item.imageURL)) { image in
-              image
+            if let itemImage = itemImage {
+              Image(uiImage: itemImage)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .cornerRadius(Constants.General.cornerRadius)
                 .shadow(radius: Constants.General.shadowRadius)
                 .padding(.bottom)
-            } placeholder: {
+            } else {
               Color.gray.opacity(0.4)
                 .aspectRatio(1, contentMode: .fit)
                 .frame(width: 100)
@@ -124,13 +125,18 @@ struct ItemDetailView: View {
         .padding()
       }
     }
+    .task {
+      do {
+        itemImage = try await ImageStorage.shared.image(item.imageURL)
+      } catch { print("error: ", error) }
+    }
   }
 }
 
 #if DEBUG
 struct ItemDetailView_Previews: PreviewProvider {
   static var previews: some View {
-    ItemDetailView(item: ItemSampleData.eraser)
+    ItemDetailView(item: ItemSampleData.shortSleeve)
       .environmentObject(CartManager())
   }
 }

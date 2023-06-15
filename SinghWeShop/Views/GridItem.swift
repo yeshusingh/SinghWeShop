@@ -9,16 +9,17 @@ import SwiftUI
 
 struct GridItem: View {
   var item: Item
+  @State var itemImage: UIImage?
 
   var body: some View {
     VStack(spacing: 10) {
-      AsyncImage(url: URL(string: item.imageURL)) { image in
-        image
+      if let itemImage = itemImage {
+        Image(uiImage: itemImage)
           .resizable()
           .aspectRatio(1, contentMode: .fit)
           .frame(width: 100)
           .cornerRadius(Constants.General.cornerRadius)
-      } placeholder: {
+      } else {
         Color.gray.opacity(0.4)
           .aspectRatio(1, contentMode: .fit)
           .frame(width: 100)
@@ -63,6 +64,11 @@ struct GridItem: View {
         .strokeBorder(lineWidth: Constants.General.strokeBorderWidth / 3)
     )
     .cornerRadius(Constants.General.cornerRadius)
+    .task {
+      do {
+        itemImage = try await ImageStorage.shared.image(item.imageURL)
+      } catch { print("error: ", error) }
+    }
   }
 }
 
@@ -70,8 +76,8 @@ struct GridItem: View {
 struct GridItem_Previews: PreviewProvider {
   static var previews: some View {
     VStack {
-      GridItem(item: ItemSampleData.eraser)
-      GridItem(item: ItemSampleData.pencil)
+      GridItem(item: ItemSampleData.boatNeckT)
+      GridItem(item: ItemSampleData.shortSleeve)
     }
   }
 }

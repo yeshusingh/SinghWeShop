@@ -32,6 +32,8 @@
 		1268D5282A12A3E000C515DE /* CartScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1268D5272A12A3E000C515DE /* CartScreenUITests.swift */; };
 		1268D52A2A12A44700C515DE /* ItemDetailScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1268D5292A12A44700C515DE /* ItemDetailScreenUITests.swift */; };
 		1268D52C2A12A4B600C515DE /* OnboardingViewScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1268D52B2A12A4B600C515DE /* OnboardingViewScreenUITests.swift */; };
+		1281DDC22A3A838A00840927 /* DiskStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1281DDC12A3A838A00840927 /* DiskStorage.swift */; };
+		1281DDC42A3A839B00840927 /* ImageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1281DDC32A3A839B00840927 /* ImageStorage.swift */; };
 		1296BEEF2A1889B500D30344 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1296BEEE2A1889B500D30344 /* NetworkManager.swift */; };
 		12A69B502A2AC93D00E8DC9E /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A69B4F2A2AC93D00E8DC9E /* NetworkMonitor.swift */; };
 		12A69B522A2AD41700E8DC9E /* NetworkStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A69B512A2AD41700E8DC9E /* NetworkStatusView.swift */; };
@@ -95,6 +97,8 @@
 		1268D5272A12A3E000C515DE /* CartScreenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartScreenUITests.swift; sourceTree = "<group>"; };
 		1268D5292A12A44700C515DE /* ItemDetailScreenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemDetailScreenUITests.swift; sourceTree = "<group>"; };
 		1268D52B2A12A4B600C515DE /* OnboardingViewScreenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewScreenUITests.swift; sourceTree = "<group>"; };
+		1281DDC12A3A838A00840927 /* DiskStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiskStorage.swift; sourceTree = "<group>"; };
+		1281DDC32A3A839B00840927 /* ImageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStorage.swift; sourceTree = "<group>"; };
 		1296BEEE2A1889B500D30344 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		12A69B4F2A2AC93D00E8DC9E /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
 		12A69B512A2AD41700E8DC9E /* NetworkStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusView.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 				12E00C5A2A088E2A00A43052 /* Info.plist */,
 				1245FA9D29EC75B300299D2F /* PlayGround */,
 				123966E229E34305005EDA4E /* App */,
+				1281DDC02A3A834300840927 /* Storage */,
 				123966E329E3430C005EDA4E /* Models */,
 				1207470029FEF5460041B48F /* ViewModels */,
 				123966E429E3431A005EDA4E /* Views */,
@@ -263,6 +268,15 @@
 				12601D532A112B8600401C76 /* SinghWeShopUITestsLaunchTests.swift */,
 			);
 			path = SinghWeShopUITests;
+			sourceTree = "<group>";
+		};
+		1281DDC02A3A834300840927 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				1281DDC12A3A838A00840927 /* DiskStorage.swift */,
+				1281DDC32A3A839B00840927 /* ImageStorage.swift */,
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -421,6 +435,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1281DDC42A3A839B00840927 /* ImageStorage.swift in Sources */,
 				1207470A29FF30770041B48F /* ItemDetailView.swift in Sources */,
 				1207470429FEF5C80041B48F /* ItemsManager.swift in Sources */,
 				1245FAA029EC8E6600299D2F /* Item.swift in Sources */,
@@ -429,6 +444,7 @@
 				1207470229FEF5A60041B48F /* CartManager.swift in Sources */,
 				1201A6502A1A7CA1005F98F6 /* AccountView.swift in Sources */,
 				12A69B522A2AD41700E8DC9E /* NetworkStatusView.swift in Sources */,
+				1281DDC22A3A838A00840927 /* DiskStorage.swift in Sources */,
 				12E656512A080FCE00B52444 /* ItemsGridView.swift in Sources */,
 				1201A64C2A19F6FB005F98F6 /* User.swift in Sources */,
 				123966D729E3312E005EDA4E /* ContentView.swift in Sources */,

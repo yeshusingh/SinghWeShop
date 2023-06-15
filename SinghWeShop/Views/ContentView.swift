@@ -58,6 +58,7 @@ struct ContentView: View {
     .environmentObject(networkMonitor)
     .task {
       do {
+        try await ImageStorage.shared.setup()
         try await itemStore.loadItems()
       } catch { print("error: ", error) }
     }

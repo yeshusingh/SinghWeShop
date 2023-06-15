@@ -10,16 +10,17 @@ import SwiftUI
 struct CartRowView: View {
   @EnvironmentObject var cartStore: CartManager
   var item: Item
+  @State var itemImage: UIImage?
 
   var body: some View {
     HStack(alignment: .top, spacing: 10) {
-      AsyncImage(url: URL(string: item.imageURL)) { image in
-        image
+      if let itemImage = itemImage {
+        Image(uiImage: itemImage)
           .resizable()
           .aspectRatio(1, contentMode: .fit)
           .frame(width: 100)
           .cornerRadius(Constants.General.cornerRadius)
-      } placeholder: {
+      } else {
         Color.gray.opacity(0.4)
           .aspectRatio(1, contentMode: .fit)
           .frame(width: 100)
@@ -28,7 +29,6 @@ struct CartRowView: View {
             ProgressView()
           }
       }
-
       VStack(alignment: .leading, spacing: 0) {
         HStack {
           Text(item.name)
@@ -87,13 +87,18 @@ struct CartRowView: View {
         .padding(.top, 5)
       }
     }
+    .task {
+      do {
+        itemImage = try await ImageStorage.shared.image(item.imageURL)
+      } catch { print("error: ", error) }
+    }
   }
 }
 
 #if DEBUG
 struct CartRowView_Previews: PreviewProvider {
   static var previews: some View {
-    CartRowView(item: ItemSampleData.jeans)
+    CartRowView(item: ItemSampleData.boatNeckT)
       .environmentObject(CartManager())
   }
 }
