@@ -100,6 +100,11 @@ struct CartRowView_Previews: PreviewProvider {
   static var previews: some View {
     CartRowView(item: ItemSampleData.boatNeckT)
       .environmentObject(CartManager())
+      .task {
+        do {
+          try await ImageStorage.shared.setup()
+        } catch { print("error: ", error) }
+      }
   }
 }
 #endif

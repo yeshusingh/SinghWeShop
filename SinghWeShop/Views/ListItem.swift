@@ -71,6 +71,11 @@ struct ListItem_Previews: PreviewProvider {
       ListItem(item: ItemSampleData.womenTshirt)
       ListItem(item: ItemSampleData.rainJacket)
     }
+    .task {
+      do {
+        try await ImageStorage.shared.setup()
+      } catch { print("error: ", error) }
+    }
   }
 }
 #endif

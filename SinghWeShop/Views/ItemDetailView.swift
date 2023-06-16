@@ -138,6 +138,11 @@ struct ItemDetailView_Previews: PreviewProvider {
   static var previews: some View {
     ItemDetailView(item: ItemSampleData.shortSleeve)
       .environmentObject(CartManager())
+      .task {
+        do {
+          try await ImageStorage.shared.setup()
+        } catch { print("error: ", error) }
+      }
   }
 }
 #endif

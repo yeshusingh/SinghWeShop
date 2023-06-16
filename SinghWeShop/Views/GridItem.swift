@@ -79,6 +79,11 @@ struct GridItem_Previews: PreviewProvider {
       GridItem(item: ItemSampleData.boatNeckT)
       GridItem(item: ItemSampleData.shortSleeve)
     }
+    .task {
+      do {
+        try await ImageStorage.shared.setup()
+      } catch { print("error: ", error) }
+    }
   }
 }
 #endif
