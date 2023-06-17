@@ -9,7 +9,7 @@ import Foundation
 
 enum DiscountType: Double, CaseIterable {
   case defaultDiscount = 5.0
-  case nationalDay = 10.0
+  case independenceDay = 10.0
   case blackFriday = 15.0
   case newYear = 20.0
 }

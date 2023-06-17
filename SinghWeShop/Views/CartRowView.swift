@@ -79,7 +79,8 @@ struct CartRowView: View {
               .font(.caption)
               .fontWeight(.medium)
               .foregroundColor(Color(Constants.Assets.textColor))
-              .padding(5)
+              .padding([.vertical], 5)
+              .padding([.horizontal], 10)
               .background(.orange.opacity(0.7))
               .cornerRadius(Constants.General.cornerRadius)
           }

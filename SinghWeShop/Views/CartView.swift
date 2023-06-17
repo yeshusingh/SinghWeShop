@@ -10,30 +10,36 @@ import SwiftUI
 struct CartView: View {
   @EnvironmentObject var cartStore: CartManager
 
+  @Environment(\.verticalSizeClass)
+  var verticalSizeClass
+
+  @State private var isShowingCheckoutAlert = false
+
   var body: some View {
     NavigationStack {
       ScrollView {
         VStack(spacing: 20) {
+          Divider()
           ForEach(cartStore.cartItems) { item in
             CartRowView(item: item)
           }
         }
-        .padding()
+        .padding(20)
 
         if cartStore.cartItems.isEmpty {
           VStack {
             Text("Your cart is empty.")
           }
+          .frame(maxWidth: .infinity)
           .fontWeight(.medium)
-          .padding(30)
-          .background(.brown.opacity(0.3))
+          .padding(verticalSizeClass == .compact ? 10 : 80)
           .foregroundColor(Color(Constants.Assets.textColor))
           .overlay(
             RoundedRectangle(cornerRadius: Constants.General.cornerRadius)
               .strokeBorder(.orange)
           )
           .clipShape(RoundedRectangle(cornerRadius: Constants.General.cornerRadius))
-          .padding([.bottom], 20)
+          .padding([.horizontal, .bottom], 20)
         }
 
         VStack {
@@ -47,18 +53,17 @@ struct CartView: View {
           .padding(5)
           Divider()
         }
-        .padding([.horizontal], 30)
+        .padding([.horizontal], 20)
         .font(.title)
         .fontWeight(.semibold)
         .kerning(4.0)
         .foregroundColor(Color(Constants.Assets.textColor))
 
         Button {
-          // TODO: Call checkout steps
-          print("Checkout Step.")
+          isShowingCheckoutAlert = true
         } label: {
           Text("Order Now")
-            .font(.title2)
+            .font(.title3)
             .fontWeight(.semibold)
             .padding()
             .background(.orange.opacity(0.7))
@@ -66,10 +71,27 @@ struct CartView: View {
             .background(Color(Constants.Assets.buttonFilledTextColor))
             .cornerRadius(Constants.General.cornerRadius)
         }
-        .padding(.top, 30)
+        .padding(.top, 20)
       }
       .navigationTitle("My Cart")
       .navigationBarTitleDisplayMode(.inline)
+      .onAppear {
+        guard cartStore.cartItems.isEmpty else { return }
+        cartStore.loadCartFromJSONFile()
+      }
+      .alert("Checkout", isPresented: $isShowingCheckoutAlert) {
+        Button("OK", role: .none) {
+          withAnimation {
+            cartStore.clearCart()
+          }
+        }
+      } message: {
+        if cartStore.cartItems.isEmpty {
+          Text("Your cart is empty.")
+        } else {
+          Text("Your order has been placed successfully.")
+        }
+      }
     }
   }
 }

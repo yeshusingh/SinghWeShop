@@ -18,7 +18,7 @@ enum Constants {
   }
 
   enum General {
-    public static let cornerRadius = 20.0
+    public static let cornerRadius = 8.0
     public static let strokeBorderWidth = 3.0
     public static let iconPictureSize = 80.0
     public static let roundButtonSize = 56.0

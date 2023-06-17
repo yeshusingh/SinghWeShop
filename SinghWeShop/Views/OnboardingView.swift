@@ -72,7 +72,7 @@ struct OnboardingView: View {
               .foregroundColor(Color(Constants.Assets.textColor))
               .font(.largeTitle)
               .fontWeight(.semibold)
-            Text("You can apply discount coupons in the cart at the time of checkout.")
+            Text("All applicable discounts are applied in the cart at the time of checkout.")
               .font(.subheadline)
               .fontWeight(.regular)
               .foregroundColor(Color(Constants.Assets.textColor))

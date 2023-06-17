@@ -12,6 +12,7 @@ struct ContentView: View {
   @StateObject private var networkMonitor = NetworkMonitor()
   @StateObject private var itemStore = ItemsManager()
   @StateObject private var cartStore = CartManager()
+  @StateObject private var userStore = UserManager()
 
   @AppStorage("CurrentTabSelection")
   var selectedTab = 0
@@ -46,7 +47,7 @@ struct ContentView: View {
         .tag(2)
         .badge(cartStore.cartItems.count)
 
-      AccountView(user: itemStore.user)
+      AccountView(user: userStore.user)
         .tabItem {
           Image(systemName: "person")
           Text("Account")
@@ -64,7 +65,7 @@ struct ContentView: View {
     }
     .task {
       do {
-        try await itemStore.loadUser()
+        try await userStore.loadUser()
       } catch { print("error: ", error) }
     }
   }
