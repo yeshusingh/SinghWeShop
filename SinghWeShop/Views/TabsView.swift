@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct TabsView: View {
-  @StateObject private var networkMonitor = NetworkMonitor()
+  @EnvironmentObject var networkMonitor: NetworkMonitor
   @StateObject private var itemStore = ItemsManager()
   @StateObject private var cartStore = CartManager()
   var userStore: UserManager
@@ -56,7 +56,6 @@ struct TabsView: View {
     }
     .foregroundColor(Color(Constants.Assets.textColor))
     .environmentObject(cartStore)
-    .environmentObject(networkMonitor)
     .task {
       do {
         try await ImageStorage.shared.setup()
@@ -70,6 +69,7 @@ struct TabsView: View {
 struct TabsView_Previews: PreviewProvider {
   static var previews: some View {
     TabsView(userStore: UserManager())
+      .environmentObject(NetworkMonitor())
   }
 }
 #endif

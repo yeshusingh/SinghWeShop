@@ -13,6 +13,7 @@ struct LoginView: View {
   @Environment(\.colorScheme)
   var colorScheme
 
+  @StateObject private var networkMonitor = NetworkMonitor()
   @StateObject private var userStore = UserManager()
   @State var userID = ""
   @State var password = ""
@@ -25,9 +26,9 @@ struct LoginView: View {
     if !userStore.loginState {
       ZStack {
         LinearGradient(
-          colors: [.gray.opacity(colorScheme == .dark ? 0.9 : 0.3), .white],
-          startPoint: .top,
-          endPoint: .bottom
+          colors: [.white, .yellow.opacity(colorScheme == .dark ? 0.6 : 0.3), .white],
+          startPoint: .topLeading,
+          endPoint: .bottomTrailing
         )
         .ignoresSafeArea()
 
@@ -64,6 +65,10 @@ struct LoginView: View {
           }
           .frame(maxWidth: 250)
 
+          if !networkMonitor.isConnected {
+            Text("Network connection seems offline.\nPlease check your connection.")
+          }
+
           Button {
             Task {
               do {
@@ -98,6 +103,11 @@ struct LoginView: View {
               .cornerRadius(Constants.General.cornerRadius)
           }
           .padding(.top, verticalSizeClass == .compact ? 10 : 50)
+          .disabled(!networkMonitor.isConnected)
+          .opacity(!networkMonitor.isConnected ? 0.6 : 1.0)
+          if verticalSizeClass != .compact {
+            Spacer()
+          }
         }
       }
       .alert("Error", isPresented: $isShowingAlert) {
@@ -110,6 +120,7 @@ struct LoginView: View {
       }
     } else {
       TabsView(userStore: userStore)
+        .environmentObject(networkMonitor)
     }
   }
 
