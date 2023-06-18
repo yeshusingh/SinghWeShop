@@ -63,7 +63,7 @@ struct ItemDetailView: View {
           VStack(alignment: .leading, spacing: 10) {
             HStack {
               Text(item.name)
-                .font(.largeTitle)
+                .font(.title2)
                 .fontWeight(.semibold)
                 .kerning(0.5)
                 .multilineTextAlignment(.leading)
@@ -75,12 +75,12 @@ struct ItemDetailView: View {
 
             HStack {
               Text("Price :")
-                .font(.title2)
-                .fontWeight(.bold)
+                .font(.title3)
+                .fontWeight(.semibold)
                 .kerning(0.5)
                 .multilineTextAlignment(.leading)
               Text("$\(item.price, specifier: "%.2f")")
-                .font(.title2)
+                .font(.body)
                 .fontWeight(.regular)
                 .kerning(0.5)
                 .multilineTextAlignment(.leading)
@@ -88,8 +88,8 @@ struct ItemDetailView: View {
 
             VStack(alignment: .leading) {
               Text("Description :")
-                .font(.title2)
-                .fontWeight(.bold)
+                .font(.title3)
+                .fontWeight(.semibold)
                 .kerning(0.5)
                 .multilineTextAlignment(.leading)
               Text(item.description)
@@ -115,12 +115,11 @@ struct ItemDetailView: View {
                 .foregroundColor(Color(Constants.Assets.textColor))
                 .padding()
                 .background(Color(Constants.Assets.buttonFilledTextColor))
-                .opacity(0.7)
                 .cornerRadius(Constants.General.cornerRadius)
-                .shadow(radius: Constants.General.shadowRadius, x: 5, y: 5)
+                .shadow(radius: Constants.General.shadowRadius, x: 2, y: 3)
             }
           }
-          .padding(.top, 50)
+          .padding(.top, 30)
         }
         .padding()
       }

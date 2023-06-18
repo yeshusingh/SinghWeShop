@@ -38,7 +38,7 @@ struct LoginView: View {
               .resizable()
               .frame(width: Constants.General.iconPictureSize, height: Constants.General.iconPictureSize)
               .clipShape(RoundedRectangle(cornerRadius: Constants.General.cornerRadius))
-              .shadow(radius: Constants.General.shadowRadius, x: 5, y: 5)
+              .shadow(radius: Constants.General.shadowRadius, x: 2, y: 2)
 
             Text(Constants.General.appTitle)
               .font(.title)
@@ -98,9 +98,10 @@ struct LoginView: View {
               .kerning(3.0)
               .fontWeight(.semibold)
               .padding()
-              .background(.orange.opacity(0.7))
+              .background(Color(Constants.Assets.buttonFilledTextColor))
               .foregroundColor(Color(Constants.Assets.textColor))
               .cornerRadius(Constants.General.cornerRadius)
+              .shadow(radius: Constants.General.shadowRadius, x: 2, y: 2)
           }
           .padding(.top, verticalSizeClass == .compact ? 10 : 50)
           .disabled(!networkMonitor.isConnected)

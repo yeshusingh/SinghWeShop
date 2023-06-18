@@ -36,7 +36,7 @@ struct CartView: View {
           .foregroundColor(Color(Constants.Assets.textColor))
           .overlay(
             RoundedRectangle(cornerRadius: Constants.General.cornerRadius)
-              .strokeBorder(.orange)
+              .strokeBorder(.clear)
           )
           .clipShape(RoundedRectangle(cornerRadius: Constants.General.cornerRadius))
           .padding([.horizontal, .bottom], 20)
@@ -44,7 +44,7 @@ struct CartView: View {
 
         VStack {
           Divider()
-          Section("Order Total") {
+          Section("Cart Total") {
             LabeledContent("Total", value: "$\(round(cartStore.totalCartItemsAmount * 100) / 100)")
               .font(.title3)
               .fontWeight(.light)
@@ -66,12 +66,12 @@ struct CartView: View {
             .font(.title3)
             .fontWeight(.semibold)
             .padding()
-            .background(.orange.opacity(0.7))
             .foregroundColor(Color(Constants.Assets.textColor))
             .background(Color(Constants.Assets.buttonFilledTextColor))
             .cornerRadius(Constants.General.cornerRadius)
+            .shadow(radius: Constants.General.shadowRadius, x: 2, y: 2)
         }
-        .padding(.top, 20)
+        .padding(.top, 30)
       }
       .navigationTitle("My Cart")
       .navigationBarTitleDisplayMode(.inline)

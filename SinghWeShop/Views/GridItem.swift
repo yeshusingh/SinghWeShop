@@ -17,35 +17,34 @@ struct GridItem: View {
         Image(uiImage: itemImage)
           .resizable()
           .aspectRatio(1, contentMode: .fit)
-          .frame(width: 100)
           .cornerRadius(Constants.General.cornerRadius)
+          .shadow(radius: Constants.General.shadowRadius / 2)
       } else {
         Color.gray.opacity(0.4)
           .aspectRatio(1, contentMode: .fit)
-          .frame(width: 100)
           .cornerRadius(Constants.General.cornerRadius)
+          .shadow(radius: Constants.General.shadowRadius / 2)
           .overlay {
             ProgressView()
           }
       }
 
-      VStack(alignment: .leading, spacing: 10) {
+      VStack(alignment: .leading, spacing: 5) {
         HStack {
           Text(item.name)
-            .font(.headline)
+            .font(.body)
             .fontWeight(.semibold)
             .kerning(0.5)
             .multilineTextAlignment(.leading)
             .lineSpacing(-10)
             .foregroundColor(.accentColor)
-
           Spacer()
         }
 
         HStack {
           Text("Price :")
             .font(.callout)
-            .fontWeight(.bold)
+            .fontWeight(.regular)
             .kerning(0.5)
             .multilineTextAlignment(.leading)
           Text("$\(item.price, specifier: "%.2f")")
@@ -55,15 +54,8 @@ struct GridItem: View {
             .multilineTextAlignment(.leading)
         }
       }
-
       Spacer()
     }
-    .padding()
-    .overlay(
-      RoundedRectangle(cornerRadius: Constants.General.cornerRadius)
-        .strokeBorder(lineWidth: Constants.General.strokeBorderWidth / 3)
-    )
-    .cornerRadius(Constants.General.cornerRadius)
     .task {
       do {
         itemImage = try await ImageStorage.shared.image(item.imageURL)

@@ -23,7 +23,7 @@ enum Constants {
     public static let iconPictureSize = 80.0
     public static let roundButtonSize = 40.0
     public static let appTitle = "WeShop"
-    public static let shadowRadius = 10.0
+    public static let shadowRadius = 5.0
   }
 
   enum ImageLiteral {

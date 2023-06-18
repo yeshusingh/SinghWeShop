@@ -23,7 +23,7 @@ struct OnboardingView: View {
             .resizable()
             .frame(width: Constants.General.iconPictureSize, height: Constants.General.iconPictureSize)
             .clipShape(RoundedRectangle(cornerRadius: Constants.General.cornerRadius))
-            .shadow(radius: Constants.General.shadowRadius, x: 5, y: 5)
+            .shadow(radius: Constants.General.shadowRadius, x: 2, y: 2)
 
           Text(Constants.General.appTitle)
             .font(.title)
