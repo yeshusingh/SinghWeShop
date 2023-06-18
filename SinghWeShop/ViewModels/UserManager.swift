@@ -14,11 +14,13 @@ class UserManager: ObservableObject {
     }
   }
 
+  @Published var loginState = false
+
   let userJSONURL = URL(filePath: "user", relativeTo: .documentsDirectory).appendingPathExtension("json")
   let service: NetworkSession = NetworkManager()
 
-  func loadUser() async throws {
-    if let userInfo = try? await service.fetchUserInfo(for: 1) {
+  func loadUser(for id: Int) async throws {
+    if let userInfo = try? await service.fetchUserInfo(for: id) {
       await MainActor.run {
         user = userInfo
       }
@@ -62,6 +64,16 @@ class UserManager: ObservableObject {
       } catch let DecodingError.typeMismatch(type, context) {
         print("Type '\(type)' mismatch:", context.debugDescription)
         print("codingPath:", context.codingPath)
+      } catch {
+        print("error: ", error)
+      }
+    }
+  }
+
+  func removeUserJSONFile() {
+    if FileManager.default.fileExists(atPath: userJSONURL.absoluteURL.path()) {
+      do {
+        try FileManager.default.removeItem(at: userJSONURL)
       } catch {
         print("error: ", error)
       }

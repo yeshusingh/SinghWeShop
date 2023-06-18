@@ -81,4 +81,14 @@ class ItemsManager: ObservableObject {
       print("error: ", error)
     }
   }
+
+  func removeItemsJSONFile() {
+    if FileManager.default.fileExists(atPath: itemsJSONURL.absoluteURL.path()) {
+      do {
+        try FileManager.default.removeItem(at: itemsJSONURL)
+      } catch {
+        print("error: ", error)
+      }
+    }
+  }
 }

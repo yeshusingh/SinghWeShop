@@ -101,4 +101,14 @@ class CartManager: ObservableObject {
       print("error: ", error)
     }
   }
+
+  func removeCartJSONFile() {
+    if FileManager.default.fileExists(atPath: cartJSONURL.absoluteURL.path()) {
+      do {
+        try FileManager.default.removeItem(at: cartJSONURL)
+      } catch {
+        print("error: ", error)
+      }
+    }
+  }
 }

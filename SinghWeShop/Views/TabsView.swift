@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  TabView.swift
 //  SinghWeShop
 //
 //  Created by Yeshu Singh on 4/9/23.
@@ -8,11 +8,11 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct TabsView: View {
   @StateObject private var networkMonitor = NetworkMonitor()
   @StateObject private var itemStore = ItemsManager()
   @StateObject private var cartStore = CartManager()
-  @StateObject private var userStore = UserManager()
+  var userStore: UserManager
 
   @AppStorage("CurrentTabSelection")
   var selectedTab = 0
@@ -47,7 +47,7 @@ struct ContentView: View {
         .tag(2)
         .badge(cartStore.cartItems.count)
 
-      AccountView(user: userStore.user)
+      AccountView(itemStore: itemStore, cartStore: cartStore, userStore: userStore, user: userStore.user)
         .tabItem {
           Image(systemName: "person")
           Text("Account")
@@ -63,18 +63,13 @@ struct ContentView: View {
         try await itemStore.loadItems()
       } catch { print("error: ", error) }
     }
-    .task {
-      do {
-        try await userStore.loadUser()
-      } catch { print("error: ", error) }
-    }
   }
 }
 
 #if DEBUG
-struct ContentView_Previews: PreviewProvider {
+struct TabsView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView()
+    TabsView(userStore: UserManager())
   }
 }
 #endif

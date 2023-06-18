@@ -12,6 +12,13 @@ protocol NetworkSession {
   func fetchUserInfo(for id: Int) async throws -> User?
 }
 
+enum NetworkError: String, Error {
+  case unableToProcess = "Unable to process login request."
+  case encodingForLogin = "Failed to process encoding for login request."
+  case serverBadResponse = "Server responded with errror."
+  case loginFailed = "Login failed."
+}
+
 struct NetworkManager: NetworkSession {
   let baseURLString = "https://fakestoreapi.com"
   let session = URLSession.shared
@@ -105,6 +112,40 @@ struct NetworkManager: NetworkSession {
     }
 
     return user
+  }
+
+  func performLoginFor(user: String, password: String) async throws {
+    let loginURLString = baseURLString + "/auth/login"
+
+    guard let loginURLComponents = URLComponents(string: loginURLString) else {
+      throw NetworkError.unableToProcess
+    }
+    guard let queryURL = loginURLComponents.url else {
+      throw NetworkError.unableToProcess
+    }
+
+    let bodyDictionary = ["username": user, "password": password]
+    guard let encoded = try? JSONEncoder().encode(bodyDictionary) else {
+      throw NetworkError.encodingForLogin
+    }
+
+    var request = URLRequest(url: queryURL)
+    request.httpMethod = "POST"
+    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+    request.httpBody = encoded
+
+    do {
+      let (data, response) = try await session.data(for: request)
+
+      guard let httpResponse = response as? HTTPURLResponse, (200..<300).contains(httpResponse.statusCode) else {
+        handleHTTPError(response)
+        throw NetworkError.serverBadResponse
+      }
+      print("Response data: ", String(data: data, encoding: .utf8) ?? "")
+    } catch {
+      print("Login failed - \(error.localizedDescription)")
+      throw NetworkError.loginFailed
+    }
   }
 
   func handleHTTPError(_ response: URLResponse) {
