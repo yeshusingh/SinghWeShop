@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ItemsGridView: View {
   @EnvironmentObject var networkMonitor: NetworkMonitor
+  @State private var isOnboardingViewShowing = false
   @State private var searchName = ""
 
   var items: [Item]
@@ -49,8 +50,8 @@ struct ItemsGridView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
           ToolbarItem {
-            NavigationLink {
-              OnboardingView()
+            Button {
+              isOnboardingViewShowing = true
             } label: {
               Image(systemName: Constants.ImageLiteral.infoCircle)
                 .imageScale(.large)
@@ -60,14 +61,17 @@ struct ItemsGridView: View {
             }
           }
         }
+        .sheet(isPresented: $isOnboardingViewShowing) {
+          OnboardingView()
+        }
       } else {
         NetworkStatusView()
           .navigationTitle(Constants.General.appTitle)
           .navigationBarTitleDisplayMode(.inline)
           .toolbar {
             ToolbarItem {
-              NavigationLink {
-                OnboardingView()
+              Button {
+                isOnboardingViewShowing = true
               } label: {
                 Image(systemName: Constants.ImageLiteral.infoCircle)
                   .imageScale(.large)
@@ -76,6 +80,9 @@ struct ItemsGridView: View {
                   .fontWeight(.semibold)
               }
             }
+          }
+          .sheet(isPresented: $isOnboardingViewShowing) {
+            OnboardingView()
           }
       }
     }

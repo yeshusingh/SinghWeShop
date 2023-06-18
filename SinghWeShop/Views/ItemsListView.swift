@@ -11,6 +11,7 @@ struct ItemsListView: View {
   @EnvironmentObject var cartStore: CartManager
   @EnvironmentObject var networkMonitor: NetworkMonitor
   @State private var searchName = ""
+  @State private var isOnboardingViewShowing = false
   var items: [Item]
 
   var matchedItems: [Item] {
@@ -57,8 +58,8 @@ struct ItemsListView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
           ToolbarItem {
-            NavigationLink {
-              OnboardingView()
+            Button {
+              isOnboardingViewShowing = true
             } label: {
               Image(systemName: Constants.ImageLiteral.infoCircle)
                 .imageScale(.large)
@@ -68,14 +69,17 @@ struct ItemsListView: View {
             }
           }
         }
+        .sheet(isPresented: $isOnboardingViewShowing) {
+          OnboardingView()
+        }
       } else {
         NetworkStatusView()
           .navigationTitle(Constants.General.appTitle)
           .navigationBarTitleDisplayMode(.inline)
           .toolbar {
             ToolbarItem {
-              NavigationLink {
-                OnboardingView()
+              Button {
+                isOnboardingViewShowing = true
               } label: {
                 Image(systemName: Constants.ImageLiteral.infoCircle)
                   .imageScale(.large)
@@ -84,6 +88,9 @@ struct ItemsListView: View {
                   .fontWeight(.semibold)
               }
             }
+          }
+          .sheet(isPresented: $isOnboardingViewShowing) {
+            OnboardingView()
           }
       }
     }
