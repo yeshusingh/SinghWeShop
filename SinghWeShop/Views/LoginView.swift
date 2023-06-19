@@ -33,20 +33,8 @@ struct LoginView: View {
         .ignoresSafeArea()
 
         VStack(alignment: .center, spacing: 10) {
-          VStack(spacing: 5.0) {
-            Image(Constants.Assets.iconPicture)
-              .resizable()
-              .frame(width: Constants.General.iconPictureSize, height: Constants.General.iconPictureSize)
-              .clipShape(RoundedRectangle(cornerRadius: Constants.General.cornerRadius))
-              .shadow(radius: Constants.General.shadowRadius, x: 2, y: 2)
-
-            Text(Constants.General.appTitle)
-              .font(.title)
-              .fontWeight(.semibold)
-              .kerning(0.5)
-              .foregroundColor(Color(Constants.Assets.textColor))
-          }
-          .padding(verticalSizeClass == .compact ? 10 : 50)
+          AppPicTitleView()
+            .padding(verticalSizeClass == .compact ? 10 : 50)
 
           HStack {
             TextField("UserID", text: $userID, prompt: Text("Enter UserID"))
@@ -93,19 +81,12 @@ struct LoginView: View {
               }
             }
           } label: {
-            Text("Login")
-              .font(.title3)
-              .kerning(3.0)
-              .fontWeight(.semibold)
-              .padding()
-              .background(Color(Constants.Assets.buttonFilledTextColor))
-              .foregroundColor(Color(Constants.Assets.textColor))
-              .cornerRadius(Constants.General.cornerRadius)
-              .shadow(radius: Constants.General.shadowRadius, x: 2, y: 2)
+            ButtonLabelView(title: "Login")
           }
           .padding(.top, verticalSizeClass == .compact ? 10 : 50)
           .disabled(!networkMonitor.isConnected)
           .opacity(!networkMonitor.isConnected ? 0.6 : 1.0)
+
           if verticalSizeClass != .compact {
             Spacer()
           }

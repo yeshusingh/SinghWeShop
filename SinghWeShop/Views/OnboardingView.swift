@@ -19,17 +19,7 @@ struct OnboardingView: View {
     ScrollView(showsIndicators: false) {
       ZStack(alignment: .top) {
         VStack(spacing: 5.0) {
-          Image(Constants.Assets.iconPicture)
-            .resizable()
-            .frame(width: Constants.General.iconPictureSize, height: Constants.General.iconPictureSize)
-            .clipShape(RoundedRectangle(cornerRadius: Constants.General.cornerRadius))
-            .shadow(radius: Constants.General.shadowRadius, x: 2, y: 2)
-
-          Text(Constants.General.appTitle)
-            .font(.title)
-            .fontWeight(.semibold)
-            .kerning(0.5)
-            .foregroundColor(Color(Constants.Assets.textColor))
+          AppPicTitleView()
 
           Text("This is where you come to do all your shopping.")
             .font(.subheadline)
@@ -58,44 +48,18 @@ struct OnboardingView: View {
       }
 
       VStack(alignment: .leading, spacing: 15) {
-        HStack {
-          Image(systemName: "1.circle")
-            .imageScale(.large)
-            .foregroundColor(Color(Constants.Assets.textColor))
-            .font(.largeTitle)
-            .fontWeight(.semibold)
-          Text("Browse the items - You can view items on the homepage and click them to get more details.")
-            .font(.subheadline)
-            .fontWeight(.regular)
-            .foregroundColor(Color(Constants.Assets.textColor))
-        }
-
-        HStack {
-          Image(systemName: "2.circle")
-            .imageScale(.large)
-            .foregroundColor(Color(Constants.Assets.textColor))
-            .font(.largeTitle)
-            .fontWeight(.semibold)
-          Text("""
+        OnboardingRowTextView(
+          imageName: "1.circle",
+          text: "Browse the items - You can view items on the homepage and click them to get more details.")
+        OnboardingRowTextView(
+          imageName: "2.circle",
+          text: """
             Add items to the cart as you continue shopping. \
             And the cart will hold all added items in place for checkout.
             """)
-          .font(.subheadline)
-          .fontWeight(.regular)
-          .foregroundColor(Color(Constants.Assets.textColor))
-        }
-
-        HStack {
-          Image(systemName: "3.circle")
-            .imageScale(.large)
-            .foregroundColor(Color(Constants.Assets.textColor))
-            .font(.largeTitle)
-            .fontWeight(.semibold)
-          Text("All applicable discounts are applied in the cart at the time of checkout.")
-            .font(.subheadline)
-            .fontWeight(.regular)
-            .foregroundColor(Color(Constants.Assets.textColor))
-        }
+        OnboardingRowTextView(
+          imageName: "3.circle",
+          text: "All applicable discounts are applied in the cart at the time of checkout.")
       }
       .padding(.vertical, verticalSizeClass == .compact ? 0 : 40)
     }

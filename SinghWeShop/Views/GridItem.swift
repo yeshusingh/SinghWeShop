@@ -8,51 +8,16 @@
 import SwiftUI
 
 struct GridItem: View {
-  var item: Item
   @State var itemImage: UIImage?
+  var item: Item
 
   var body: some View {
     VStack(spacing: 10) {
-      if let itemImage = itemImage {
-        Image(uiImage: itemImage)
-          .resizable()
-          .aspectRatio(1, contentMode: .fit)
-          .cornerRadius(Constants.General.cornerRadius)
-          .shadow(radius: Constants.General.shadowRadius / 2)
-      } else {
-        Color.gray.opacity(0.4)
-          .aspectRatio(1, contentMode: .fit)
-          .cornerRadius(Constants.General.cornerRadius)
-          .shadow(radius: Constants.General.shadowRadius / 2)
-          .overlay {
-            ProgressView()
-          }
-      }
+      ItemGridImageView(itemImage: itemImage)
 
-      VStack(alignment: .leading, spacing: 5) {
-        HStack {
-          Text(item.name)
-            .font(.body)
-            .fontWeight(.semibold)
-            .kerning(0.5)
-            .multilineTextAlignment(.leading)
-            .lineSpacing(-10)
-            .foregroundColor(.accentColor)
-          Spacer()
-        }
-
-        HStack {
-          Text("Price :")
-            .font(.callout)
-            .fontWeight(.regular)
-            .kerning(0.5)
-            .multilineTextAlignment(.leading)
-          Text("$\(item.price, specifier: "%.2f")")
-            .font(.subheadline)
-            .fontWeight(.regular)
-            .kerning(0.5)
-            .multilineTextAlignment(.leading)
-        }
+      VStack(alignment: .leading, spacing: 2) {
+        ItemNameView(name: item.name)
+        PriceView(title: "Price: ", price: item.price)
       }
       Spacer()
     }

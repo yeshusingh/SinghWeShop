@@ -18,7 +18,12 @@ import UIKit
 
   private(set) var cache: [String: DownloadState] = [:]
 
+  // swiftlint:disable:next implicitly_unwrapped_optional
   private var storage: DiskStorage!
+  // DiskStorage is annotated to run on ImageStorage serial executor to avoid concurrency issues.
+  // Hence a instance of Diskstorage cannot be created until an ImageStorage instance has been created.
+  // Thus creation of DiskStorage has been delayed till a setup function for ImageStorage is called.
+
   private var storedImagesIndex = Set<String>()
 
   func setup() async throws {
@@ -28,7 +33,6 @@ import UIKit
     }
   }
 
-  // Methods for Cache
   func addToCache(_ image: UIImage, forKey key: String) {
     cache[key] = .completed(image)
   }
@@ -37,7 +41,6 @@ import UIKit
     cache.removeAll()
   }
 
-  // Methods for DiskStorage
   func store(image: UIImage, forKey key: String) async throws {
     guard let data = image.pngData() else {
       throw "Could not save image \(key)"

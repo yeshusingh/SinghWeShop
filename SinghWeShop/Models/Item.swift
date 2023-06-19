@@ -21,6 +21,18 @@ struct Item: Hashable, Identifiable, Codable {
   var category: String
   var description: String
   var imageURL: String
+
+  static func formatDecimalDigit(number: Double) -> String {
+    let formatter = NumberFormatter()
+    formatter.maximumFractionDigits = 2
+    formatter.minimumFractionDigits = 2
+
+    if let result = formatter.string(from: NSNumber(value: number)) {
+      return result
+    } else {
+      return "\(round(number * 100) / 100)"
+    }
+  }
 }
 
 extension Item {

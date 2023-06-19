@@ -50,15 +50,7 @@ struct ItemsGridView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
           ToolbarItem {
-            Button {
-              isOnboardingViewShowing = true
-            } label: {
-              Image(systemName: Constants.ImageLiteral.infoCircle)
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-                .font(.title2)
-                .fontWeight(.semibold)
-            }
+            ShowOnboardingButtonView(isOnboardingViewShowing: $isOnboardingViewShowing)
           }
         }
         .sheet(isPresented: $isOnboardingViewShowing) {
@@ -70,15 +62,7 @@ struct ItemsGridView: View {
           .navigationBarTitleDisplayMode(.inline)
           .toolbar {
             ToolbarItem {
-              Button {
-                isOnboardingViewShowing = true
-              } label: {
-                Image(systemName: Constants.ImageLiteral.infoCircle)
-                  .imageScale(.large)
-                  .foregroundColor(.accentColor)
-                  .font(.title2)
-                  .fontWeight(.semibold)
-              }
+              ShowOnboardingButtonView(isOnboardingViewShowing: $isOnboardingViewShowing)
             }
           }
           .sheet(isPresented: $isOnboardingViewShowing) {

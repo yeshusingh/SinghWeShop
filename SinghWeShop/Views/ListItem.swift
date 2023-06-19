@@ -8,52 +8,16 @@
 import SwiftUI
 
 struct ListItem: View {
-  var item: Item
   @State var itemImage: UIImage?
+  var item: Item
 
   var body: some View {
     HStack(alignment: .top, spacing: 10) {
-      if let itemImage = itemImage {
-        Image(uiImage: itemImage)
-          .resizable()
-          .aspectRatio(1, contentMode: .fit)
-          .frame(width: 100)
-          .cornerRadius(Constants.General.cornerRadius)
-      } else {
-        Color.gray.opacity(0.4)
-          .aspectRatio(1, contentMode: .fit)
-          .frame(width: 100)
-          .cornerRadius(Constants.General.cornerRadius)
-          .overlay {
-            ProgressView()
-          }
-      }
+      ItemRowImageView(itemImage: itemImage)
 
-      VStack(alignment: .leading, spacing: 10) {
-        HStack {
-          Text(item.name)
-            .font(.headline)
-            .fontWeight(.bold)
-            .kerning(0.5)
-            .multilineTextAlignment(.leading)
-            .lineSpacing(-10)
-            .foregroundColor(.accentColor)
-
-          Spacer()
-        }
-
-        HStack {
-          Text("Price :")
-            .font(.callout)
-            .fontWeight(.semibold)
-            .kerning(0.5)
-            .multilineTextAlignment(.leading)
-          Text("$\(item.price, specifier: "%.2f")")
-            .font(.subheadline)
-            .fontWeight(.regular)
-            .kerning(0.5)
-            .multilineTextAlignment(.leading)
-        }
+      VStack(alignment: .leading, spacing: 2) {
+        ItemNameView(name: item.name)
+        PriceView(title: "Price: ", price: item.price)
       }
     }
     .task {

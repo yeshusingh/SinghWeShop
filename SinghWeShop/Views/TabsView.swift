@@ -10,6 +10,7 @@ import SwiftUI
 
 struct TabsView: View {
   @EnvironmentObject var networkMonitor: NetworkMonitor
+
   @StateObject private var itemStore = ItemsManager()
   @StateObject private var cartStore = CartManager()
   var userStore: UserManager

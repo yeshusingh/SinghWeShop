@@ -10,6 +10,7 @@ import SwiftUI
 struct ItemsListView: View {
   @EnvironmentObject var cartStore: CartManager
   @EnvironmentObject var networkMonitor: NetworkMonitor
+
   @State private var searchName = ""
   @State private var isOnboardingViewShowing = false
   var items: [Item]
@@ -35,13 +36,7 @@ struct ItemsListView: View {
               ListItem(item: item)
             }
             .swipeActions(edge: .leading) {
-              Button {
-                cartStore.addToCart(item)
-              } label: {
-                Image(systemName: "highlighter")
-                Text("AddToCart")
-              }
-              .tint(.yellow)
+              SwipeButtonView(item: item)
             }
           }
         }
@@ -58,15 +53,7 @@ struct ItemsListView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
           ToolbarItem {
-            Button {
-              isOnboardingViewShowing = true
-            } label: {
-              Image(systemName: Constants.ImageLiteral.infoCircle)
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-                .font(.title2)
-                .fontWeight(.semibold)
-            }
+            ShowOnboardingButtonView(isOnboardingViewShowing: $isOnboardingViewShowing)
           }
         }
         .sheet(isPresented: $isOnboardingViewShowing) {
@@ -78,15 +65,7 @@ struct ItemsListView: View {
           .navigationBarTitleDisplayMode(.inline)
           .toolbar {
             ToolbarItem {
-              Button {
-                isOnboardingViewShowing = true
-              } label: {
-                Image(systemName: Constants.ImageLiteral.infoCircle)
-                  .imageScale(.large)
-                  .foregroundColor(.accentColor)
-                  .font(.title2)
-                  .fontWeight(.semibold)
-              }
+              ShowOnboardingButtonView(isOnboardingViewShowing: $isOnboardingViewShowing)
             }
           }
           .sheet(isPresented: $isOnboardingViewShowing) {

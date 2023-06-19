@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct CartView: View {
-  @EnvironmentObject var cartStore: CartManager
-
   @Environment(\.verticalSizeClass)
   var verticalSizeClass
+  @EnvironmentObject var cartStore: CartManager
 
   @State private var isShowingCheckoutAlert = false
 
@@ -27,25 +26,17 @@ struct CartView: View {
         .padding(20)
 
         if cartStore.cartItems.isEmpty {
-          VStack {
-            Text("Your cart is empty.")
-          }
-          .frame(maxWidth: .infinity)
-          .fontWeight(.medium)
-          .padding(verticalSizeClass == .compact ? 10 : 80)
-          .foregroundColor(Color(Constants.Assets.textColor))
-          .overlay(
-            RoundedRectangle(cornerRadius: Constants.General.cornerRadius)
-              .strokeBorder(.clear)
-          )
-          .clipShape(RoundedRectangle(cornerRadius: Constants.General.cornerRadius))
-          .padding([.horizontal, .bottom], 20)
+          Text("Your cart is empty.")
+            .fontWeight(.medium)
+            .foregroundColor(Color(Constants.Assets.textColor))
+            .padding(verticalSizeClass == .compact ? 10 : 80)
+            .padding([.horizontal, .bottom], 20)
         }
 
         VStack {
           Divider()
           Section("Cart Total") {
-            LabeledContent("Total", value: "$\(round(cartStore.totalCartItemsAmount * 100) / 100)")
+            LabeledContent("Total", value: "$\(Item.formatDecimalDigit(number: cartStore.totalCartItemsAmount))")
               .font(.title3)
               .fontWeight(.light)
               .kerning(0.5)
@@ -62,14 +53,7 @@ struct CartView: View {
         Button {
           isShowingCheckoutAlert = true
         } label: {
-          Text("Order Now")
-            .font(.title3)
-            .fontWeight(.semibold)
-            .padding()
-            .foregroundColor(Color(Constants.Assets.textColor))
-            .background(Color(Constants.Assets.buttonFilledTextColor))
-            .cornerRadius(Constants.General.cornerRadius)
-            .shadow(radius: Constants.General.shadowRadius, x: 2, y: 2)
+          ButtonLabelView(title: "Order Now")
         }
         .padding(.top, 30)
       }
@@ -81,9 +65,7 @@ struct CartView: View {
       }
       .alert("Checkout", isPresented: $isShowingCheckoutAlert) {
         Button("OK", role: .none) {
-          withAnimation {
-            cartStore.clearCart()
-          }
+          withAnimation { cartStore.clearCart() }
         }
       } message: {
         if cartStore.cartItems.isEmpty {

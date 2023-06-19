@@ -11,6 +11,8 @@ import XCTest
 final class CartManagerUnitTests: XCTestCase {
   // swiftlint:disable:next implicitly_unwrapped_optional
   var cartStore: CartManager!
+  // The setUpWithError/tearDownWithError methods are run for each individual test, hence it better to setup/assign value to the cartStore there as it will
+  // a fresh start for each test run. Similarly the cartStore will be set to nil after each test is completed.
 
   override func setUpWithError() throws {
     cartStore = CartManager()

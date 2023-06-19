@@ -11,6 +11,8 @@ import XCTest
 final class ItemsManagerUnitTests: XCTestCase {
   // swiftlint:disable:next implicitly_unwrapped_optional
   var itemStore: ItemsManager!
+  // The setUpWithError/tearDownWithError methods are run for each individual test, hence it better to setup/assign value to the itemStore there as it will
+  // a fresh start for each test run. Similarly the itemStore will be set to nil after each test is completed.
 
   override func setUpWithError() throws {
     try super.setUpWithError()
@@ -51,39 +53,6 @@ final class ItemsManagerUnitTests: XCTestCase {
     )
   }
 
-  func test_loadUserData() async throws {
-    XCTAssertNil(itemStore.user, "User should have been Nil at intialization.")
-
-    if FileManager.default.fileExists(atPath: itemStore.userJSONURL.absoluteURL.path()) {
-      try FileManager.default.removeItem(at: itemStore.userJSONURL)
-    }
-
-    XCTAssertFalse(FileManager.default.fileExists(atPath: itemStore.userJSONURL.absoluteURL.path()))
-
-    let promise = expectation(description: "Load User Info")
-
-    do {
-      try await itemStore.loadUser()
-    } catch let error {
-      print(error)
-    }
-    promise.fulfill()
-
-    await fulfillment(of: [promise], timeout: 5)
-
-    if let user = itemStore.user {
-      XCTAssertEqual(user.id, 1)
-    } else {
-      XCTFail("User data is nil. Load User did not succeed.")
-    }
-
-    XCTAssertTrue(
-      FileManager.default.fileExists(
-        atPath: itemStore.userJSONURL.absoluteURL.path()),
-      "User not saved in json file, Save function did not succeed."
-    )
-  }
-
   func test_readProductsFromJSONFile() {
     if FileManager.default.fileExists(atPath: itemStore.itemsJSONURL.absoluteURL.path()) {
       itemStore.loadItemsFromJSONFile()
@@ -106,31 +75,6 @@ final class ItemsManagerUnitTests: XCTestCase {
       FileManager.default.fileExists(
         atPath: itemStore.itemsJSONURL.absoluteURL.path()),
       "Products data not saved in json file, Save function did not succeed."
-    )
-  }
-
-  func test_readUserFromJSONFile() {
-    XCTAssertNil(itemStore.user, "User should have been Nil at intialization.")
-
-    if FileManager.default.fileExists(atPath: itemStore.userJSONURL.absoluteURL.path()) {
-      itemStore.loadUserFromJSONFile()
-      XCTAssertNotNil(itemStore.user, "User should have been loaded from JSON file.")
-    }
-  }
-
-  func test_writeUserToJSONFile() throws {
-    if FileManager.default.fileExists(atPath: itemStore.userJSONURL.absoluteURL.path()) {
-      try FileManager.default.removeItem(at: itemStore.userJSONURL)
-    }
-
-    XCTAssertFalse(FileManager.default.fileExists(atPath: itemStore.userJSONURL.absoluteURL.path()))
-
-    itemStore.saveUserToJSONFile()
-
-    XCTAssertTrue(
-      FileManager.default.fileExists(
-        atPath: itemStore.userJSONURL.absoluteURL.path()),
-      "User data not saved in json file, Save function did not succeed."
     )
   }
 }

@@ -10,6 +10,8 @@ import XCTest
 final class AccountViewScreenUITests: XCTestCase {
   // swiftlint:disable:next implicitly_unwrapped_optional
   var app: XCUIApplication!
+  // The setUpWithError methods are run for each individual test, hence it better to setup/assign value to the Application there as it will
+  // a fresh start for each test run.
 
   override func setUpWithError() throws {
     try super.setUpWithError()
