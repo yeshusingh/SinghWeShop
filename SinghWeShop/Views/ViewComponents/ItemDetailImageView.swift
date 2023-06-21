@@ -16,15 +16,15 @@ struct ItemDetailImageView: View {
       Image(uiImage: itemImage)
         .resizable()
         .aspectRatio(contentMode: .fit)
-        .frame(width: size, height: size)
         .cornerRadius(Constants.General.cornerRadius)
+        .frame(width: size, height: size)
         .shadow(radius: Constants.General.shadowRadius)
         .padding(.bottom)
     } else {
       Color.gray.opacity(0.4)
         .aspectRatio(1, contentMode: .fit)
-        .frame(width: size, height: size)
         .cornerRadius(Constants.General.cornerRadius)
+        .frame(width: size, height: size)
         .overlay {
           ProgressView()
         }

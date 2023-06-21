@@ -19,6 +19,14 @@ final class SinghWeShopUITests: XCTestCase {
     continueAfterFailure = false
     app = XCUIApplication()
     app.launch()
+
+    XCUIDevice.shared.orientation = .portrait
+    app.loginSetup()
+    XCTAssert(app.tabBars["Tab Bar"].waitForExistence(timeout: 7), "Login unsuccessful during setup.")
+  }
+
+  override func tearDown() {
+    app.logoutStep()
   }
 
   func test_allTabsExist() {

@@ -67,10 +67,8 @@ import UIKit
     if let cached = cache[key] {
       switch cached {
       case .completed(let image):
-        print("Cached in Memory")
         return image
       case .inProgress(let task):
-        print("in progress task")
         return try await task.value
       case .failed:
         throw "Download failed"
@@ -87,7 +85,6 @@ import UIKit
       guard let image = UIImage(data: data) else {
         throw "Invalid image data"
       }
-      print("Cached in disk")
 
       addToCache(image, forKey: key)
       return image
@@ -103,7 +100,7 @@ import UIKit
       guard let url = URL(string: urlString) else {
         throw "Could not create download URL"
       }
-      print("Download: \(url.absoluteString)")
+
       let data = try await URLSession.shared.data(from: url).0
       guard let image = UIImage(data: data) else {
         throw "Invalid image data"

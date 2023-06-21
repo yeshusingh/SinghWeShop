@@ -19,14 +19,20 @@ final class HomeScreenUITests: XCTestCase {
     continueAfterFailure = false
     app = XCUIApplication()
     app.launch()
+
+    XCUIDevice.shared.orientation = .portrait
+    app.loginSetup()
+    XCTAssert(app.tabBars["Tab Bar"].waitForExistence(timeout: 7), "Login unsuccessful during setup.")
+  }
+
+  override func tearDown() {
+    app.logoutStep()
   }
 
   func test_homeTabUIElements() {
     let tabBar = app.tabBars["Tab Bar"]
     XCTAssert(tabBar.buttons["Home"].exists)
     tabBar.buttons["Home"].tap()
-
-    // XCUIDevice.shared.orientation = .portrait
 
     XCTAssert(app.navigationBars["WeShop"].exists)
 

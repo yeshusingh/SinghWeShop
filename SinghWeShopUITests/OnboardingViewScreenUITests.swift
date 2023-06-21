@@ -19,6 +19,10 @@ final class OnboardingViewScreenUITests: XCTestCase {
     continueAfterFailure = false
     app = XCUIApplication()
     app.launch()
+
+    XCUIDevice.shared.orientation = .portrait
+    app.loginSetup()
+    XCTAssert(app.tabBars["Tab Bar"].waitForExistence(timeout: 5), "Login unsuccessful during setup.")
   }
 
   func test_OnboardingView() {
@@ -37,8 +41,7 @@ final class OnboardingViewScreenUITests: XCTestCase {
 
     XCTAssert(elementsQuery.staticTexts[
       """
-      Browse the items - You can view items on the homepage and \
-      click them to get more details.
+      Browse the items - You can view items and tap on them to view more details.
       """
       ].exists)
     XCTAssert(elementsQuery.staticTexts[
@@ -47,9 +50,12 @@ final class OnboardingViewScreenUITests: XCTestCase {
       And the cart will hold all added items in place for checkout.
       """
       ].exists)
-    XCTAssert(elementsQuery.staticTexts["You can apply discount coupons in the cart at the time of checkout."].exists)
-
-    app.navigationBars.firstMatch.buttons["WeShop"].tap()
+    XCTAssert(elementsQuery.staticTexts[
+      """
+      All applicable discounts are applied in the cart at the time \
+      of checkout.
+      """
+      ].exists)
   }
 
   func test_onboardingViewDiffOrientation() throws {
@@ -70,8 +76,7 @@ final class OnboardingViewScreenUITests: XCTestCase {
 
     XCTAssert(elementsQuery.staticTexts[
       """
-      Browse the items - You can view items on the homepage \
-      and click them to get more details.
+      Browse the items - You can view items and tap on them to view more details.
       """].exists)
 
     XCTAssert(elementsQuery.staticTexts[
@@ -79,9 +84,14 @@ final class OnboardingViewScreenUITests: XCTestCase {
       Add items to the cart as you continue shopping. \
       And the cart will hold all added items in place for checkout.
       """].exists)
-    XCTAssert(elementsQuery.staticTexts["You can apply discount coupons in the cart at the time of checkout."].exists)
 
-    app.navigationBars.firstMatch.buttons["WeShop"].tap()
+    XCTAssert(elementsQuery.staticTexts[
+      """
+      All applicable discounts are applied in the cart at the time \
+      of checkout.
+      """
+      ].exists)
+
     XCUIDevice.shared.orientation = .portrait
   }
 }

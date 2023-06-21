@@ -62,7 +62,6 @@ class CartManager: ObservableObject {
   }
 
   func saveCartToJSONFile () {
-    print(#function)
     let encoder = JSONEncoder()
     encoder.outputFormatting = .prettyPrinted
 
@@ -78,7 +77,6 @@ class CartManager: ObservableObject {
   }
 
   func loadCartFromJSONFile() {
-    print(#function)
     let decoder = JSONDecoder()
 
     guard FileManager.default.fileExists(atPath: cartJSONURL.absoluteURL.path()) else { return }

@@ -49,6 +49,7 @@
 		12A69B522A2AD41700E8DC9E /* NetworkStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A69B512A2AD41700E8DC9E /* NetworkStatusView.swift */; };
 		12A69B542A2BB5C600E8DC9E /* items.json in Resources */ = {isa = PBXBuildFile; fileRef = 12A69B532A2BB5C600E8DC9E /* items.json */; };
 		12A69B562A2BBF7F00E8DC9E /* MockNetworkManagerUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A69B552A2BBF7F00E8DC9E /* MockNetworkManagerUnitTests.swift */; };
+		12A798F72A42738C004CCD89 /* XCUIApplicationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A798F62A42738C004CCD89 /* XCUIApplicationExtension.swift */; };
 		12E00C662A08A39900A43052 /* SplashScreen128.png in Resources */ = {isa = PBXBuildFile; fileRef = 12E00C652A08A39900A43052 /* SplashScreen128.png */; };
 		12E6564D2A080F4E00B52444 /* ItemsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E6564C2A080F4E00B52444 /* ItemsListView.swift */; };
 		12E6564F2A080FAE00B52444 /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E6564E2A080FAE00B52444 /* ListItem.swift */; };
@@ -130,6 +131,7 @@
 		12A69B512A2AD41700E8DC9E /* NetworkStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkStatusView.swift; sourceTree = "<group>"; };
 		12A69B532A2BB5C600E8DC9E /* items.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = items.json; sourceTree = "<group>"; };
 		12A69B552A2BBF7F00E8DC9E /* MockNetworkManagerUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockNetworkManagerUnitTests.swift; sourceTree = "<group>"; };
+		12A798F62A42738C004CCD89 /* XCUIApplicationExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCUIApplicationExtension.swift; sourceTree = "<group>"; };
 		12E00C5A2A088E2A00A43052 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		12E00C652A08A39900A43052 /* SplashScreen128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SplashScreen128.png; sourceTree = "<group>"; };
 		12E6564C2A080F4E00B52444 /* ItemsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsListView.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 				1268D5232A12A28E00C515DE /* HomeScreenUITests.swift */,
 				12601D512A112B8600401C76 /* SinghWeShopUITests.swift */,
 				12601D532A112B8600401C76 /* SinghWeShopUITestsLaunchTests.swift */,
+				12A798F62A42738C004CCD89 /* XCUIApplicationExtension.swift */,
 			);
 			path = SinghWeShopUITests;
 			sourceTree = "<group>";
@@ -551,6 +554,7 @@
 				1268D52C2A12A4B600C515DE /* OnboardingViewScreenUITests.swift in Sources */,
 				1211A1712A1BFBB70067CCE2 /* AccountViewScreenUITests.swift in Sources */,
 				12601D522A112B8600401C76 /* SinghWeShopUITests.swift in Sources */,
+				12A798F72A42738C004CCD89 /* XCUIApplicationExtension.swift in Sources */,
 				1268D5282A12A3E000C515DE /* CartScreenUITests.swift in Sources */,
 				1268D52A2A12A44700C515DE /* ItemDetailScreenUITests.swift in Sources */,
 				1268D5262A12A34700C515DE /* DiscoverScreenUITests.swift in Sources */,

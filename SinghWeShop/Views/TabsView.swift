@@ -4,7 +4,6 @@
 //
 //  Created by Yeshu Singh on 4/9/23.
 //
-// Current Week 11
 
 import SwiftUI
 

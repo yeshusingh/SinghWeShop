@@ -46,7 +46,7 @@ struct LoginView: View {
           .frame(maxWidth: 250)
 
           HStack(alignment: .center) {
-            TextField("Password", text: $password, prompt: Text("Enter Password"))
+            SecureField("Password", text: $password, prompt: Text("Enter Password"))
               .textFieldStyle(RoundedBorderTextFieldStyle())
               .autocorrectionDisabled(true)
               .textInputAutocapitalization(.never)
@@ -58,6 +58,7 @@ struct LoginView: View {
           }
 
           Button {
+            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             Task {
               do {
                 guard let id = Int(userID) else {

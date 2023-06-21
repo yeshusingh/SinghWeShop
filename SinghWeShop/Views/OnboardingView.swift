@@ -50,7 +50,7 @@ struct OnboardingView: View {
       VStack(alignment: .leading, spacing: 15) {
         OnboardingRowTextView(
           imageName: "1.circle",
-          text: "Browse the items - You can view items on the homepage and click them to get more details.")
+          text: "Browse the items - You can view items and tap on them to view more details.")
         OnboardingRowTextView(
           imageName: "2.circle",
           text: """

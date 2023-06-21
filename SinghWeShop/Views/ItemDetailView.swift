@@ -27,7 +27,7 @@ struct ItemDetailView: View {
             ItemDetailImageView(itemImage: itemImage, size: 300)
           }
 
-          VStack(alignment: .leading, spacing: 10) {
+          VStack(alignment: .leading, spacing: 5) {
             ItemNameView(name: item.name, font: .title2)
 
             PriceView(

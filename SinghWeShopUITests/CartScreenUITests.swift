@@ -19,6 +19,14 @@ final class CartScreenUITests: XCTestCase {
     continueAfterFailure = false
     app = XCUIApplication()
     app.launch()
+
+    XCUIDevice.shared.orientation = .portrait
+    app.loginSetup()
+    XCTAssert(app.tabBars["Tab Bar"].waitForExistence(timeout: 7), "Login unsuccessful during setup.")
+  }
+
+  override func tearDown() {
+    app.logoutStep()
   }
 
   func test_cartTabUIElements() {
@@ -43,7 +51,5 @@ final class CartScreenUITests: XCTestCase {
 
     XCTAssert(app.scrollViews.otherElements.buttons["Order Now"].exists)
     app.scrollViews.otherElements.buttons["Order Now"].tap()
-
-    // TODO: Checkout functionality not coded yet. Revist test later.
   }
 }
