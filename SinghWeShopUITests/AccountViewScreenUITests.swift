@@ -10,15 +10,25 @@ import XCTest
 final class AccountViewScreenUITests: XCTestCase {
   // swiftlint:disable:next implicitly_unwrapped_optional
   var app: XCUIApplication!
+  // The setUpWithError methods are run for each individual test, hence it better to setup/assign value to the Application there as it will
+  // a fresh start for each test run.
 
   override func setUpWithError() throws {
     try super.setUpWithError()
     continueAfterFailure = false
     app = XCUIApplication()
     app.launch()
+
+    XCUIDevice.shared.orientation = .portrait
+    app.loginSetup()
+  }
+
+  override func tearDown() {
+    app.logoutStep()
   }
 
   func test_screenElements() {
+    XCTAssertTrue(app.tabBars["Tab Bar"].waitForExistence(timeout: 10))
     let tabBar = app.tabBars["Tab Bar"]
     XCTAssert(tabBar.buttons["Account"].exists)
 
@@ -29,7 +39,7 @@ final class AccountViewScreenUITests: XCTestCase {
     if app.collectionViews.cells.count == 1 {
       let matchingElement = object.children(matching: .staticText).matching(identifier: "Account Info not available.")
       XCTAssert(matchingElement.element.exists)
-    } else if app.collectionViews.cells.count == 11 {
+    } else if app.collectionViews.cells.count == 12 {
       XCTAssert(object.children(matching: .staticText).matching(identifier: "ACCOUNT DETAILS").element.exists)
       XCTAssert(object.children(matching: .staticText).matching(identifier: "Member ID").element.exists)
       XCTAssert(object.children(matching: .staticText).matching(identifier: "User Details".uppercased()).element.exists)
@@ -41,6 +51,7 @@ final class AccountViewScreenUITests: XCTestCase {
       XCTAssert(object.children(matching: .staticText).matching(identifier: "Street").element.exists)
       XCTAssert(object.children(matching: .staticText).matching(identifier: "City").element.exists)
       XCTAssert(object.children(matching: .staticText).matching(identifier: "ZipCode").element.exists)
+      XCTAssert(object.children(matching: .button).matching(identifier: "Logout").element.exists)
     } else {
       XCTFail("Unverified UI conditon detected.")
     }

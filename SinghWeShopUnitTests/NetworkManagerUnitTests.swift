@@ -11,6 +11,8 @@ import XCTest
 final class NetworkManagerUnitTests: XCTestCase {
   // swiftlint:disable:next implicitly_unwrapped_optional
   var networkManager: NetworkManager!
+  // The setUpWithError/tearDownWithError methods are run for each individual test, hence it better to setup/assign value to the networkManager there as it will
+  // a fresh start for each test run. Similarly the networkManager will be set to nil after each test is completed.
 
   override func setUpWithError() throws {
     try super.setUpWithError()
@@ -22,7 +24,6 @@ final class NetworkManagerUnitTests: XCTestCase {
     try super.tearDownWithError()
   }
 
-  // Week 9: Assignment 4
   func test_fetchProductsData() async {
     var products: [Item]?
     let promise = expectation(description: "Fetch upto 10 products")
@@ -43,7 +44,6 @@ final class NetworkManagerUnitTests: XCTestCase {
     }
   }
 
-  // Week 9: Assignment 4
   func test_fetchUserData() async {
     var user: User?
     let promise = expectation(description: "Fetch User Info")

@@ -11,15 +11,26 @@ import XCTest
 final class SinghWeShopUITests: XCTestCase {
   // swiftlint:disable:next implicitly_unwrapped_optional
   var app: XCUIApplication!
+  // The setUpWithError methods are run for each individual test, hence it better to setup/assign value to the Application there as it will
+  // a fresh start for each test run.
 
   override func setUpWithError() throws {
     try super.setUpWithError()
     continueAfterFailure = false
     app = XCUIApplication()
     app.launch()
+
+    XCUIDevice.shared.orientation = .portrait
+    app.loginSetup()
+  }
+
+  override func tearDown() {
+    app.logoutStep()
   }
 
   func test_allTabsExist() {
+    XCTAssertTrue(app.tabBars["Tab Bar"].waitForExistence(timeout: 10))
+
     let tabBar = app.tabBars["Tab Bar"]
 
     XCTAssert(tabBar.buttons["Home"].exists)

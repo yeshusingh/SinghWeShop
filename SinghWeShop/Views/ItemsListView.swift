@@ -9,9 +9,10 @@ import SwiftUI
 
 struct ItemsListView: View {
   @EnvironmentObject var cartStore: CartManager
-  // Week 9: Assignment 3
   @EnvironmentObject var networkMonitor: NetworkMonitor
+
   @State private var searchName = ""
+  @State private var isOnboardingViewShowing = false
   var items: [Item]
 
   var matchedItems: [Item] {
@@ -28,7 +29,6 @@ struct ItemsListView: View {
 
   var body: some View {
     NavigationStack {
-      // Week 9: Assignment 3
       if networkMonitor.isConnected {
         List {
           ForEach(matchedItems) { item in
@@ -36,13 +36,7 @@ struct ItemsListView: View {
               ListItem(item: item)
             }
             .swipeActions(edge: .leading) {
-              Button {
-                cartStore.addToCart(item)
-              } label: {
-                Image(systemName: "highlighter")
-                Text("AddToCart")
-              }
-              .tint(.yellow)
+              SwipeButtonView(item: item)
             }
           }
         }
@@ -59,34 +53,23 @@ struct ItemsListView: View {
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
           ToolbarItem {
-            NavigationLink {
-              OnboardingView()
-            } label: {
-              Image(systemName: Constants.ImageLiteral.infoCircle)
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-                .font(.title2)
-                .fontWeight(.semibold)
-            }
+            ShowOnboardingButtonView(isOnboardingViewShowing: $isOnboardingViewShowing)
           }
         }
+        .sheet(isPresented: $isOnboardingViewShowing) {
+          OnboardingView()
+        }
       } else {
-        // Week 9: Assignment 3
         NetworkStatusView()
           .navigationTitle(Constants.General.appTitle)
           .navigationBarTitleDisplayMode(.inline)
           .toolbar {
             ToolbarItem {
-              NavigationLink {
-                OnboardingView()
-              } label: {
-                Image(systemName: Constants.ImageLiteral.infoCircle)
-                  .imageScale(.large)
-                  .foregroundColor(.accentColor)
-                  .font(.title2)
-                  .fontWeight(.semibold)
-              }
+              ShowOnboardingButtonView(isOnboardingViewShowing: $isOnboardingViewShowing)
             }
+          }
+          .sheet(isPresented: $isOnboardingViewShowing) {
+            OnboardingView()
           }
       }
     }

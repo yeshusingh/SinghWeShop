@@ -11,15 +11,26 @@ import XCTest
 final class CartScreenUITests: XCTestCase {
   // swiftlint:disable:next implicitly_unwrapped_optional
   var app: XCUIApplication!
+  // The setUpWithError methods are run for each individual test, hence it better to setup/assign value to the Application there as it will
+  // a fresh start for each test run.
 
   override func setUpWithError() throws {
     try super.setUpWithError()
     continueAfterFailure = false
     app = XCUIApplication()
     app.launch()
+
+    XCUIDevice.shared.orientation = .portrait
+    app.loginSetup()
+  }
+
+  override func tearDown() {
+    app.logoutStep()
   }
 
   func test_cartTabUIElements() {
+    XCTAssertTrue(app.tabBars["Tab Bar"].waitForExistence(timeout: 10))
+
     let tabBar = app.tabBars["Tab Bar"]
     XCTAssert(tabBar.buttons["Cart"].exists)
     tabBar.buttons["Cart"].tap()
@@ -33,6 +44,8 @@ final class CartScreenUITests: XCTestCase {
   }
 
   func test_checkoutButton() {
+    XCTAssertTrue(app.tabBars["Tab Bar"].waitForExistence(timeout: 10))
+
     let tabBar = app.tabBars["Tab Bar"]
     XCTAssert(tabBar.buttons["Cart"].exists)
 
@@ -41,7 +54,5 @@ final class CartScreenUITests: XCTestCase {
 
     XCTAssert(app.scrollViews.otherElements.buttons["Order Now"].exists)
     app.scrollViews.otherElements.buttons["Order Now"].tap()
-
-    // TODO: Checkout functionality not coded yet. Revist test later.
   }
 }

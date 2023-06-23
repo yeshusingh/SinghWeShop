@@ -18,12 +18,12 @@ enum Constants {
   }
 
   enum General {
-    public static let cornerRadius = 20.0
+    public static let cornerRadius = 8.0
     public static let strokeBorderWidth = 3.0
     public static let iconPictureSize = 80.0
-    public static let roundButtonSize = 56.0
+    public static let roundButtonSize = 40.0
     public static let appTitle = "WeShop"
-    public static let shadowRadius = 10.0
+    public static let shadowRadius = 5.0
   }
 
   enum ImageLiteral {

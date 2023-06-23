@@ -8,7 +8,10 @@
 import SwiftUI
 
 struct AccountView: View {
-  let user: User?
+  var itemStore: ItemsManager
+  var cartStore: CartManager
+  var userStore: UserManager
+  var user: User?
 
   var body: some View {
     NavigationStack {
@@ -30,6 +33,22 @@ struct AccountView: View {
             LabeledContent("City", value: user.address.city)
             LabeledContent("ZipCode", value: user.address.zipcode)
           }
+
+          Section {
+            Button("Logout") {
+              userStore.removeUserJSONFile()
+              cartStore.removeCartJSONFile()
+              itemStore.removeItemsJSONFile()
+              UserDefaults.standard.set(0, forKey: "CurrentTabSelection")
+
+              withAnimation {
+                userStore.loginState = false
+              }
+            }
+            .fontWeight(.bold)
+            .kerning(1.5)
+            .foregroundColor(.red)
+          }
         }
         .listStyle(.insetGrouped)
         .navigationTitle("Hello, \(user.name.firstname)")
@@ -46,8 +65,12 @@ struct AccountView: View {
 #if DEBUG
 struct AccountView_Previews: PreviewProvider {
   static var previews: some View {
-    AccountView(user: SampleUserInfo.user)
-    AccountView(user: nil)
+    AccountView(
+      itemStore: ItemsManager(),
+      cartStore: CartManager(),
+      userStore: UserManager(),
+      user: SampleUserInfo.user
+    )
   }
 }
 #endif

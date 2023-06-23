@@ -10,12 +10,11 @@ import SwiftUI
 struct ItemDetailView: View {
   @Environment(\.verticalSizeClass)
   var verticalSizeClass
-
   @Environment(\.horizontalSizeClass)
   var horizontalSizeClass
-
   @EnvironmentObject var cartStore: CartManager
 
+  @State var itemImage: UIImage?
   var item: Item
 
   var body: some View {
@@ -23,106 +22,41 @@ struct ItemDetailView: View {
       ScrollView(showsIndicators: false) {
         VStack(spacing: 10) {
           if verticalSizeClass == .compact {
-            AsyncImage(url: URL(string: item.imageURL)) { image in
-              image
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(height: 200)
-                .cornerRadius(Constants.General.cornerRadius)
-                .shadow(radius: Constants.General.shadowRadius)
-                .padding(.bottom)
-            } placeholder: {
-              Color.gray.opacity(0.4)
-                .aspectRatio(1, contentMode: .fit)
-                .frame(width: 100)
-                .cornerRadius(Constants.General.cornerRadius)
-                .overlay {
-                  ProgressView()
-                }
-            }
+            ItemDetailImageView(itemImage: itemImage, size: 200)
           } else {
-            AsyncImage(url: URL(string: item.imageURL)) { image in
-              image
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .cornerRadius(Constants.General.cornerRadius)
-                .shadow(radius: Constants.General.shadowRadius)
-                .padding(.bottom)
-            } placeholder: {
-              Color.gray.opacity(0.4)
-                .aspectRatio(1, contentMode: .fit)
-                .frame(width: 100)
-                .cornerRadius(Constants.General.cornerRadius)
-                .overlay {
-                  ProgressView()
-                }
-            }
+            ItemDetailImageView(itemImage: itemImage, size: 300)
           }
 
-          VStack(alignment: .leading, spacing: 10) {
-            HStack {
-              Text(item.name)
-                .font(.largeTitle)
-                .fontWeight(.semibold)
-                .kerning(0.5)
-                .multilineTextAlignment(.leading)
-                .lineSpacing(-10)
-                .foregroundColor(Color(Constants.Assets.textColor))
+          VStack(alignment: .leading, spacing: 5) {
+            ItemNameView(name: item.name, font: .title2)
 
-              Spacer()
-            }
+            PriceView(
+              title: "Price: ",
+              price: item.price,
+              titleFont: .title3,
+              titleFontWeight: .semibold,
+              priceFont: .body
+            )
 
-            HStack {
-              Text("Price :")
-                .font(.title2)
-                .fontWeight(.bold)
-                .kerning(0.5)
-                .multilineTextAlignment(.leading)
-              Text("$\(item.price, specifier: "%.2f")")
-                .font(.title2)
-                .fontWeight(.regular)
-                .kerning(0.5)
-                .multilineTextAlignment(.leading)
-            }
-
-            VStack(alignment: .leading) {
-              Text("Description :")
-                .font(.title2)
-                .fontWeight(.bold)
-                .kerning(0.5)
-                .multilineTextAlignment(.leading)
-              Text(item.description)
-                .font(.body)
-                .fontWeight(.regular)
-                .kerning(0.5)
-                .multilineTextAlignment(.leading)
-                .lineSpacing(-10)
-                .foregroundColor(Color(Constants.Assets.textColor))
-            }
-            .padding(.top, 30)
+            ItemDescriptionView(description: item.description)
+              .padding(.top, 30)
           }
 
           Spacer()
 
-          HStack {
-            Button {
-              cartStore.addToCart(item)
-            } label: {
-              Text("Add to Cart")
-                .font(.title2)
-                .fontWeight(.semibold)
-                .foregroundColor(Color(Constants.Assets.textColor))
-                .padding()
-                .background(Color(Constants.Assets.buttonFilledTextColor))
-                .opacity(0.7)
-                .cornerRadius(Constants.General.cornerRadius)
-                .shadow(radius: Constants.General.shadowRadius, x: 5, y: 5)
-            }
+          Button {
+            cartStore.addToCart(item)
+          } label: {
+            ButtonLabelView(title: "Add to Cart")
           }
-          .padding(.top, 50)
         }
         .padding()
       }
+    }
+    .task {
+      do {
+        itemImage = try await ImageStorage.shared.image(item.imageURL)
+      } catch { print("error: ", error) }
     }
   }
 }
@@ -130,8 +64,13 @@ struct ItemDetailView: View {
 #if DEBUG
 struct ItemDetailView_Previews: PreviewProvider {
   static var previews: some View {
-    ItemDetailView(item: ItemSampleData.eraser)
+    ItemDetailView(item: ItemSampleData.boatNeckT)
       .environmentObject(CartManager())
+      .task {
+        do {
+          try await ImageStorage.shared.setup()
+        } catch { print("error: ", error) }
+      }
   }
 }
 #endif
