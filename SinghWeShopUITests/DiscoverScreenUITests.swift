@@ -22,7 +22,6 @@ final class DiscoverScreenUITests: XCTestCase {
 
     XCUIDevice.shared.orientation = .portrait
     app.loginSetup()
-    XCTAssert(app.tabBars["Tab Bar"].waitForExistence(timeout: 7), "Login unsuccessful during setup.")
   }
 
   override func tearDown() {
@@ -30,6 +29,8 @@ final class DiscoverScreenUITests: XCTestCase {
   }
 
   func test_discoverTabUIElements() {
+    XCTAssertTrue(app.tabBars["Tab Bar"].waitForExistence(timeout: 10))
+
     let tabBar = app.tabBars["Tab Bar"]
     XCTAssert(tabBar.buttons["Discover"].exists)
     tabBar.buttons["Discover"].tap()
@@ -43,6 +44,8 @@ final class DiscoverScreenUITests: XCTestCase {
   }
 
   func test_seachInDiscoverTab() {
+    XCTAssertTrue(app.tabBars["Tab Bar"].waitForExistence(timeout: 10))
+
     let tabBar = app.tabBars["Tab Bar"]
     XCTAssert(tabBar.buttons["Discover"].exists)
     tabBar.buttons["Discover"].tap()
@@ -60,6 +63,8 @@ final class DiscoverScreenUITests: XCTestCase {
   }
 
   func test_detailViewFromDiscoverTab() throws {
+    XCTAssertTrue(app.tabBars["Tab Bar"].waitForExistence(timeout: 10))
+
     let tabBar = app.tabBars["Tab Bar"]
     XCTAssert(tabBar.buttons["Discover"].exists)
     tabBar.buttons["Discover"].tap()

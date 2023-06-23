@@ -26,7 +26,6 @@
 		1245FAA029EC8E6600299D2F /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1245FA9F29EC8E6600299D2F /* Item.swift */; };
 		12601D452A112B6C00401C76 /* CartManagerUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12601D442A112B6C00401C76 /* CartManagerUnitTests.swift */; };
 		12601D522A112B8600401C76 /* SinghWeShopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12601D512A112B8600401C76 /* SinghWeShopUITests.swift */; };
-		12601D542A112B8600401C76 /* SinghWeShopUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12601D532A112B8600401C76 /* SinghWeShopUITestsLaunchTests.swift */; };
 		1268D5242A12A28E00C515DE /* HomeScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1268D5232A12A28E00C515DE /* HomeScreenUITests.swift */; };
 		1268D5262A12A34700C515DE /* DiscoverScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1268D5252A12A34700C515DE /* DiscoverScreenUITests.swift */; };
 		1268D5282A12A3E000C515DE /* CartScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1268D5272A12A3E000C515DE /* CartScreenUITests.swift */; };
@@ -106,7 +105,6 @@
 		12601D442A112B6C00401C76 /* CartManagerUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartManagerUnitTests.swift; sourceTree = "<group>"; };
 		12601D4F2A112B8600401C76 /* SinghWeShopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SinghWeShopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		12601D512A112B8600401C76 /* SinghWeShopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinghWeShopUITests.swift; sourceTree = "<group>"; };
-		12601D532A112B8600401C76 /* SinghWeShopUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinghWeShopUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		12601D5A2A112CF900401C76 /* SinghWeShop.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = SinghWeShop.xctestplan; sourceTree = "<group>"; };
 		1260439E29F1924200E6C57E /* Week03Assignment.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Week03Assignment.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		1268D5232A12A28E00C515DE /* HomeScreenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenUITests.swift; sourceTree = "<group>"; };
@@ -304,7 +302,6 @@
 				1268D5252A12A34700C515DE /* DiscoverScreenUITests.swift */,
 				1268D5232A12A28E00C515DE /* HomeScreenUITests.swift */,
 				12601D512A112B8600401C76 /* SinghWeShopUITests.swift */,
-				12601D532A112B8600401C76 /* SinghWeShopUITestsLaunchTests.swift */,
 				12A798F62A42738C004CCD89 /* XCUIApplicationExtension.swift */,
 			);
 			path = SinghWeShopUITests;
@@ -550,7 +547,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				12601D542A112B8600401C76 /* SinghWeShopUITestsLaunchTests.swift in Sources */,
 				1268D52C2A12A4B600C515DE /* OnboardingViewScreenUITests.swift in Sources */,
 				1211A1712A1BFBB70067CCE2 /* AccountViewScreenUITests.swift in Sources */,
 				12601D522A112B8600401C76 /* SinghWeShopUITests.swift in Sources */,

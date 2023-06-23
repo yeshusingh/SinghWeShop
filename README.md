@@ -145,5 +145,4 @@ Also, contains a published login state property which determines if any user is 
     - DiscoverScreenUITests.swift
     - HomeScreenUITests.swift
     - SinghWeShopUITests.swift
-    - SinghWeShopUITestsLaunchTests.swift
     - XCUIApplicationExtension.swift

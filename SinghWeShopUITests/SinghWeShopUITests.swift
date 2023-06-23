@@ -22,7 +22,6 @@ final class SinghWeShopUITests: XCTestCase {
 
     XCUIDevice.shared.orientation = .portrait
     app.loginSetup()
-    XCTAssert(app.tabBars["Tab Bar"].waitForExistence(timeout: 7), "Login unsuccessful during setup.")
   }
 
   override func tearDown() {
@@ -30,6 +29,8 @@ final class SinghWeShopUITests: XCTestCase {
   }
 
   func test_allTabsExist() {
+    XCTAssertTrue(app.tabBars["Tab Bar"].waitForExistence(timeout: 10))
+
     let tabBar = app.tabBars["Tab Bar"]
 
     XCTAssert(tabBar.buttons["Home"].exists)

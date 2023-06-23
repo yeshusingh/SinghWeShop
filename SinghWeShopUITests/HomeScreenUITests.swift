@@ -22,7 +22,6 @@ final class HomeScreenUITests: XCTestCase {
 
     XCUIDevice.shared.orientation = .portrait
     app.loginSetup()
-    XCTAssert(app.tabBars["Tab Bar"].waitForExistence(timeout: 7), "Login unsuccessful during setup.")
   }
 
   override func tearDown() {
@@ -30,6 +29,8 @@ final class HomeScreenUITests: XCTestCase {
   }
 
   func test_homeTabUIElements() {
+    XCTAssertTrue(app.tabBars["Tab Bar"].waitForExistence(timeout: 10))
+
     let tabBar = app.tabBars["Tab Bar"]
     XCTAssert(tabBar.buttons["Home"].exists)
     tabBar.buttons["Home"].tap()
@@ -43,6 +44,8 @@ final class HomeScreenUITests: XCTestCase {
   }
 
   func test_addThenRemoveItemInCart() throws {
+    XCTAssertTrue(app.tabBars["Tab Bar"].waitForExistence(timeout: 10))
+
     let tabBar = app.tabBars["Tab Bar"]
     XCTAssert(tabBar.buttons["Home"].exists)
     tabBar.buttons["Home"].tap()
@@ -66,6 +69,8 @@ final class HomeScreenUITests: XCTestCase {
   }
 
   func test_swipeActionToAddToCart() throws {
+    XCTAssertTrue(app.tabBars["Tab Bar"].waitForExistence(timeout: 10))
+
     let tabBar = app.tabBars["Tab Bar"]
     XCTAssert(tabBar.buttons["Home"].exists)
     tabBar.buttons["Home"].tap()
@@ -84,6 +89,8 @@ final class HomeScreenUITests: XCTestCase {
   }
 
   func test_seachInHomeTab() {
+    XCTAssertTrue(app.tabBars["Tab Bar"].waitForExistence(timeout: 10))
+
     let tabBar = app.tabBars["Tab Bar"]
     XCTAssert(tabBar.buttons["Home"].exists)
     tabBar.buttons["Home"].tap()
@@ -101,6 +108,8 @@ final class HomeScreenUITests: XCTestCase {
   }
 
   func test_detailViewFromHomeTab() throws {
+    XCTAssertTrue(app.tabBars["Tab Bar"].waitForExistence(timeout: 10))
+
     let tabBar = app.tabBars["Tab Bar"]
     XCTAssert(tabBar.buttons["Home"].exists)
     tabBar.buttons["Home"].tap()

@@ -73,7 +73,7 @@ struct LoginView: View {
                 }
 
                 try await service.performLoginFor(user: user, password: password)
-                withAnimation {
+                withAnimation(.easeOut(duration: 0.25)) {
                   userStore.loginState = true
                 }
               } catch {

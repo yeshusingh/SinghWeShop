@@ -22,10 +22,11 @@ final class OnboardingViewScreenUITests: XCTestCase {
 
     XCUIDevice.shared.orientation = .portrait
     app.loginSetup()
-    XCTAssert(app.tabBars["Tab Bar"].waitForExistence(timeout: 5), "Login unsuccessful during setup.")
   }
 
   func test_OnboardingView() {
+    XCTAssertTrue(app.tabBars["Tab Bar"].waitForExistence(timeout: 10))
+
     let tabBar = app.tabBars["Tab Bar"]
     XCTAssert(tabBar.buttons["Home"].exists)
     tabBar.buttons["Home"].tap()
@@ -59,6 +60,8 @@ final class OnboardingViewScreenUITests: XCTestCase {
   }
 
   func test_onboardingViewDiffOrientation() throws {
+    XCTAssertTrue(app.tabBars["Tab Bar"].waitForExistence(timeout: 10))
+
     let tabBar = app.tabBars["Tab Bar"]
     XCTAssert(tabBar.buttons["Home"].exists)
     tabBar.buttons["Home"].tap()

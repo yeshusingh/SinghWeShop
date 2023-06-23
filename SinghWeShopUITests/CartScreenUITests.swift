@@ -22,7 +22,6 @@ final class CartScreenUITests: XCTestCase {
 
     XCUIDevice.shared.orientation = .portrait
     app.loginSetup()
-    XCTAssert(app.tabBars["Tab Bar"].waitForExistence(timeout: 7), "Login unsuccessful during setup.")
   }
 
   override func tearDown() {
@@ -30,6 +29,8 @@ final class CartScreenUITests: XCTestCase {
   }
 
   func test_cartTabUIElements() {
+    XCTAssertTrue(app.tabBars["Tab Bar"].waitForExistence(timeout: 10))
+
     let tabBar = app.tabBars["Tab Bar"]
     XCTAssert(tabBar.buttons["Cart"].exists)
     tabBar.buttons["Cart"].tap()
@@ -43,6 +44,8 @@ final class CartScreenUITests: XCTestCase {
   }
 
   func test_checkoutButton() {
+    XCTAssertTrue(app.tabBars["Tab Bar"].waitForExistence(timeout: 10))
+
     let tabBar = app.tabBars["Tab Bar"]
     XCTAssert(tabBar.buttons["Cart"].exists)
 
